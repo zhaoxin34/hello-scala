@@ -1,0 +1,6 @@
+username: "zhao"
+gender: 1
+parent:
+  - "ma"
+  - "ba"
+  - "jie"

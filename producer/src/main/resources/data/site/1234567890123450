@@ -1,0 +1,500 @@
+http://spark.apache.org/docs/latest/, Overview - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/index.html, Overview - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/quick-start.html, Quick Start - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/rdd-programming-guide.html, RDD Programming Guide - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/sql-programming-guide.html, Spark SQL and DataFrames - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/structured-streaming-programming-guide.html, Structured Streaming Programming Guide - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/streaming-programming-guide.html, Spark Streaming - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/ml-guide.html, MLlib: Main Guide - Spark 2.4.0 Documentation            
+http://spark.apache.org/docs/latest/graphx-programming-guide.html, GraphX - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/sparkr.html, SparkR (R on Spark) - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/api/scala/index.html, Spark 2.4.0 ScalaDoc              
+http://spark.apache.org/docs/latest/api/java/index.html, Spark 2.4.0 JavaDoc              
+http://spark.apache.org/docs/latest/api/python/index.html, Welcome to Spark Python API Docs! &amp;#8212; PySpark 2.4.0 documentation              
+http://spark.apache.org/docs/latest/api/R/index.html, Documentation of the SparkR package              
+http://spark.apache.org/docs/latest/api/sql/index.html, Spark SQL, Built-in Functions              
+http://spark.apache.org/docs/latest/cluster-overview.html, Cluster Mode Overview - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/submitting-applications.html, Submitting Applications - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/spark-standalone.html, Spark Standalone Mode - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/running-on-mesos.html, Running Spark on Mesos - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/running-on-yarn.html, Running Spark on YARN - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/running-on-kubernetes.html, Running Spark on Kubernetes - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/api.html, Spark API Documentation - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/configuration.html, Configuration - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/monitoring.html, Monitoring and Instrumentation - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/tuning.html, Tuning - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/job-scheduling.html, Job Scheduling - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/security.html, Security - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/hardware-provisioning.html, Hardware Provisioning - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/building-spark.html, Building Spark - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/hadoop-provided.html, Using Spark's "Hadoop Free" Build - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/cloud-integration.html, Integration with Cloud Infrastructures - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/storage-openstack-swift.html, Accessing OpenStack Swift from Spark - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/api/java/function/package-summary.html, Spark 2.4.0 JavaDoc              
+http://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/api/java/JavaSparkContext.html, Spark 2.4.0 JavaDoc              
+http://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/SparkConf.html, Spark 2.4.0 JavaDoc              
+http://spark.apache.org/docs/latest/api/python/pyspark.html, pyspark package &amp;#8212; PySpark 2.4.0 documentation              
+http://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/api/java/JavaPairRDD.html, Spark 2.4.0 JavaDoc              
+http://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/api/java/JavaRDD.html, Spark 2.4.0 JavaDoc              
+http://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/storage/StorageLevel.html, Spark 2.4.0 JavaDoc              
+http://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/launcher/package-summary.html, Spark 2.4.0 JavaDoc              
+http://spark.apache.org/docs/latest/api/scala/, Spark 2.4.0 ScalaDoc              
+http://spark.apache.org/docs/latest/api/java/, Spark 2.4.0 JavaDoc              
+http://spark.apache.org/docs/latest/api/python/, Welcome to Spark Python API Docs! &amp;#8212; PySpark 2.4.0 documentation              
+http://spark.apache.org/docs/latest/api/R/, Documentation of the SparkR package              
+http://spark.apache.org/docs/latest/sql-getting-started.html, Getting Started - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/sql-data-sources.html, Data Sources - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/sql-performance-tuning.html, Performance Tuning - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/sql-distributed-sql-engine.html, Distributed SQL Engine - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/sql-pyspark-pandas-with-arrow.html, PySpark Usage Guide for Pandas with Apache Arrow - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/sql-migration-guide.html, Migration Guide - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/sql-reference.html, Reference - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/sql-data-sources-hive-tables.html, Hive Tables - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/sql/Dataset.html, Spark 2.4.0 JavaDoc              
+http://spark.apache.org/docs/latest/api/python/pyspark.sql.html, pyspark.sql module &amp;#8212; PySpark 2.4.0 documentation              
+http://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/SparkSession.html, SparkSession (Spark 2.4.0 JavaDoc)              
+http://spark.apache.org/docs/latest/api/R/sparkR.session.html, R: Get the existing SparkSession or initialize a new...            
+http://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamReader.html, DataStreamReader (Spark 2.4.0 JavaDoc)              
+http://spark.apache.org/docs/latest/api/R/read.stream.html, R: Load a streaming SparkDataFrame            
+http://spark.apache.org/docs/latest/structured-streaming-kafka-integration.html, Structured Streaming + Kafka Integration Guide (Kafka broker version 0.10.0 or higher) - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/sql-data-sources-parquet.html, Parquet Files - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/GroupState.html, GroupState (Spark 2.4.0 JavaDoc)              
+http://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamWriter.html, DataStreamWriter (Spark 2.4.0 JavaDoc)              
+http://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/DataFrameWriter.html, DataFrameWriter (Spark 2.4.0 JavaDoc)              
+http://spark.apache.org/docs/latest/api/R/write.stream.html, R: Write the streaming SparkDataFrame to a data source.            
+http://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/ForeachWriter.html, ForeachWriter (Spark 2.4.0 JavaDoc)              
+http://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/StreamingQueryManager.html, StreamingQueryManager (Spark 2.4.0 JavaDoc)              
+http://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/StreamingQueryProgress.html, StreamingQueryProgress (Spark 2.4.0 JavaDoc)              
+http://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/StreamingQueryStatus.html, StreamingQueryStatus (Spark 2.4.0 JavaDoc)              
+http://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/StreamingQueryListener.html, StreamingQueryListener (Spark 2.4.0 JavaDoc)              
+http://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/streaming/api/java/JavaStreamingContext.html, Spark 2.4.0 JavaDoc              
+http://spark.apache.org/docs/latest/api/python/pyspark.streaming.html, pyspark.streaming module &amp;#8212; PySpark 2.4.0 documentation              
+http://spark.apache.org/docs/latest/api/java/org/apache/spark/streaming/receiver/Receiver.html, Receiver (Spark 2.4.0 JavaDoc)              
+http://spark.apache.org/docs/latest/streaming-custom-receivers.html, Spark Streaming Custom Receivers - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/streaming-kafka-integration.html, Spark Streaming + Kafka Integration Guide - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/streaming-flume-integration.html, Spark Streaming + Flume Integration Guide - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/streaming-kinesis-integration.html, Spark Streaming + Kinesis Integration - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/streaming/api/java/JavaDStream.html, Spark 2.4.0 JavaDoc              
+http://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/streaming/api/java/JavaPairDStream.html, Spark 2.4.0 JavaDoc              
+http://spark.apache.org/docs/latest/mllib-linear-methods.html, Linear Methods - RDD-based API - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/mllib-clustering.html, Clustering - RDD-based API - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/streaming/kafka/KafkaUtils.html, Spark 2.4.0 JavaDoc              
+http://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/streaming/flume/FlumeUtils.html, Spark 2.4.0 JavaDoc              
+http://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/streaming/kinesis/KinesisUtils.html, Spark 2.4.0 JavaDoc              
+http://spark.apache.org/docs/latest/ml-statistics.html, Basic Statistics - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/ml-datasource, Data sources - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/ml-pipeline.html, ML Pipelines - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/ml-features.html, Extracting, transforming and selecting features - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/ml-classification-regression.html, Classification and regression - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/ml-clustering.html, Clustering - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/ml-collaborative-filtering.html, Collaborative Filtering - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/ml-frequent-pattern-mining.html, Frequent Pattern Mining - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/ml-tuning.html, ML Tuning - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/ml-advanced.html, Advanced topics - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/mllib-guide.html, MLlib: RDD-based API - Spark 2.4.0 Documentation            
+http://spark.apache.org/docs/latest/mllib-data-types.html, Data Types - RDD-based API - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/mllib-statistics.html, Basic Statistics - RDD-based API - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/mllib-classification-regression.html, Classification and Regression - RDD-based API - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/mllib-collaborative-filtering.html, Collaborative Filtering - RDD-based API - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/mllib-dimensionality-reduction.html, Dimensionality Reduction - RDD-based API - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/mllib-feature-extraction.html, Feature Extraction and Transformation - RDD-based API - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/mllib-frequent-pattern-mining.html, Frequent Pattern Mining - RDD-based API - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/mllib-evaluation-metrics.html, Evaluation Metrics - RDD-based API - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/mllib-pmml-model-export.html, PMML model export - RDD-based API - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/mllib-optimization.html, Optimization - RDD-based API - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/ml-migration-guides.html, Old Migration Guides - MLlib - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/api/java/org/apache/spark/graphx/TripletFields.html, TripletFields (Spark 2.4.0 JavaDoc)              
+http://spark.apache.org/docs/latest/sql-data-sources-load-save-functions.html, Generic Load/Save Functions - Spark 2.4.0 Documentation              
+http://spark.apache.org/docs/latest/api/R/read.df.html, R: Load a SparkDataFrame            
+http://spark.apache.org/docs/latest/api/R/spark.logit.html, R: Logistic Regression Model            
+http://spark.apache.org/docs/latest/api/R/spark.mlp.html, R: Multilayer Perceptron Classification Model            
+http://spark.apache.org/docs/latest/api/R/spark.naiveBayes.html, R: Naive Bayes Models            
+http://spark.apache.org/docs/latest/api/R/spark.svmLinear.html, R: Linear SVM Model            
+http://spark.apache.org/docs/latest/api/R/spark.survreg.html, R: Accelerated Failure Time (AFT) Survival Regression Model            
+http://spark.apache.org/docs/latest/api/R/spark.glm.html, R: Generalized Linear Models            
+http://spark.apache.org/docs/latest/api/R/glm.html, R: Generalized Linear Models (R-compliant)            
+http://spark.apache.org/docs/latest/api/R/spark.isoreg.html, R: Isotonic Regression Model            
+http://spark.apache.org/docs/latest/api/R/spark.decisionTree.html, R: Decision Tree Model for Regression and Classification            
+http://spark.apache.org/docs/latest/api/R/spark.gbt.html, R: Gradient Boosted Tree Model for Regression and Classification            
+http://spark.apache.org/docs/latest/api/R/spark.randomForest.html, R: Random Forest Model for Regression and Classification            
+http://spark.apache.org/docs/latest/api/R/spark.bisectingKmeans.html, R: Bisecting K-Means Clustering Model            
+http://spark.apache.org/docs/latest/api/R/spark.gaussianMixture.html, R: Multivariate Gaussian Mixture Model (GMM)            
+http://spark.apache.org/docs/latest/api/R/spark.kmeans.html, R: K-Means Clustering Model            
+http://spark.apache.org/docs/latest/api/R/spark.lda.html, R: Latent Dirichlet Allocation            
+http://spark.apache.org/docs/latest/api/R/spark.als.html, R: Alternating Least Squares (ALS) for Collaborative Filtering            
+http://spark.apache.org/docs/latest/api/R/spark.fpGrowth.html, R: FP-growth            
+http://spark.apache.org/docs/latest/api/R/spark.kstest.html, R: (One-Sample) Kolmogorov-Smirnov Test            
+http://spark.apache.org/docs/latest/api/R/predict.html, R: Makes predictions from a MLlib model            
+http://spark.apache.org/docs/latest/api/R/write.ml.html, R: Saves the MLlib model to the input path            
+http://spark.apache.org/docs/latest/api/R/read.ml.html, R: Load a fitted MLlib model from the input path.            
+http://spark.apache.org/docs/latest/api/scala/index/index-_.html, Spark 2.4.0 ScalaDoc              
+http://spark.apache.org/docs/latest/api/scala/index/index-a.html, Spark 2.4.0 ScalaDoc              
+http://spark.apache.org/docs/latest/api/scala/index/index-b.html, Spark 2.4.0 ScalaDoc              
+http://spark.apache.org/docs/latest/api/scala/index/index-c.html, Spark 2.4.0 ScalaDoc              
+http://spark.apache.org/docs/latest/api/scala/index/index-d.html, Spark 2.4.0 ScalaDoc              
+http://spark.apache.org/docs/latest/api/scala/index/index-e.html, Spark 2.4.0 ScalaDoc              
+http://spark.apache.org/docs/latest/api/scala/index/index-f.html, Spark 2.4.0 ScalaDoc              
+http://spark.apache.org/docs/latest/api/scala/index/index-g.html, Spark 2.4.0 ScalaDoc              
+http://spark.apache.org/docs/latest/api/scala/index/index-h.html, Spark 2.4.0 ScalaDoc              
+http://spark.apache.org/docs/latest/api/scala/index/index-i.html, Spark 2.4.0 ScalaDoc              
+http://spark.apache.org/docs/latest/api/scala/index/index-j.html, Spark 2.4.0 ScalaDoc              
+http://spark.apache.org/docs/latest/api/scala/index/index-k.html, Spark 2.4.0 ScalaDoc              
+http://spark.apache.org/docs/latest/api/scala/index/index-l.html, Spark 2.4.0 ScalaDoc              
+http://spark.apache.org/docs/latest/api/scala/index/index-m.html, Spark 2.4.0 ScalaDoc              
+http://spark.apache.org/docs/latest/api/scala/index/index-n.html, Spark 2.4.0 ScalaDoc              
+http://spark.apache.org/docs/latest/api/scala/index/index-o.html, Spark 2.4.0 ScalaDoc              
+http://spark.apache.org/docs/latest/api/scala/index/index-p.html, Spark 2.4.0 ScalaDoc              
+http://spark.apache.org/docs/latest/api/scala/index/index-q.html, Spark 2.4.0 ScalaDoc              
+http://spark.apache.org/docs/latest/api/scala/index/index-r.html, Spark 2.4.0 ScalaDoc              
+http://spark.apache.org/docs/latest/api/scala/index/index-s.html, Spark 2.4.0 ScalaDoc              
+http://spark.apache.org/docs/latest/api/scala/index/index-t.html, Spark 2.4.0 ScalaDoc              
+http://spark.apache.org/docs/latest/api/scala/index/index-u.html, Spark 2.4.0 ScalaDoc              
+http://spark.apache.org/docs/latest/api/scala/index/index-v.html, Spark 2.4.0 ScalaDoc              
+http://spark.apache.org/docs/latest/api/scala/index/index-w.html, Spark 2.4.0 ScalaDoc              
+http://spark.apache.org/docs/latest/api/scala/index/index-y.html, Spark 2.4.0 ScalaDoc              
+http://spark.apache.org/docs/latest/api/scala/index/index-z.html, Spark 2.4.0 ScalaDoc              
+http://spark.apache.org/docs/latest/api/scala/deprecated-list.html, Spark 2.4.0 ScalaDoc              
+http://spark.apache.org/docs/latest/api/scala/org/package.html, org - Spark 2.4.0 ScalaDoc - org              
+http://spark.apache.org/docs/latest/api/scala/org/apache/package.html, apache - Spark 2.4.0 ScalaDoc - org.apache              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/package.html, spark - Spark 2.4.0 ScalaDoc - org.apache.spark              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/Accumulable.html, Accumulable - Spark 2.4.0 ScalaDoc - org.apache.spark.Accumulable              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/AccumulableParam.html, AccumulableParam - Spark 2.4.0 ScalaDoc - org.apache.spark.AccumulableParam              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/Accumulator.html, Accumulator - Spark 2.4.0 ScalaDoc - org.apache.spark.Accumulator              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/AccumulatorParam$.html, AccumulatorParam - Spark 2.4.0 ScalaDoc - org.apache.spark.AccumulatorParam              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/AccumulatorParam.html, AccumulatorParam - Spark 2.4.0 ScalaDoc - org.apache.spark.AccumulatorParam              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/Aggregator.html, Aggregator - Spark 2.4.0 ScalaDoc - org.apache.spark.Aggregator              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/BarrierTaskContext$.html, BarrierTaskContext - Spark 2.4.0 ScalaDoc - org.apache.spark.BarrierTaskContext              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/BarrierTaskContext.html, BarrierTaskContext - Spark 2.4.0 ScalaDoc - org.apache.spark.BarrierTaskContext              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/BarrierTaskInfo.html, BarrierTaskInfo - Spark 2.4.0 ScalaDoc - org.apache.spark.BarrierTaskInfo              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ComplexFutureAction.html, ComplexFutureAction - Spark 2.4.0 ScalaDoc - org.apache.spark.ComplexFutureAction              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/Dependency.html, Dependency - Spark 2.4.0 ScalaDoc - org.apache.spark.Dependency              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ExceptionFailure.html, ExceptionFailure - Spark 2.4.0 ScalaDoc - org.apache.spark.ExceptionFailure              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ExecutorLostFailure.html, ExecutorLostFailure - Spark 2.4.0 ScalaDoc - org.apache.spark.ExecutorLostFailure              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ExecutorPlugin.html, ExecutorPlugin - Spark 2.4.0 ScalaDoc - org.apache.spark.ExecutorPlugin              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/FetchFailed.html, FetchFailed - Spark 2.4.0 ScalaDoc - org.apache.spark.FetchFailed              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/FutureAction.html, FutureAction - Spark 2.4.0 ScalaDoc - org.apache.spark.FutureAction              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/HashPartitioner.html, HashPartitioner - Spark 2.4.0 ScalaDoc - org.apache.spark.HashPartitioner              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/InterruptibleIterator.html, InterruptibleIterator - Spark 2.4.0 ScalaDoc - org.apache.spark.InterruptibleIterator              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/JobExecutionStatus.html, JobExecutionStatus - Spark 2.4.0 ScalaDoc - org.apache.spark.JobExecutionStatus              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/JobSubmitter.html, JobSubmitter - Spark 2.4.0 ScalaDoc - org.apache.spark.JobSubmitter              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/NarrowDependency.html, NarrowDependency - Spark 2.4.0 ScalaDoc - org.apache.spark.NarrowDependency              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/OneToOneDependency.html, OneToOneDependency - Spark 2.4.0 ScalaDoc - org.apache.spark.OneToOneDependency              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/Partition.html, Partition - Spark 2.4.0 ScalaDoc - org.apache.spark.Partition              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/Partitioner$.html, Partitioner - Spark 2.4.0 ScalaDoc - org.apache.spark.Partitioner              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/Partitioner.html, Partitioner - Spark 2.4.0 ScalaDoc - org.apache.spark.Partitioner              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/RangeDependency.html, RangeDependency - Spark 2.4.0 ScalaDoc - org.apache.spark.RangeDependency              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/RangePartitioner.html, RangePartitioner - Spark 2.4.0 ScalaDoc - org.apache.spark.RangePartitioner              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/Resubmitted$.html, Resubmitted - Spark 2.4.0 ScalaDoc - org.apache.spark.Resubmitted              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/SerializableWritable.html, SerializableWritable - Spark 2.4.0 ScalaDoc - org.apache.spark.SerializableWritable              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ShuffleDependency.html, ShuffleDependency - Spark 2.4.0 ScalaDoc - org.apache.spark.ShuffleDependency              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/SimpleFutureAction.html, SimpleFutureAction - Spark 2.4.0 ScalaDoc - org.apache.spark.SimpleFutureAction              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/SparkConf.html, SparkConf - Spark 2.4.0 ScalaDoc - org.apache.spark.SparkConf              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/SparkContext$.html, SparkContext - Spark 2.4.0 ScalaDoc - org.apache.spark.SparkContext              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/SparkContext.html, SparkContext - Spark 2.4.0 ScalaDoc - org.apache.spark.SparkContext              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/SparkEnv$.html, SparkEnv - Spark 2.4.0 ScalaDoc - org.apache.spark.SparkEnv              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/SparkEnv.html, SparkEnv - Spark 2.4.0 ScalaDoc - org.apache.spark.SparkEnv              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/SparkException.html, SparkException - Spark 2.4.0 ScalaDoc - org.apache.spark.SparkException              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/SparkExecutorInfo.html, SparkExecutorInfo - Spark 2.4.0 ScalaDoc - org.apache.spark.SparkExecutorInfo              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/SparkFiles$.html, SparkFiles - Spark 2.4.0 ScalaDoc - org.apache.spark.SparkFiles              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/SparkFirehoseListener.html, SparkFirehoseListener - Spark 2.4.0 ScalaDoc - org.apache.spark.SparkFirehoseListener              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/SparkJobInfo.html, SparkJobInfo - Spark 2.4.0 ScalaDoc - org.apache.spark.SparkJobInfo              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/SparkStageInfo.html, SparkStageInfo - Spark 2.4.0 ScalaDoc - org.apache.spark.SparkStageInfo              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/SparkStatusTracker.html, SparkStatusTracker - Spark 2.4.0 ScalaDoc - org.apache.spark.SparkStatusTracker              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/Success$.html, Success - Spark 2.4.0 ScalaDoc - org.apache.spark.Success              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/TaskCommitDenied.html, TaskCommitDenied - Spark 2.4.0 ScalaDoc - org.apache.spark.TaskCommitDenied              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/TaskContext$.html, TaskContext - Spark 2.4.0 ScalaDoc - org.apache.spark.TaskContext              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/TaskContext.html, TaskContext - Spark 2.4.0 ScalaDoc - org.apache.spark.TaskContext              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/TaskEndReason.html, TaskEndReason - Spark 2.4.0 ScalaDoc - org.apache.spark.TaskEndReason              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/TaskFailedReason.html, TaskFailedReason - Spark 2.4.0 ScalaDoc - org.apache.spark.TaskFailedReason              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/TaskKilled.html, TaskKilled - Spark 2.4.0 ScalaDoc - org.apache.spark.TaskKilled              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/TaskKilledException.html, TaskKilledException - Spark 2.4.0 ScalaDoc - org.apache.spark.TaskKilledException              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/TaskResultLost$.html, TaskResultLost - Spark 2.4.0 ScalaDoc - org.apache.spark.TaskResultLost              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/UnknownReason$.html, UnknownReason - Spark 2.4.0 ScalaDoc - org.apache.spark.UnknownReason              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/WritableConverter$.html, WritableConverter - Spark 2.4.0 ScalaDoc - org.apache.spark.WritableConverter              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/WritableFactory$.html, WritableFactory - Spark 2.4.0 ScalaDoc - org.apache.spark.WritableFactory              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/package.html, api - Spark 2.4.0 ScalaDoc - org.apache.spark.api              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/package.html, java - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/JavaDoubleRDD$.html, JavaDoubleRDD - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.JavaDoubleRDD              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/JavaDoubleRDD.html, JavaDoubleRDD - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.JavaDoubleRDD              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/JavaFutureAction.html, JavaFutureAction - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.JavaFutureAction              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/JavaHadoopRDD.html, JavaHadoopRDD - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.JavaHadoopRDD              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/JavaNewHadoopRDD.html, JavaNewHadoopRDD - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.JavaNewHadoopRDD              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/JavaPairRDD$.html, JavaPairRDD - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.JavaPairRDD              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/JavaPairRDD.html, JavaPairRDD - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.JavaPairRDD              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/JavaRDD$.html, JavaRDD - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.JavaRDD              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/JavaRDD.html, JavaRDD - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.JavaRDD              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/JavaRDDLike.html, JavaRDDLike - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.JavaRDDLike              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/JavaSparkContext$.html, JavaSparkContext - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.JavaSparkContext              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/JavaSparkContext.html, JavaSparkContext - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.JavaSparkContext              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/JavaSparkStatusTracker.html, JavaSparkStatusTracker - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.JavaSparkStatusTracker              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/Optional.html, Optional - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.Optional              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/StorageLevels.html, StorageLevels - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.StorageLevels              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/function/package.html, function - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.function              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/function/CoGroupFunction.html, CoGroupFunction - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.function.CoGroupFunction              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/function/DoubleFlatMapFunction.html, DoubleFlatMapFunction - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.function.DoubleFlatMapFunction              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/function/DoubleFunction.html, DoubleFunction - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.function.DoubleFunction              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/function/FilterFunction.html, FilterFunction - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.function.FilterFunction              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/function/FlatMapFunction.html, FlatMapFunction - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.function.FlatMapFunction              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/function/FlatMapFunction2.html, FlatMapFunction2 - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.function.FlatMapFunction2              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/function/FlatMapGroupsFunction.html, FlatMapGroupsFunction - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.function.FlatMapGroupsFunction              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/function/FlatMapGroupsWithStateFunction.html, FlatMapGroupsWithStateFunction - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.function.FlatMapGroupsWithStateFunction              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/function/ForeachFunction.html, ForeachFunction - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.function.ForeachFunction              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/function/ForeachPartitionFunction.html, ForeachPartitionFunction - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.function.ForeachPartitionFunction              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/function/Function.html, Function - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.function.Function              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/function/Function0.html, Function0 - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.function.Function0              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/function/Function2.html, Function2 - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.function.Function2              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/function/Function3.html, Function3 - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.function.Function3              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/function/Function4.html, Function4 - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.function.Function4              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/function/MapFunction.html, MapFunction - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.function.MapFunction              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/function/MapGroupsFunction.html, MapGroupsFunction - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.function.MapGroupsFunction              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/function/MapGroupsWithStateFunction.html, MapGroupsWithStateFunction - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.function.MapGroupsWithStateFunction              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/function/MapPartitionsFunction.html, MapPartitionsFunction - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.function.MapPartitionsFunction              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/function/PairFlatMapFunction.html, PairFlatMapFunction - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.function.PairFlatMapFunction              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/function/PairFunction.html, PairFunction - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.function.PairFunction              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/function/ReduceFunction.html, ReduceFunction - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.function.ReduceFunction              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/function/VoidFunction.html, VoidFunction - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.function.VoidFunction              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/api/java/function/VoidFunction2.html, VoidFunction2 - Spark 2.4.0 ScalaDoc - org.apache.spark.api.java.function.VoidFunction2              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/broadcast/package.html, broadcast - Spark 2.4.0 ScalaDoc - org.apache.spark.broadcast              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/broadcast/Broadcast.html, Broadcast - Spark 2.4.0 ScalaDoc - org.apache.spark.broadcast.Broadcast              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/package.html, graphx - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/Edge$.html, Edge - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx.Edge              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/Edge.html, Edge - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx.Edge              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/EdgeContext$.html, EdgeContext - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx.EdgeContext              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/EdgeContext.html, EdgeContext - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx.EdgeContext              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/EdgeDirection$.html, EdgeDirection - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx.EdgeDirection              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/EdgeDirection.html, EdgeDirection - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx.EdgeDirection              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/EdgeRDD$.html, EdgeRDD - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx.EdgeRDD              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/EdgeRDD.html, EdgeRDD - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx.EdgeRDD              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/EdgeTriplet.html, EdgeTriplet - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx.EdgeTriplet              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/Graph$.html, Graph - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx.Graph              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/Graph.html, Graph - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx.Graph              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/GraphLoader$.html, GraphLoader - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx.GraphLoader              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/GraphOps.html, GraphOps - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx.GraphOps              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/GraphXUtils$.html, GraphXUtils - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx.GraphXUtils              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/PartitionStrategy$.html, PartitionStrategy - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx.PartitionStrategy              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/PartitionStrategy.html, PartitionStrategy - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx.PartitionStrategy              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/Pregel$.html, Pregel - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx.Pregel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/TripletFields.html, TripletFields - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx.TripletFields              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/VertexRDD$.html, VertexRDD - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx.VertexRDD              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/VertexRDD.html, VertexRDD - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx.VertexRDD              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/impl/package.html, impl - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx.impl              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/impl/EdgeActiveness.html, EdgeActiveness - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx.impl.EdgeActiveness              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/impl/EdgeRDDImpl.html, EdgeRDDImpl - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx.impl.EdgeRDDImpl              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/impl/GraphImpl$.html, GraphImpl - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx.impl.GraphImpl              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/impl/GraphImpl.html, GraphImpl - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx.impl.GraphImpl              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/impl/VertexRDDImpl.html, VertexRDDImpl - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx.impl.VertexRDDImpl              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/lib/package.html, lib - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx.lib              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/lib/ConnectedComponents$.html, ConnectedComponents - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx.lib.ConnectedComponents              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/lib/LabelPropagation$.html, LabelPropagation - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx.lib.LabelPropagation              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/lib/PageRank$.html, PageRank - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx.lib.PageRank              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/lib/ShortestPaths$.html, ShortestPaths - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx.lib.ShortestPaths              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/lib/StronglyConnectedComponents$.html, StronglyConnectedComponents - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx.lib.StronglyConnectedComponents              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/lib/SVDPlusPlus$.html, SVDPlusPlus - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx.lib.SVDPlusPlus              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/lib/TriangleCount$.html, TriangleCount - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx.lib.TriangleCount              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/util/package.html, util - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx.util              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/graphx/util/GraphGenerators$.html, GraphGenerators - Spark 2.4.0 ScalaDoc - org.apache.spark.graphx.util.GraphGenerators              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/input/package.html, input - Spark 2.4.0 ScalaDoc - org.apache.spark.input              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/input/PortableDataStream.html, PortableDataStream - Spark 2.4.0 ScalaDoc - org.apache.spark.input.PortableDataStream              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/internal/package.html, internal - Spark 2.4.0 ScalaDoc - org.apache.spark.internal              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/internal/Logging.html, Logging - Spark 2.4.0 ScalaDoc - org.apache.spark.internal.Logging              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/internal/io/package.html, io - Spark 2.4.0 ScalaDoc - org.apache.spark.internal.io              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/internal/io/FileCommitProtocol$.html, FileCommitProtocol - Spark 2.4.0 ScalaDoc - org.apache.spark.internal.io.FileCommitProtocol              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/internal/io/FileCommitProtocol.html, FileCommitProtocol - Spark 2.4.0 ScalaDoc - org.apache.spark.internal.io.FileCommitProtocol              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/internal/io/HadoopMapRedCommitProtocol.html, HadoopMapRedCommitProtocol - Spark 2.4.0 ScalaDoc - org.apache.spark.internal.io.HadoopMapRedCommitProtocol              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/internal/io/HadoopMapReduceCommitProtocol.html, HadoopMapReduceCommitProtocol - Spark 2.4.0 ScalaDoc - org.apache.spark.internal.io.HadoopMapReduceCommitProtocol              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/internal/io/HadoopWriteConfigUtil.html, HadoopWriteConfigUtil - Spark 2.4.0 ScalaDoc - org.apache.spark.internal.io.HadoopWriteConfigUtil              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/io/package.html, io - Spark 2.4.0 ScalaDoc - org.apache.spark.io              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/io/CompressionCodec.html, CompressionCodec - Spark 2.4.0 ScalaDoc - org.apache.spark.io.CompressionCodec              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/io/LZ4CompressionCodec.html, LZ4CompressionCodec - Spark 2.4.0 ScalaDoc - org.apache.spark.io.LZ4CompressionCodec              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/io/LZFCompressionCodec.html, LZFCompressionCodec - Spark 2.4.0 ScalaDoc - org.apache.spark.io.LZFCompressionCodec              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/io/NioBufferedFileInputStream.html, NioBufferedFileInputStream - Spark 2.4.0 ScalaDoc - org.apache.spark.io.NioBufferedFileInputStream              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/io/ReadAheadInputStream.html, ReadAheadInputStream - Spark 2.4.0 ScalaDoc - org.apache.spark.io.ReadAheadInputStream              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/io/SnappyCompressionCodec.html, SnappyCompressionCodec - Spark 2.4.0 ScalaDoc - org.apache.spark.io.SnappyCompressionCodec              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/io/ZStdCompressionCodec.html, ZStdCompressionCodec - Spark 2.4.0 ScalaDoc - org.apache.spark.io.ZStdCompressionCodec              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/launcher/package.html, launcher - Spark 2.4.0 ScalaDoc - org.apache.spark.launcher              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/launcher/AbstractLauncher.html, AbstractLauncher - Spark 2.4.0 ScalaDoc - org.apache.spark.launcher.AbstractLauncher              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/launcher/InProcessLauncher.html, InProcessLauncher - Spark 2.4.0 ScalaDoc - org.apache.spark.launcher.InProcessLauncher              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/launcher/SparkAppHandle.html, SparkAppHandle - Spark 2.4.0 ScalaDoc - org.apache.spark.launcher.SparkAppHandle              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/launcher/SparkLauncher.html, SparkLauncher - Spark 2.4.0 ScalaDoc - org.apache.spark.launcher.SparkLauncher              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/mapred/package.html, mapred - Spark 2.4.0 ScalaDoc - org.apache.spark.mapred              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/mapred/SparkHadoopMapRedUtil$.html, SparkHadoopMapRedUtil - Spark 2.4.0 ScalaDoc - org.apache.spark.mapred.SparkHadoopMapRedUtil              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/metrics/package.html, metrics - Spark 2.4.0 ScalaDoc - org.apache.spark.metrics              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/metrics/source/package.html, source - Spark 2.4.0 ScalaDoc - org.apache.spark.metrics.source              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/metrics/source/CodegenMetrics$.html, CodegenMetrics - Spark 2.4.0 ScalaDoc - org.apache.spark.metrics.source.CodegenMetrics              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/metrics/source/HiveCatalogMetrics$.html, HiveCatalogMetrics - Spark 2.4.0 ScalaDoc - org.apache.spark.metrics.source.HiveCatalogMetrics              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/package.html, ml - Spark 2.4.0 ScalaDoc - org.apache.spark.ml              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/Estimator.html, Estimator - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.Estimator              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/Model.html, Model - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.Model              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/Pipeline$.html, Pipeline - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.Pipeline              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/Pipeline.html, Pipeline - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.Pipeline              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/PipelineModel$.html, PipelineModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.PipelineModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/PipelineModel.html, PipelineModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.PipelineModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/PipelineStage.html, PipelineStage - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.PipelineStage              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/PredictionModel.html, PredictionModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.PredictionModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/Predictor.html, Predictor - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.Predictor              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/Transformer.html, Transformer - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.Transformer              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/UnaryTransformer.html, UnaryTransformer - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.UnaryTransformer              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/attribute/package.html, attribute - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.attribute              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/attribute/Attribute$.html, Attribute - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.attribute.Attribute              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/attribute/Attribute.html, Attribute - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.attribute.Attribute              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/attribute/AttributeGroup$.html, AttributeGroup - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.attribute.AttributeGroup              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/attribute/AttributeGroup.html, AttributeGroup - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.attribute.AttributeGroup              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/attribute/AttributeType$.html, AttributeType - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.attribute.AttributeType              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/attribute/AttributeType.html, AttributeType - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.attribute.AttributeType              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/attribute/BinaryAttribute$.html, BinaryAttribute - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.attribute.BinaryAttribute              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/attribute/BinaryAttribute.html, BinaryAttribute - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.attribute.BinaryAttribute              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/attribute/NominalAttribute$.html, NominalAttribute - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.attribute.NominalAttribute              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/attribute/NominalAttribute.html, NominalAttribute - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.attribute.NominalAttribute              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/attribute/NumericAttribute$.html, NumericAttribute - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.attribute.NumericAttribute              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/attribute/NumericAttribute.html, NumericAttribute - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.attribute.NumericAttribute              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/attribute/UnresolvedAttribute$.html, UnresolvedAttribute - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.attribute.UnresolvedAttribute              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/package.html, classification - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/BinaryLogisticRegressionSummary.html, BinaryLogisticRegressionSummary - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.BinaryLogisticRegressionSummary              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/BinaryLogisticRegressionTrainingSummary.html, BinaryLogisticRegressionTrainingSummary - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.BinaryLogisticRegressionTrainingSummary              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/ClassificationModel.html, ClassificationModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.ClassificationModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/Classifier.html, Classifier - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.Classifier              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/DecisionTreeClassificationModel$.html, DecisionTreeClassificationModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.DecisionTreeClassificationModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/DecisionTreeClassificationModel.html, DecisionTreeClassificationModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.DecisionTreeClassificationModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/DecisionTreeClassifier$.html, DecisionTreeClassifier - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.DecisionTreeClassifier              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/DecisionTreeClassifier.html, DecisionTreeClassifier - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.DecisionTreeClassifier              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/GBTClassificationModel$.html, GBTClassificationModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.GBTClassificationModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/GBTClassificationModel.html, GBTClassificationModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.GBTClassificationModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/GBTClassifier$.html, GBTClassifier - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.GBTClassifier              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/GBTClassifier.html, GBTClassifier - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.GBTClassifier              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/LinearSVC$.html, LinearSVC - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.LinearSVC              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/LinearSVC.html, LinearSVC - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.LinearSVC              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/LinearSVCModel$.html, LinearSVCModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.LinearSVCModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/LinearSVCModel.html, LinearSVCModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.LinearSVCModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/LogisticRegression$.html, LogisticRegression - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.LogisticRegression              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/LogisticRegression.html, LogisticRegression - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.LogisticRegression              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/LogisticRegressionModel$.html, LogisticRegressionModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.LogisticRegressionModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/LogisticRegressionModel.html, LogisticRegressionModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.LogisticRegressionModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/LogisticRegressionSummary.html, LogisticRegressionSummary - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.LogisticRegressionSummary              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/LogisticRegressionTrainingSummary.html, LogisticRegressionTrainingSummary - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.LogisticRegressionTrainingSummary              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/MultilayerPerceptronClassificationModel$.html, MultilayerPerceptronClassificationModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.MultilayerPerceptronClassificationModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/MultilayerPerceptronClassificationModel.html, MultilayerPerceptronClassificationModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.MultilayerPerceptronClassificationModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/MultilayerPerceptronClassifier$.html, MultilayerPerceptronClassifier - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.MultilayerPerceptronClassifier              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/MultilayerPerceptronClassifier.html, MultilayerPerceptronClassifier - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.MultilayerPerceptronClassifier              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/NaiveBayes$.html, NaiveBayes - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.NaiveBayes              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/NaiveBayes.html, NaiveBayes - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.NaiveBayes              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/NaiveBayesModel$.html, NaiveBayesModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.NaiveBayesModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/NaiveBayesModel.html, NaiveBayesModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.NaiveBayesModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/OneVsRest$.html, OneVsRest - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.OneVsRest              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/OneVsRest.html, OneVsRest - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.OneVsRest              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/OneVsRestModel$.html, OneVsRestModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.OneVsRestModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/OneVsRestModel.html, OneVsRestModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.OneVsRestModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/ProbabilisticClassificationModel.html, ProbabilisticClassificationModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.ProbabilisticClassificationModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/ProbabilisticClassifier.html, ProbabilisticClassifier - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.ProbabilisticClassifier              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/RandomForestClassificationModel$.html, RandomForestClassificationModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.RandomForestClassificationModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/RandomForestClassificationModel.html, RandomForestClassificationModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.RandomForestClassificationModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/RandomForestClassifier$.html, RandomForestClassifier - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.RandomForestClassifier              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/classification/RandomForestClassifier.html, RandomForestClassifier - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.classification.RandomForestClassifier              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/clustering/package.html, clustering - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.clustering              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/clustering/BisectingKMeans$.html, BisectingKMeans - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.clustering.BisectingKMeans              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/clustering/BisectingKMeans.html, BisectingKMeans - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.clustering.BisectingKMeans              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/clustering/BisectingKMeansModel$.html, BisectingKMeansModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.clustering.BisectingKMeansModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/clustering/BisectingKMeansModel.html, BisectingKMeansModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.clustering.BisectingKMeansModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/clustering/BisectingKMeansSummary.html, BisectingKMeansSummary - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.clustering.BisectingKMeansSummary              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/clustering/ClusteringSummary.html, ClusteringSummary - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.clustering.ClusteringSummary              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/clustering/DistributedLDAModel$.html, DistributedLDAModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.clustering.DistributedLDAModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/clustering/DistributedLDAModel.html, DistributedLDAModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.clustering.DistributedLDAModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/clustering/GaussianMixture$.html, GaussianMixture - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.clustering.GaussianMixture              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/clustering/GaussianMixture.html, GaussianMixture - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.clustering.GaussianMixture              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/clustering/GaussianMixtureModel$.html, GaussianMixtureModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.clustering.GaussianMixtureModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/clustering/GaussianMixtureModel.html, GaussianMixtureModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.clustering.GaussianMixtureModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/clustering/GaussianMixtureSummary.html, GaussianMixtureSummary - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.clustering.GaussianMixtureSummary              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/clustering/KMeans$.html, KMeans - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.clustering.KMeans              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/clustering/KMeans.html, KMeans - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.clustering.KMeans              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/clustering/KMeansModel$.html, KMeansModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.clustering.KMeansModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/clustering/KMeansModel.html, KMeansModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.clustering.KMeansModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/clustering/KMeansSummary.html, KMeansSummary - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.clustering.KMeansSummary              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/clustering/LDA$.html, LDA - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.clustering.LDA              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/clustering/LDA.html, LDA - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.clustering.LDA              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/clustering/LDAModel.html, LDAModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.clustering.LDAModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/clustering/LocalLDAModel$.html, LocalLDAModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.clustering.LocalLDAModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/clustering/LocalLDAModel.html, LocalLDAModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.clustering.LocalLDAModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/clustering/PowerIterationClustering$.html, PowerIterationClustering - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.clustering.PowerIterationClustering              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/clustering/PowerIterationClustering.html, PowerIterationClustering - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.clustering.PowerIterationClustering              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/evaluation/package.html, evaluation - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.evaluation              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/evaluation/BinaryClassificationEvaluator$.html, BinaryClassificationEvaluator - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.evaluation.BinaryClassificationEvaluator              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/evaluation/BinaryClassificationEvaluator.html, BinaryClassificationEvaluator - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.evaluation.BinaryClassificationEvaluator              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/evaluation/ClusteringEvaluator$.html, ClusteringEvaluator - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.evaluation.ClusteringEvaluator              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/evaluation/ClusteringEvaluator.html, ClusteringEvaluator - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.evaluation.ClusteringEvaluator              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/evaluation/Evaluator.html, Evaluator - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.evaluation.Evaluator              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/evaluation/MulticlassClassificationEvaluator$.html, MulticlassClassificationEvaluator - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.evaluation.MulticlassClassificationEvaluator              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/evaluation/MulticlassClassificationEvaluator.html, MulticlassClassificationEvaluator - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.evaluation.MulticlassClassificationEvaluator              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/evaluation/RegressionEvaluator$.html, RegressionEvaluator - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.evaluation.RegressionEvaluator              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/evaluation/RegressionEvaluator.html, RegressionEvaluator - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.evaluation.RegressionEvaluator              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/package.html, feature - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/Binarizer$.html, Binarizer - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.Binarizer              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/Binarizer.html, Binarizer - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.Binarizer              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/BucketedRandomProjectionLSH$.html, BucketedRandomProjectionLSH - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.BucketedRandomProjectionLSH              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/BucketedRandomProjectionLSH.html, BucketedRandomProjectionLSH - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.BucketedRandomProjectionLSH              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/BucketedRandomProjectionLSHModel$.html, BucketedRandomProjectionLSHModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.BucketedRandomProjectionLSHModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/BucketedRandomProjectionLSHModel.html, BucketedRandomProjectionLSHModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.BucketedRandomProjectionLSHModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/Bucketizer$.html, Bucketizer - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.Bucketizer              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/Bucketizer.html, Bucketizer - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.Bucketizer              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/ChiSqSelector$.html, ChiSqSelector - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.ChiSqSelector              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/ChiSqSelector.html, ChiSqSelector - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.ChiSqSelector              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/ChiSqSelectorModel$.html, ChiSqSelectorModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.ChiSqSelectorModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/ChiSqSelectorModel.html, ChiSqSelectorModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.ChiSqSelectorModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/CountVectorizer$.html, CountVectorizer - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.CountVectorizer              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/CountVectorizer.html, CountVectorizer - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.CountVectorizer              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/CountVectorizerModel$.html, CountVectorizerModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.CountVectorizerModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/CountVectorizerModel.html, CountVectorizerModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.CountVectorizerModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/DCT$.html, DCT - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.DCT              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/DCT.html, DCT - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.DCT              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/ElementwiseProduct$.html, ElementwiseProduct - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.ElementwiseProduct              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/ElementwiseProduct.html, ElementwiseProduct - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.ElementwiseProduct              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/FeatureHasher$.html, FeatureHasher - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.FeatureHasher              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/FeatureHasher.html, FeatureHasher - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.FeatureHasher              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/HashingTF$.html, HashingTF - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.HashingTF              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/HashingTF.html, HashingTF - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.HashingTF              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/IDF$.html, IDF - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.IDF              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/IDF.html, IDF - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.IDF              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/IDFModel$.html, IDFModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.IDFModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/IDFModel.html, IDFModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.IDFModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/Imputer$.html, Imputer - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.Imputer              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/Imputer.html, Imputer - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.Imputer              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/ImputerModel$.html, ImputerModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.ImputerModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/ImputerModel.html, ImputerModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.ImputerModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/IndexToString$.html, IndexToString - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.IndexToString              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/IndexToString.html, IndexToString - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.IndexToString              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/Interaction$.html, Interaction - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.Interaction              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/Interaction.html, Interaction - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.Interaction              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/LabeledPoint.html, LabeledPoint - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.LabeledPoint              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/MaxAbsScaler$.html, MaxAbsScaler - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.MaxAbsScaler              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/MaxAbsScaler.html, MaxAbsScaler - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.MaxAbsScaler              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/MaxAbsScalerModel$.html, MaxAbsScalerModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.MaxAbsScalerModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/MaxAbsScalerModel.html, MaxAbsScalerModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.MaxAbsScalerModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/MinHashLSH$.html, MinHashLSH - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.MinHashLSH              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/MinHashLSH.html, MinHashLSH - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.MinHashLSH              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/MinHashLSHModel$.html, MinHashLSHModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.MinHashLSHModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/MinHashLSHModel.html, MinHashLSHModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.MinHashLSHModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/MinMaxScaler$.html, MinMaxScaler - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.MinMaxScaler              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/MinMaxScaler.html, MinMaxScaler - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.MinMaxScaler              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/MinMaxScalerModel$.html, MinMaxScalerModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.MinMaxScalerModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/MinMaxScalerModel.html, MinMaxScalerModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.MinMaxScalerModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/NGram$.html, NGram - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.NGram              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/NGram.html, NGram - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.NGram              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/Normalizer$.html, Normalizer - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.Normalizer              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/Normalizer.html, Normalizer - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.Normalizer              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/OneHotEncoder$.html, OneHotEncoder - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.OneHotEncoder              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/OneHotEncoder.html, OneHotEncoder - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.OneHotEncoder              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/OneHotEncoderEstimator$.html, OneHotEncoderEstimator - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.OneHotEncoderEstimator              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/OneHotEncoderEstimator.html, OneHotEncoderEstimator - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.OneHotEncoderEstimator              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/OneHotEncoderModel$.html, OneHotEncoderModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.OneHotEncoderModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/OneHotEncoderModel.html, OneHotEncoderModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.OneHotEncoderModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/PCA$.html, PCA - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.PCA              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/PCA.html, PCA - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.PCA              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/PCAModel$.html, PCAModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.PCAModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/PCAModel.html, PCAModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.PCAModel              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/PolynomialExpansion$.html, PolynomialExpansion - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.PolynomialExpansion              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/PolynomialExpansion.html, PolynomialExpansion - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.PolynomialExpansion              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/QuantileDiscretizer$.html, QuantileDiscretizer - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.QuantileDiscretizer              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/QuantileDiscretizer.html, QuantileDiscretizer - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.QuantileDiscretizer              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/RegexTokenizer$.html, RegexTokenizer - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.RegexTokenizer              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/RegexTokenizer.html, RegexTokenizer - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.RegexTokenizer              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/RFormula$.html, RFormula - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.RFormula              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/RFormula.html, RFormula - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.RFormula              
+http://spark.apache.org/docs/latest/api/scala/org/apache/spark/ml/feature/RFormulaModel$.html, RFormulaModel - Spark 2.4.0 ScalaDoc - org.apache.spark.ml.feature.RFormulaModel          
