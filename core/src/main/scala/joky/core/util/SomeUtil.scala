@@ -44,12 +44,16 @@ object SomeUtil extends App {
 //        MessageDigest.getInstance("MD5").digest(s.getBytes).mkString
     }
 
-    md5("Hello")
+    def shortMd5(s: String): String = {
+        md5(s).substring(0, 16)
+    }
 
-    println(randomPick(List()))
-    println(randomPick(List("a", "bc", "de")))
-
-    openSocketPrinter(9999, p => {
-        Thread.sleep(10000L)
-    })
+//    md5("Hello")
+//
+//    println(randomPick(List()))
+//    println(randomPick(List("a", "bc", "de")))
+//
+//    openSocketPrinter(9999, p => {
+//        Thread.sleep(10000L)
+//    })
 }

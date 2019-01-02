@@ -7,6 +7,7 @@ import joky.core.util.{Event, EventAction, Session, SomeUtil}
 import scala.collection.mutable.ArrayBuffer
 import scala.util.Random
 import joky.producer.site._
+import org.apache.logging.log4j.scala.Logging
 
 
 class Device(
@@ -21,6 +22,7 @@ class Device(
     private var siteId: String = _
     private var referrer: String = _
     private var session: Session = newSession
+    var deviceTime: Long = 0
 
     val SESSION_EXPIRE_TIME = 30 * 60 * 1000
 
@@ -35,12 +37,11 @@ class Device(
     }
 
     def newSession: Session = {
-        val now = System.currentTimeMillis()
-        val sessionId = SomeUtil.md5(s"${ip}_${uaName}_${uaMajor}_${resolution}_$now")
-        new Session(sessionId, new Timestamp(now), null, new Timestamp(now))
+        val sessionId = SomeUtil.shortMd5(s"${ip}_${uaName}_${uaMajor}_${resolution}_$deviceTime")
+        new Session(sessionId, new Timestamp(deviceTime), null, new Timestamp(deviceTime))
     }
 
-    def pageview(siteId: String, title: String, url: String): Event = {
+    def pageview(siteId: String, title: String, url: String): Option[Event] = {
         this.referrer = this.url
         this.title = title
         this.url = url
@@ -48,38 +49,40 @@ class Device(
         action(EventAction.pageview)
     }
 
-    def login(userId: String): Event = {
+    def login(userId: String): Option[Event] = {
         action(EventAction.login, userId)
     }
 
-    def order: Event = {
+    def order: Option[Event] = {
         action(EventAction.order)
     }
 
-    def pay: Event = {
+    def pay: Option[Event] = {
         action(EventAction.pay)
     }
 
-    def logout: Event = {
+    def logout: Option[Event] = {
         action(EventAction.logout)
     }
 
-    def click: Event = {
+    def click: Option[Event] = {
         action(EventAction.click)
     }
 
-    private def action(eventAction: EventAction.Value, userId: String = null): Event = {
+    private def action(eventAction: EventAction.Value, userId: String = null): Option[Event] = {
+        if (url == null || title == null || siteId == null)
+            None
+
         session = getSession
         if (userId != null) {
             session.userId = userId
         }
-        val now = System.currentTimeMillis()
-        val eventTime = new Timestamp(now)
+        val eventTime = new Timestamp(deviceTime)
         val event = Event(eventTime, eventAction.toString, siteId, session.sessionId, session.seStartTime, deviceId, session.userId, url, title, referrer)
         // 登出
         if (eventAction.equals(EventAction.logout))
             session = newSession
-        event
+        Some(event)
     }
 }
 
@@ -90,31 +93,78 @@ class Device(
   * @param userIds  访客持有的用户id列表
   * @param eventCreateCountPerMiniute   每个访客每分钟可以产生的事件数
   */
-class Visitor(val device: Device, val visitSite: Site, val userIds: Seq[String], val eventCreateCountPerMiniute: Int = 100) {
+class Visitor(val device: Device, val visitSite: Site, val userIds: Seq[String], val eventCreateCountPerMiniute: Int = 100) extends Logging{
 
-    // 当前页
-    private var currentPage: Page = null
+    // 当前目录
+    private var currentPageTree: Option[PageTree[Page]] = None
+    private var currentPage: Option[Page] = None
 
-    private def doPageView: Event = {
-        if (currentPage == null) {
-            currentPage = visitSite.pages.head
-        } else {
-            currentPage = SomeUtil.randomPick(currentPage.subPages).orElse(Option(currentPage)).get
+
+    private def moveUntilFindPages(pageTree: PageTree[Page]): Option[PageTree[Page]] = {
+        if (pageTree.subTree.isEmpty)
+            return None
+
+        var ret: Option[PageTree[Page]] = Option(pageTree)
+
+        do {
+            ret = SomeUtil.randomPick(ret.get.subTree)
+        } while (ret.nonEmpty && ret.get.pageList.isEmpty)
+        ret
+    }
+
+    private def move(): Unit = {
+        val oldPageTree = currentPageTree
+
+        if (currentPageTree.isEmpty) {
+            currentPageTree = moveUntilFindPages(visitSite.pageTree)
         }
-        device.pageview(visitSite.siteId, currentPage.title, currentPage.url)
+        else {
+            if (currentPageTree.get.subTree.isEmpty) {
+                currentPageTree = moveUntilFindPages(visitSite.pageTree)
+            }
+            else {
+                currentPageTree = moveUntilFindPages(currentPageTree.get)
+            }
+        }
+        logger.info(s"Visitor[${device.deviceId}] Move from ${oldPageTree.map(_.value)} to ${currentPageTree.map(_.value)}")
+    }
+
+    /**
+      * 在当前目录下，随便浏览个页面
+      * @return
+      */
+    private def doPageView(): Option[Event] = {
+        if (currentPageTree.isEmpty)
+            return None
+
+        currentPage = SomeUtil.randomPick(currentPageTree.get.pageList)
+        if (currentPage.isEmpty)
+            None
+        else
+            device.pageview(visitSite.siteId, currentPage.get.title, currentPage.get.url)
     }
 
     // 随便做点什么
-    private def doSome(): Event = {
-        // 80的几率原页不动
-        if (Random.nextDouble() <= 0.8) {
-            doSomeAction(SomeUtil.randomPick(currentPage.actions).get)
+    private def doSome(): Option[Event] = {
+
+        if (currentPageTree.isEmpty)
+            return None
+
+        // 50%的概率或者当前目录下没有页面，先移动一下目录
+        if (Random.nextDouble() <= 0.5 || currentPageTree.get.pageList.isEmpty) {
+            move
+        }
+
+        // 50的几率原页不动
+        if (Random.nextDouble() <= 0.5 && currentPage.nonEmpty) {
+            doSomeAction(SomeUtil.randomPick(currentPage.get.actions).get)
         } else {
             doPageView
         }
     }
 
-    private def doSomeAction(eventAction: EventAction.Value): Event = {
+    private def doSomeAction(eventAction: EventAction.Value): Option[Event] = {
+        logger.info(s"Visitor[${device.deviceId}] will do action $eventAction")
         eventAction match {
             case EventAction.pageview => doPageView
             case EventAction.login => device.login(SomeUtil.randomPick(userIds).get)
@@ -122,27 +172,32 @@ class Visitor(val device: Device, val visitSite: Site, val userIds: Seq[String],
             case EventAction.logout => device.logout
             case EventAction.order => device.order
             case EventAction.pay => device.pay
+            case _ => None
         }
     }
 
     /**
       * 执行一定时长的动作
-      * @param minutes
+      * @param timing 动作开始的时间戳
+      * @param minutes 动作的时间，分钟
       * @return
       */
-    def action(minutes: Int): Seq[Event] = {
-        var start = 0
+    def action(timing: Long = System.currentTimeMillis(), minutes: Int): Seq[Event] = {
+        // 如果当前没有页面，先移动一下
+        if (currentPageTree.isEmpty)
+            move()
 
-        val events: ArrayBuffer[Event] = ArrayBuffer()
+        // 如果移动后还没有页面，只能返回空
+        if (currentPageTree.isEmpty)
+            return Seq()
 
-        if (currentPage == null) {
-            events += doPageView
-            start += 1
-        }
-        for (i <- start to eventCreateCountPerMiniute) {
-            events += doSome()
-        }
-        events
+        logger.info(s"Visitor[${device.deviceId}] Create $minutes mins Events, EventCounts maybe $eventCreateCountPerMiniute")
+
+        device.deviceTime = timing
+        (0 until eventCreateCountPerMiniute).flatMap(_ => {
+            device.deviceTime  = device.deviceTime + 1
+            doSome()
+        })
     }
 }
 

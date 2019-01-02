@@ -1,7 +1,7 @@
 package joky.producer
 
 import com.fasterxml.jackson.core.`type`.TypeReference
-import joky.core.util.{Event, SomeUtil}
+import joky.core.util.{Event, EventAction, SomeUtil}
 import joky.producer.util.ConfigUtil
 import org.apache.logging.log4j.scala.Logging
 
@@ -33,7 +33,7 @@ case class EventProducer private (visitorPoolSize: Int, userIdPerVisitor: Int, d
       * @return
       */
     private def createPage(configs: Seq[PageConfig]): Seq[Page] = {
-        Seq()
+        configs.map(pageConfig => new Page(pageConfig.url, pageConfig.title, EventAction.values.toList))
     }
 
     private val siteIdMap: Map[String, Site] = siteList.map(siteConfig => siteConfig.siteId -> {
@@ -73,7 +73,7 @@ case class EventProducer private (visitorPoolSize: Int, userIdPerVisitor: Int, d
             logger.warn(s"not enough visitor, visitorCount=$visitorCount, visitorPoolSize=$visitorPoolSize")
 
         for (i <- 0 to _visitorCount) {
-            events ++= visitorPool(i).action(minutes)
+            events ++= visitorPool(i).action(minutes = minutes)
         }
         events
     }
