@@ -7,4 +7,8 @@ package joky.producer
   */
 object ProducerApp extends App {
     val eventProducer = EventProducer.createEventProducer()
+
+    if (eventProducer.nonEmpty) {
+        eventProducer.get.createEvent(1, 1).foreach(println)
+    }
 }

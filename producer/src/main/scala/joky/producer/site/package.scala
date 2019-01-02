@@ -1,27 +1,32 @@
 package joky.producer
 
+import joky.core.util.EventAction
 import joky.core.util.EventAction.EventAction
-import joky.core.util.{EventAction, SomeUtil}
 
 import scala.collection.mutable.ArrayBuffer
 
-case class Page(url: String, title: String, actions: Seq[EventAction]) {
-    val subPages: ArrayBuffer[Page] = ArrayBuffer()
+/**
+  * @Auther: zhaoxin
+  * @Date: 2019/1/2 12:00
+  * @Description:
+  */
+package object site {
+    case class Page(url: String, title: String, actions: Seq[EventAction]) {
+        val subPages: ArrayBuffer[Page] = ArrayBuffer()
 
-    def addSubPage(page: Page): Page = {
-        subPages += page
-        this
+        def addSubPage(page: Page): Page = {
+            subPages += page
+            this
+        }
+
+        def addSubPages(pages: Seq[Page]): Page = {
+            subPages ++= pages
+            this
+        }
     }
 
-    def addSubPages(pages: Seq[Page]): Page = {
-        subPages ++= pages
-        this
-    }
-}
+    case class Site(name: String, siteId: String, pages: Seq[Page])
 
-case class Site(name: String, siteId: String, pages: Seq[Page])
-
-object Site {
     val laiyifenPages = Map(
         "index" -> Page("http://m.lyf.edu.laiyifen.com/index.html", "来伊份移动商城", Seq(EventAction.pageview, EventAction.login, EventAction.logout)),
 

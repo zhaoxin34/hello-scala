@@ -6,6 +6,7 @@ import joky.core.util.{Event, EventAction, Session, SomeUtil}
 
 import scala.collection.mutable.ArrayBuffer
 import scala.util.Random
+import joky.producer.site._
 
 
 class Device(

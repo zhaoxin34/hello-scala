@@ -1,7 +1,6 @@
 package joky.producer.test
 
-import joky.producer.ConfigUtil
-import joky.producer.ConfigUtil.readYamlFile
+import joky.producer.util.ConfigUtil
 import org.junit.{Assert, Test}
 
 case class TestObj(username: String, gender: Boolean, parent: Seq[String])

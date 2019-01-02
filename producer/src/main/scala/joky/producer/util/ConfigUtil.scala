@@ -1,4 +1,4 @@
-package joky.producer
+package joky.producer.util
 
 import java.io.File
 import java.nio.file.{Files, Paths}
@@ -7,9 +7,7 @@ import com.fasterxml.jackson.core.`type`.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
 import com.fasterxml.jackson.module.scala.DefaultScalaModule
-
-import scala.collection.JavaConversions._
-
+import collection.JavaConverters._
 
 /**
   * @Auther: zhaoxin
@@ -62,6 +60,6 @@ object ConfigUtil {
     }
 
     def readFile(filePath: String): Seq[String] = {
-        Files.readAllLines(Paths.get(filePath))
+        Files.readAllLines(Paths.get(filePath)).asScala
     }
 }
