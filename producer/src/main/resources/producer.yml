@@ -1,0 +1,8 @@
+visitorPoolSize: 100
+userIdPerVisitor: 3
+eventCreateCountPerMiniute: 10
+visitorUsedPerBatch: 1
+consumeDurationMiniutePerBatch: 3
+outputToConsole: true
+outputToKafka: false
+kafkaTopicId: test-producer-20190103

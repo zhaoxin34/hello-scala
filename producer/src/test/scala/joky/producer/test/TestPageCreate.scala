@@ -2,31 +2,20 @@ package joky.producer.test
 
 import joky.producer.PageConfig
 import joky.producer.site.PageTree
-import org.junit.{Assert, Test}
+import org.scalatest.FlatSpec
 
+class TestPageCreate extends FlatSpec {
 
-class TestPageCreate {
-    @Test
-    def test(): Unit = {
+    "PageTree" should "createPageTree [value,subTree,pagelist,isRoot] right" taggedAs producer in {
         val tree = PageTree.createPageTree(Seq(PageConfig("http://www.aaa.com/a/b.html", "b page")))
-        Assert.assertEquals(
-            tree.subTree(0).value, "http://www.aaa.com"
-        )
-        Assert.assertEquals(
-            tree.subTree(0).subTree(0).value, "a"
-        )
-        Assert.assertEquals(
-            tree.subTree(0).subTree(0).pageList(0).url, "http://www.aaa.com/a/b.html"
-        )
-
-        Assert.assertTrue(tree.isRoot)
-
-        Assert.assertTrue(tree.subTree(0).subTree(0).father.get.father.get.isRoot)
-
+        assert( tree.subTree(0).value == "http://www.aaa.com" )
+        assert( tree.subTree(0).subTree(0).value === "a" )
+        assert( tree.subTree(0).subTree(0).pageList(0).url === "http://www.aaa.com/a/b.html" )
+        assert(tree.isRoot)
+        assert(tree.subTree(0).subTree(0).father.get.father.get.isRoot)
     }
 
-    @Test
-    def testCreateTree(): Unit = {
+    it should "read from string noEmpty" taggedAs producer in {
         val siteStringArr =
             """
               |http://spark.apache.org/docs/latest/, Overview - Spark 2.4.0 Documentation
@@ -58,7 +47,7 @@ class TestPageCreate {
         val pageList: Seq[PageConfig] = siteStringArr.map(str => str.split(",").map(_.trim)).filter(_.size == 2).map(arr => PageConfig(arr(0), arr(1)))
 
         val tree = PageTree.createPageTree(pageList)
-//        tree.printTree()
-        Assert.assertTrue(tree.subTree(0).subTree.nonEmpty)
+        //        tree.printTree()
+        assert(tree.subTree(0).subTree.nonEmpty)
     }
 }

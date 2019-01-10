@@ -35,7 +35,8 @@ lazy val commonSettings = Seq(
         "mvnrepository" at "https://mvnrepository.com/artifact"
     ),
     logLevel in compile := Level.Warn,
-    libraryDependencies ++= Dep.depsScalatest,
+    libraryDependencies ++= (
+        Dep.depsScalatest :+ Dep.nscalaTime :+ Dep.scopt),
     crossPaths := false,
     testOptions in Test := Seq(Tests.Argument(TestFrameworks.JUnit, "-a"))
     // mainClass in (Compile, packageBin) := Some("myproject.MyMain"),
@@ -58,7 +59,7 @@ lazy val producer = project
     .settings(
         commonSettings,
         name := "producer",
-        libraryDependencies ++= (Dep.depsLog4j ++ Dep.depsJackson)
+        libraryDependencies ++= (Dep.depsLog4j ++ Dep.depsAkka ++ Dep.depsJackson :+ kafkaClient )
     )
     .dependsOn(core)
 

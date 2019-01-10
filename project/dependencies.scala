@@ -7,10 +7,14 @@ object Dep {
     val versionLog4jApiScala = "11.0"
     val versionJackson = "2.9.8"
     val versionScalaTest = "3.0.5"
+    val versionNscalaTime = "2.20.0"
+    val versionAkka = "2.5.19"
 
     val log4jScala = "org.apache.logging.log4j" %% "log4j-api-scala" % versionLog4jApiScala
     val log4jApi = "org.apache.logging.log4j" % "log4j-api" % "2.11.1"
     val log4jCore= "org.apache.logging.log4j" % "log4j-core" % "2.11.1"
+
+    val nscalaTime = "com.github.nscala-time" %% "nscala-time" % versionNscalaTime
     
     val erSlf4j = ExclusionRule("org.slf4j", "slf4j-log4j12")
     val erServlet = ExclusionRule("javax.servlet", "servlet-api")
@@ -34,6 +38,12 @@ object Dep {
     val hbaseServer = "org.apache.hbase" % "hbase-server" % versionHbase excludeAll(erSlf4j, erServlet, erJsp, erJetty, erJerseyServer)
     val shcCore = "com.hortonworks" % "shc-core" % "1.1.1-2.1-s_2.11"
     val sparklintSpark220 = "com.groupon.sparklint" %% "sparklint-spark220" % "1.0.12"
+
+    val depsAkka = Seq (
+        "com.typesafe.akka" %% "akka-actor" % versionAkka,
+        "com.typesafe.akka" %% "akka-cluster" % versionAkka,
+        "com.typesafe.akka" %% "akka-testkit" % versionAkka % Test
+    )
 
     val depsScalatest = Seq(
         "org.scalatest" % "scalatest_2.11" % versionScalaTest % Test,

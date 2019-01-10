@@ -1,12 +1,14 @@
 package joky.producer.util
 
-import java.io.File
+import java.io.{File, FileInputStream}
 import java.nio.file.{Files, Paths}
+import java.util.Properties
 
 import com.fasterxml.jackson.core.`type`.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
 import com.fasterxml.jackson.module.scala.DefaultScalaModule
+
 import collection.JavaConverters._
 
 /**
@@ -61,5 +63,11 @@ object ConfigUtil {
 
     def readFile(filePath: String): Seq[String] = {
         Files.readAllLines(Paths.get(filePath)).asScala
+    }
+
+    def readPorpertiesFile(filePath: String): Properties = {
+        val props = new Properties()
+        props.load(new FileInputStream(new File(getFileAbsolutePath(filePath))))
+        props
     }
 }

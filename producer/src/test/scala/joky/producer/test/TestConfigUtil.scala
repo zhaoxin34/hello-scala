@@ -1,32 +1,16 @@
 package joky.producer.test
 
 import joky.producer.util.ConfigUtil
-import org.junit.{Assert, Test}
-
+import org.scalatest.FlatSpec
 case class TestObj(username: String, gender: Boolean, parent: Seq[String])
 
-/**
-  * @Auther: zhaoxin
-  * @Date: 2018/12/29 20:06
-  * @Description:
-  */
-class TestConfigUtil {
-
-    @Test
-    def testReadYaml(): Unit = {
+class TestConfigUtil extends FlatSpec {
+    "ConfigUtil" should "readYamlFile from file noEmpty" taggedAs producer in {
         val test = ConfigUtil.readYamlFile("producer/src/test/resources/test.yaml", classOf[TestObj])
-        println(test)
-        Assert.assertTrue(
-            test.parent.nonEmpty && test.username.nonEmpty
-        )
+        assert(test.parent.nonEmpty && test.username.nonEmpty)
     }
 
-    @Test
-    def testReadFile(): Unit = {
-        Assert.assertTrue(
-            ConfigUtil.readFile("producer/src/test/resources/test.yaml").nonEmpty
-        )
-
+    it should "readFile noEmpty" taggedAs producer in {
+        assert(ConfigUtil.readFile("producer/src/test/resources/test.yaml").nonEmpty)
     }
-
 }

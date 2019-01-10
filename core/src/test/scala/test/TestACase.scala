@@ -3,6 +3,8 @@ package test
 import org.scalatest._
 
 import collection.mutable.Stack
+import org.scalatest.tagobjects.Slow
+object DbTest extends Tag("com.mycompany.tags.DbTest")
 
 class TestACase extends FlatSpec {
     "A Stack" should "pop values in last-in-first-out order" in {
@@ -19,6 +21,16 @@ class TestACase extends FlatSpec {
         assertThrows[NoSuchElementException] {
             emptyStack.pop()
         }
+    }
+
+    "The Scala language" must "add correctly" taggedAs(Slow) in {
+        val sum = 1 + 1
+        assert(sum === 2)
+    }
+
+    it must "subtract correctly" taggedAs(Slow, DbTest) in {
+        val diff = 4 - 1
+        assert(diff === 3)
     }
 }
 

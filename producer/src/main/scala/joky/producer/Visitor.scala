@@ -126,7 +126,7 @@ class Visitor(val device: Device, val visitSite: Site, val userIds: Seq[String],
                 currentPageTree = moveUntilFindPages(currentPageTree.get)
             }
         }
-        logger.info(s"Visitor[${device.deviceId}] Move from ${oldPageTree.map(_.value)} to ${currentPageTree.map(_.value)}")
+        logger.debug(s"Visitor[${device.deviceId}] Move from ${oldPageTree.map(_.value)} to ${currentPageTree.map(_.value)}")
     }
 
     /**
@@ -164,7 +164,7 @@ class Visitor(val device: Device, val visitSite: Site, val userIds: Seq[String],
     }
 
     private def doSomeAction(eventAction: EventAction.Value): Option[Event] = {
-        logger.info(s"Visitor[${device.deviceId}] will do action $eventAction")
+        logger.debug(s"Visitor[${device.deviceId}] will do action $eventAction")
         eventAction match {
             case EventAction.pageview => doPageView
             case EventAction.login => device.login(SomeUtil.randomPick(userIds).get)
@@ -182,22 +182,26 @@ class Visitor(val device: Device, val visitSite: Site, val userIds: Seq[String],
       * @param minutes 动作的时间，分钟
       * @return
       */
-    def action(timing: Long = System.currentTimeMillis(), minutes: Int): Seq[Event] = {
+    def action(timing: Long = System.currentTimeMillis(), minutes: Int, eventConsumer: Event => Unit): Unit= {
         // 如果当前没有页面，先移动一下
         if (currentPageTree.isEmpty)
             move()
 
         // 如果移动后还没有页面，只能返回空
         if (currentPageTree.isEmpty)
-            return Seq()
+            return
 
-        logger.info(s"Visitor[${device.deviceId}] Create $minutes mins Events, EventCounts maybe $eventCreateCountPerMiniute")
+        val eventCount = minutes * eventCreateCountPerMiniute
+
+        logger.info(s"Visitor[${device.deviceId}] Create $minutes mins Events, EventCounts maybe $eventCount")
 
         device.deviceTime = timing
-        (0 until eventCreateCountPerMiniute).flatMap(_ => {
-            device.deviceTime  = device.deviceTime + 1
-            doSome()
-        })
+        (0 until eventCount)
+            .flatMap(_ => {
+                device.deviceTime = device.deviceTime + 1
+                doSome()
+            })
+            .foreach(eventConsumer(_))
     }
 }
 
