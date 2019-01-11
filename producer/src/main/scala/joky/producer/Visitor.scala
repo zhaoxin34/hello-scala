@@ -2,7 +2,8 @@ package joky.producer
 
 import java.sql.Timestamp
 
-import joky.core.util.{Event, EventAction, Session, SomeUtil}
+import joky.core.bean.{Event, EventAction, Session}
+import joky.core.util.SomeUtil
 import joky.producer.site._
 import org.apache.logging.log4j.scala.Logging
 

@@ -1,4 +1,4 @@
-package joky.core.util
+package joky.core.bean
 
 import java.sql.Timestamp
 

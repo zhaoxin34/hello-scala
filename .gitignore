@@ -25,5 +25,5 @@ project/target/
 target/
 .scala_dependencies
 .worksheet
-spark_data/event_log
+spark_data
 spark-warehouse

@@ -1,4 +1,4 @@
-package joky.producer.util
+package joky.core.util
 
 import java.io.{File, FileInputStream}
 import java.nio.file.{Files, Paths}

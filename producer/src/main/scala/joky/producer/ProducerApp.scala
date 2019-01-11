@@ -1,9 +1,14 @@
 package joky.producer
 
 import com.github.nscala_time.time.Imports._
-import joky.producer.util.ConfigUtil
+import joky.core.util.ConfigUtil
 import org.apache.logging.log4j.scala.Logging
 import org.joda.time.DateTime
+
+/**
+  * 启动代码示例
+  * sbt ";compile;project producer;runMain joky.producer.ProducerApp --outputToKafka=true --kafkaTopicId=test-producer-20190111"
+  */
 
 /**
   * 生成器的配置

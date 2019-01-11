@@ -1,8 +1,8 @@
 package joky.producer
 
 import com.fasterxml.jackson.core.`type`.TypeReference
-import joky.core.util.{Event, EventAction, SomeUtil}
-import joky.producer.util.ConfigUtil
+import joky.core.bean.EventAction
+import joky.core.util.{ConfigUtil, SomeUtil}
 import org.apache.logging.log4j.scala.Logging
 
 import scala.collection.mutable.ArrayBuffer

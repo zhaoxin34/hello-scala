@@ -1,10 +1,10 @@
-package joky.producer.test
+package joky.core.test
 
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.util.Date
 
-import joky.producer.util.JsonUtil
+import joky.core.util.JsonUtil
 import org.scalatest.FlatSpec
 
 case class Person(name: String, gender: Boolean, birthDate: Date, sqlDate: Timestamp)
@@ -12,7 +12,7 @@ case class Person(name: String, gender: Boolean, birthDate: Date, sqlDate: Times
 class TestJsonUtil extends FlatSpec {
     val person = Person("Rock", gender = false, new SimpleDateFormat("yyyy-mm-dd").parse("2018-01-01"), new Timestamp(new SimpleDateFormat("yyyy-mm-dd").parse("2018-01-01").getTime))
 
-    "JsonUtil" should "object to json" taggedAs producer in {
+    "JsonUtil" should "object to json" taggedAs test.core in {
         val json = JsonUtil.toJson(person)
 //        println(json)
         assert(json.nonEmpty)

@@ -1,6 +1,6 @@
 package joky.producer
 
-import joky.core.util.EventAction.EventAction
+import joky.core.bean.EventAction.EventAction
 
 import scala.collection.mutable.ArrayBuffer
 

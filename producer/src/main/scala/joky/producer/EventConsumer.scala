@@ -2,8 +2,8 @@ package joky.producer
 
 import java.util.Properties
 
-import joky.core.util.Event
-import joky.producer.util.JsonUtil
+import joky.core.bean.Event
+import joky.core.util.JsonUtil
 import org.apache.kafka.clients.producer.{KafkaProducer, ProducerRecord}
 import org.apache.logging.log4j.scala.Logging
 

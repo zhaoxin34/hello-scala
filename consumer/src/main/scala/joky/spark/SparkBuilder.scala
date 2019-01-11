@@ -15,7 +15,7 @@ object SparkConfig {
         "spark.eventLog.overwrite" -> true,
         "spark.eventLog.buffer.kb" -> "10",
 
-        "spark.eventLog.dir" -> "./event_log",
+        "spark.eventLog.dir" -> "./spark_data/event_log",
 
         "spark.sql.parquet.compression.codec" -> "snappy",
         // 这个参数和task个数没关系
@@ -48,11 +48,12 @@ object SparkConfig {
   * @Description:
   */
 object SparkBuilder {
-    val config = SparkConfig.sparkConf()
+    val sparkConfig = SparkConfig.sparkConf()
+    val checkpointDir = "./spark_data/checkpoint/"
     def build(appName: String): SparkSession = {
         SparkSession.builder()
             .appName(appName)
-            .config(config)
+            .config(sparkConfig)
             .getOrCreate()
     }
 }

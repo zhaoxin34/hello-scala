@@ -52,14 +52,15 @@ lazy val commonSettings = Seq(
 lazy val core = project
     .settings(
         commonSettings,
-        name := "core"
+        name := "core",
+        libraryDependencies ++= Dep.depsJackson
     )
 
 lazy val producer = project
     .settings(
         commonSettings,
         name := "producer",
-        libraryDependencies ++= (Dep.depsLog4j ++ Dep.depsAkka ++ Dep.depsJackson :+ kafkaClient )
+        libraryDependencies ++= (Dep.depsLog4j ++ Dep.depsAkka :+ kafkaClient )
     )
     .dependsOn(core)
 
