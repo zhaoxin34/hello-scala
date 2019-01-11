@@ -21,16 +21,16 @@ object ProducerScheduler extends Logging {
         }
     }
 
-    def startSchedule(callback: () => Unit): Unit = {
+    def startSchedule(scheduleDelay: Int, scheduleInterval: Int, callback: () => Unit): Unit = {
         import scala.concurrent.duration._
         val system = ActorSystem()
         val eventProducerActor = system.actorOf(Props(new EventProducerActor(callback)), name = "test")
         // Use system's dispatcher as ExecutionContext
         import system.dispatcher
         system.scheduler.schedule(
-            0 seconds,
-            60 seconds,
+            scheduleDelay seconds,
+            scheduleInterval seconds,
             eventProducerActor,
-            CreateEventMessage())
+            CreateEventMessage)
     }
 }

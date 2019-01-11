@@ -3,11 +3,10 @@ package joky.producer
 import java.sql.Timestamp
 
 import joky.core.util.{Event, EventAction, Session, SomeUtil}
-
-import scala.collection.mutable.ArrayBuffer
-import scala.util.Random
 import joky.producer.site._
 import org.apache.logging.log4j.scala.Logging
+
+import scala.util.Random
 
 
 class Device(
@@ -91,9 +90,9 @@ class Device(
   * @param device   设备
   * @param visitSite    他可以访问的网站
   * @param userIds  访客持有的用户id列表
-  * @param eventCreateCountPerMiniute   每个访客每分钟可以产生的事件数
+  * @param eventCreateCountPerSecond   每个访客每分钟可以产生的事件数
   */
-class Visitor(val device: Device, val visitSite: Site, val userIds: Seq[String], val eventCreateCountPerMiniute: Int = 100) extends Logging{
+class Visitor(val device: Device, val visitSite: Site, val userIds: Seq[String], val eventCreateCountPerSecond: Int = 100) extends Logging{
 
     // 当前目录
     private var currentPageTree: Option[PageTree[Page]] = None
@@ -179,10 +178,10 @@ class Visitor(val device: Device, val visitSite: Site, val userIds: Seq[String],
     /**
       * 执行一定时长的动作
       * @param timing 动作开始的时间戳
-      * @param minutes 动作的时间，分钟
+      * @param seconds 动作的时间，分钟
       * @return
       */
-    def action(timing: Long = System.currentTimeMillis(), minutes: Int, eventConsumer: Event => Unit): Unit= {
+    def action(timing: Long = System.currentTimeMillis(), seconds: Int, eventConsumer: Event => Unit): Unit= {
         // 如果当前没有页面，先移动一下
         if (currentPageTree.isEmpty)
             move()
@@ -191,9 +190,9 @@ class Visitor(val device: Device, val visitSite: Site, val userIds: Seq[String],
         if (currentPageTree.isEmpty)
             return
 
-        val eventCount = minutes * eventCreateCountPerMiniute
+        val eventCount = seconds * eventCreateCountPerSecond
 
-        logger.info(s"Visitor[${device.deviceId}] Create $minutes mins Events, EventCounts maybe $eventCount")
+        logger.info(s"Visitor[${device.deviceId}] Create $seconds seconds Events, EventCounts maybe $eventCount")
 
         device.deviceTime = timing
         (0 until eventCount)

@@ -14,7 +14,7 @@ import joky.producer.site._
   * @param visitorPoolSize 访客池的数量
   * @param userIdPerVisitor 每个访客最高可以拥有userId个数
   */
-case class EventProducer private (visitorPoolSize: Int, userIdPerVisitor: Int, eventCreateCountPerMiniute: Int, deviceList: Seq[DeviceConfig],
+case class EventProducer private (visitorPoolSize: Int, userIdPerVisitor: Int, eventCreateCountPerSecond: Int, deviceList: Seq[DeviceConfig],
                                   ipList: Seq[String], siteList: Seq[SiteConfig], siteIdPageMap: Map[String, Seq[PageConfig]]) extends Logging {
     logger.info(s"create EventProducer, visitorPoolSize=$visitorPoolSize, " +
         s"userIdPerVisitor=$userIdPerVisitor, deviceList count=${deviceList.size}, ipList count=${ipList.size}" +
@@ -55,7 +55,7 @@ case class EventProducer private (visitorPoolSize: Int, userIdPerVisitor: Int, e
             device,
             siteIdMap(siteId),
             SomeUtil.randomPickSome(userIds, userIdPerVisitor),
-            eventCreateCountPerMiniute
+            eventCreateCountPerSecond
         )
 
         visitorPool += visitor
@@ -63,11 +63,11 @@ case class EventProducer private (visitorPoolSize: Int, userIdPerVisitor: Int, e
 
     /**
       * 创建事件
-      * @param minutes 创建多长时间的事件
+      * @param seconds 创建多长时间的事件
       * @param visitorCount 使用多少个访客创建事件
       * @return
       */
-    def consumeEvent(timing: Long, minutes: Int, visitorCount: Int, eventConsumer: EventConsumer): Unit= {
+    def consumeEvent(timing: Long, seconds: Int, visitorCount: Int, eventConsumer: EventConsumer): Unit= {
         val _visitorCount = Math.min(visitorCount, visitorPoolSize)
         if (_visitorCount < visitorCount)
             logger.warn(s"not enough visitor, visitorCount=$visitorCount, visitorPoolSize=$visitorPoolSize")
@@ -75,8 +75,8 @@ case class EventProducer private (visitorPoolSize: Int, userIdPerVisitor: Int, e
         for (i <- 0 until _visitorCount) {
             val visitor = SomeUtil.randomPick(visitorPool)
             if (visitor.nonEmpty) {
-                logger.info(s"user deviceId[${visitor.get.device.deviceId}] create ${visitor.get.eventCreateCountPerMiniute} events")
-                visitorPool(i).action(timing, minutes, eventConsumer.consume)
+                logger.info(s"user deviceId[${visitor.get.device.deviceId}] create ${visitor.get.eventCreateCountPerSecond * seconds} events")
+                visitorPool(i).action(timing, seconds, eventConsumer.consume)
             }
         }
 
@@ -92,8 +92,8 @@ object EventProducer extends Logging {
     val VISITOR_FILE = "producer/src/main/resources/data/visitor.yaml"
     val SITE_FILE_DIR = "producer/src/main/resources/data/site/"
 
-    def createEventProducer(visitorPoolSize: Int = 10, userIdPerVisitor: Int = 3, eventCreateCountPerMiniute: Int = 10): Option[EventProducer] = {
-        logger.info(s"EventProducer Will Produce: visitorPoolSize=$visitorPoolSize, userIdPerVisitor=$userIdPerVisitor, eventCreateCountPerMiniute=$eventCreateCountPerMiniute")
+    def createEventProducer(visitorPoolSize: Int = 10, userIdPerVisitor: Int = 3, eventCreateCountPerSecond: Int = 10): Option[EventProducer] = {
+        logger.info(s"EventProducer Will Produce: visitorPoolSize=$visitorPoolSize, userIdPerVisitor=$userIdPerVisitor, eventCreateCountPerSecond=$eventCreateCountPerSecond")
 
         try {
             val deviceList = ConfigUtil.readFile(DEVICE_FILE)
@@ -117,7 +117,7 @@ object EventProducer extends Logging {
                     ConfigUtil.readFile(SITE_FILE_DIR + siteId).map(_.split(",").map(_.trim)).map(arr => PageConfig(arr(0), arr(1))).toList
                 ).toMap
 
-            val producer = new EventProducer(visitorPoolSize, userIdPerVisitor, eventCreateCountPerMiniute, deviceConfigList,
+            val producer = new EventProducer(visitorPoolSize, userIdPerVisitor, eventCreateCountPerSecond, deviceConfigList,
                 ipList.map(_.trim), siteConfigList, pageConfigMap )
             Some(producer)
         }
