@@ -59,7 +59,7 @@
 //
 //    val query = events
 //        .select("sessionId", "eventTime", "eventName", "userId")
-////            .groupBy(window($"eventTime", "30 seconds", "30 seconds"), $"sessionId")
+//            .groupBy(window($"eventTime", "30 seconds", "30 seconds"), $"sessionId")
 //        .writeStream
 //        .format("console")
 //        .outputMode("append")

@@ -11,6 +11,8 @@ import com.fasterxml.jackson.databind.{DeserializationContext, ObjectMapper, Ser
 import com.fasterxml.jackson.databind.ser.std.StdSerializer
 import com.fasterxml.jackson.module.scala.DefaultScalaModule
 
+import scala.util.Try
+
 /**
   * @Auther: zhaoxin
   * @Date: 2019/1/11 11:15
@@ -55,4 +57,7 @@ object JsonUtil {
         mapper.readValue(json, clazz)
     }
 
+    def tryFromJson[T](json: String, clazz: Class[T]): Try[T] = {
+        Try(mapper.readValue(json, clazz))
+    }
 }

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <Target>System.out</Target>
+        <encoder>
+            <pattern>[stdout]%date [%thread] %-5level %logger{80} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="stderr" class="ch.qos.logback.core.ConsoleAppender">
+        <Target>System.err</Target>
+        <encoder>
+            <pattern>[stderr] %date [%thread] %-5level %logger{80} - %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>warn</level>
+        </filter>
+    </appender>
+
+    <logger name="com.datatist.analyzer" level="info" additivity="false">
+        <appender-ref ref="stdout"/>
+    </logger>
+
+    <logger name="org.apache.thrift.transport.TIOStreamTransport" level="error" additivity="false">
+        <appender-ref ref="stderr"/>
+    </logger>
+
+    <root level="warn">
+        <appender-ref ref="stdout"/>
+    </root>
+
+</configuration>
+

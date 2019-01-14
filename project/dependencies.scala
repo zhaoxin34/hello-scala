@@ -5,7 +5,7 @@ object Dep {
     val versionSpark = "2.2.0"
     val versionHbase = "1.2.0"
     val versionLog4jApiScala = "11.0"
-    val versionJackson = "2.9.8"
+    val versionJackson = "2.6.5"
     val versionScalaTest = "3.0.5"
     val versionNscalaTime = "2.20.0"
     val versionAkka = "2.5.19"
@@ -17,6 +17,7 @@ object Dep {
     val nscalaTime = "com.github.nscala-time" %% "nscala-time" % versionNscalaTime
     
     val erSlf4j = ExclusionRule("org.slf4j", "slf4j-log4j12")
+//    val erSlf4j = ExclusionRule("org.slf4j", "*")
     val erServlet = ExclusionRule("javax.servlet", "servlet-api")
     val erJsp = ExclusionRule("javax.servlet.jsp", "jsp-api")
     val erJetty = ExclusionRule("org.mortbay.jetty", "servlet-api-2.5")
@@ -28,7 +29,7 @@ object Dep {
     val sparkMllib = "org.apache.spark" %% "spark-mllib" % versionSpark
     val sparkStreaming = "org.apache.spark" %% "spark-streaming" % versionSpark
     val sparkHive = "org.apache.spark" %% "spark-hive" % versionSpark
-    val sparkStreamingKafka08 = "org.apache.spark" %% "spark-streaming-kafka-0-8" % versionSpark
+    val sparkStreamingKafka08 = "org.apache.spark" %% "spark-streaming-kafka-0-10" % versionSpark
     //        val sparkStreamKafka = "org.apache.spark" %% "spark-streaming-kafka" % "1.6.3"
     val scopt = "com.github.scopt" %% "scopt" % "3.7.0"
     val kafka = "org.apache.kafka" %% "kafka" % "1.1.1"

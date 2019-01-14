@@ -72,7 +72,8 @@ lazy val consumer = project
             "hortonworks" at "http://repo.hortonworks.com/content/groups/public/"
         ),
         libraryDependencies ++= Dep.depsSpark,
-        dependencyOverrides ++= depsOverrideSpark
+        dependencyOverrides ++= depsOverrideSpark,
+        excludeDependencies ++= Seq(Dep.erSlf4j, Dep.erServlet)
     )
     .dependsOn(core)
 

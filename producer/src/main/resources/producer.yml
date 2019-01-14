@@ -3,7 +3,7 @@ scheduleInterval: 5
 visitorPoolSize: 100
 userIdPerVisitor: 3
 eventCreateCountPerSecond: 1
-visitorUsedPerBatch: 1
+visitorUsedPerBatch: 4
 consumeDurationSecondPerBatch: 10
 outputToConsole: true
 outputToKafka: false

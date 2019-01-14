@@ -2,6 +2,7 @@ package joky.spark
 
 import org.apache.spark.SparkConf
 import org.apache.spark.sql.SparkSession
+import org.apache.spark.streaming.{Duration, StreamingContext}
 
 /**
   * @Auther: zhaoxin
@@ -48,12 +49,19 @@ object SparkConfig {
   * @Description:
   */
 object SparkBuilder {
-    val sparkConfig = SparkConfig.sparkConf()
+
     val checkpointDir = "./spark_data/checkpoint/"
+
     def build(appName: String): SparkSession = {
         SparkSession.builder()
             .appName(appName)
-            .config(sparkConfig)
+            .config(SparkConfig.sparkConf())
             .getOrCreate()
+    }
+
+    def buildStreamingContext(appName: String, duration: Duration): StreamingContext = {
+        val ss = new StreamingContext(SparkConfig.sparkConf().setAppName(appName), duration)
+        ss.checkpoint(checkpointDir)
+        ss
     }
 }
