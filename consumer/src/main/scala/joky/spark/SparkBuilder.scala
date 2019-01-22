@@ -24,7 +24,8 @@ object SparkConfig {
 
         // 在local模式下没有用
         // "spark.scheduler.mode" -> "FAIR",
-        "spark.default.parallelism" -> 10
+        "spark.default.parallelism" -> 10,
+        "spark.sql.streaming.checkpointLocation" -> "./spark_data/checkpoint/"
 
     )
     private val sparkMaster = "local[2]"
@@ -50,8 +51,6 @@ object SparkConfig {
   */
 object SparkBuilder {
 
-    val checkpointDir = "./spark_data/checkpoint/"
-
     def build(appName: String): SparkSession = {
         SparkSession.builder()
             .appName(appName)
@@ -61,7 +60,6 @@ object SparkBuilder {
 
     def buildStreamingContext(appName: String, duration: Duration): StreamingContext = {
         val ss = new StreamingContext(SparkConfig.sparkConf().setAppName(appName), duration)
-        ss.checkpoint(checkpointDir)
         ss
     }
 }

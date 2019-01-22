@@ -11,14 +11,15 @@ import java.sql.Timestamp
 
 object EventAction extends Enumeration {
     type EventAction = Value
-    val pageview, order, pay, click, login, logout = Value
+    val pageview, order, pay, click, login, logout, trackPageStart, pageEnd, search,
+        trackRegister, addCart, deleteOrder, payment, openChannel, receiveJPush = Value
 }
 /**
   * @Auther: zhaoxin
   * @Date: 2018/12/25 19:05
   * @Description:
   */
-case class Event(eventTime: Timestamp,
+case class Event(eventTime: Long,
                  eventName: String,
                  siteId: String,
                  sessionId: String,

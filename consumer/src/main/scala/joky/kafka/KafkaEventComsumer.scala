@@ -1,15 +1,17 @@
 package joky.kafka
 
 import java.util.Objects
+import java.util.concurrent.TimeUnit
 
 import joky.core.bean.Event
 import joky.core.util.JsonUtil
 import joky.spark.SparkBuilder
 import org.apache.spark.examples.streaming.StreamingExamples
-import org.apache.spark.sql.{Dataset, ForeachWriter, SparkSession}
-import org.apache.spark.streaming.{Seconds, StreamingContext}
+import org.apache.spark.sql.{Dataset, ForeachWriter, SaveMode, SparkSession}
+import org.apache.spark.streaming._
 import org.apache.spark.sql.functions._
 import org.apache.spark.sql.streaming.Trigger
+import org.apache.spark.streaming
 
 /**
   * @Auther: zhaoxin
@@ -92,26 +94,37 @@ object KafkaEventComsumer extends App {
 //        .trigger(Trigger.ProcessingTime("30 seconds"))
 //        .start()
 
-    val query = events.writeStream.foreach(new ForeachWriter[Event] {
-        var partitionId: Long = _
-        var version: Long = _
+    // 分区写入示例
+//    val query = events.writeStream.foreach(new ForeachWriter[Event] {
+//        var partitionId: Long = _
+//        var version: Long = _
+//
+//        override def open(partitionId: Long, version: Long): Boolean = {
+//            this.partitionId = partitionId
+//            this.version = version
+//            true
+//        }
+//
+//        override def process(value: Event): Unit = {
+//            println(s"$partitionId, $version =========> " + value)
+//        }
+//
+//        override def close(errorOrNull: Throwable): Unit = {
+//
+//        }
+//    })
+//        .trigger(Trigger.ProcessingTime("30 seconds"))
+//        .start()
 
-        override def open(partitionId: Long, version: Long): Boolean = {
-            this.partitionId = partitionId
-            this.version = version
-            true
-        }
-
-        override def process(value: Event): Unit = {
-            println(s"$partitionId, $version =========> " + value)
-        }
-
-        override def close(errorOrNull: Throwable): Unit = {
-
-        }
-    })
-        .trigger(Trigger.ProcessingTime("30 seconds"))
+    val query = events
+        .writeStream
+        .outputMode("append")
+        .format("parquet")
+        .option("path", "./spark_data/table/zx_event")
+        .partitionBy("siteId")
+        .trigger(Trigger.ProcessingTime(1, TimeUnit.MINUTES))
         .start()
+
 
     query.awaitTermination()
 }

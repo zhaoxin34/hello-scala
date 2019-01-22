@@ -24,7 +24,7 @@ class Device(
     private var session: Session = newSession
     var deviceTime: Long = 0
 
-    val SESSION_EXPIRE_TIME = 30 * 60 * 1000
+    val SESSION_EXPIRE_TIME: Int = 30 * 60 * 1000
 
     def isSessionExpire: Boolean = {
         System.currentTimeMillis() - session.lastTime.getTime > SESSION_EXPIRE_TIME
@@ -78,7 +78,7 @@ class Device(
             session.userId = userId
         }
         val eventTime = new Timestamp(deviceTime)
-        val event = Event(eventTime, eventAction.toString, siteId, session.sessionId, session.seStartTime, deviceId, session.userId, url, title, referrer)
+        val event = Event(eventTime.getTime, eventAction.toString, siteId, session.sessionId, session.seStartTime, deviceId, session.userId, url, title, referrer)
         // 登出
         if (eventAction.equals(EventAction.logout))
             session = newSession

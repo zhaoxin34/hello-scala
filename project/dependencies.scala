@@ -12,11 +12,13 @@ object Dep {
 
     val log4jScala = "org.apache.logging.log4j" %% "log4j-api-scala" % versionLog4jApiScala
     val log4jApi = "org.apache.logging.log4j" % "log4j-api" % "2.11.1"
-    val log4jCore= "org.apache.logging.log4j" % "log4j-core" % "2.11.1"
+    val log4jCore = "org.apache.logging.log4j" % "log4j-core" % "2.11.1"
+    val logback = "ch.qos.logback" % "logback-classic" % "1.2.3"
 
     val nscalaTime = "com.github.nscala-time" %% "nscala-time" % versionNscalaTime
     
     val erSlf4j = ExclusionRule("org.slf4j", "slf4j-log4j12")
+    val erSlf4jApi = ExclusionRule("org.slf4j", "slf4j-api")
 //    val erSlf4j = ExclusionRule("org.slf4j", "*")
     val erServlet = ExclusionRule("javax.servlet", "servlet-api")
     val erJsp = ExclusionRule("javax.servlet.jsp", "jsp-api")
@@ -37,7 +39,7 @@ object Dep {
     val hbaseClient = "org.apache.hbase" % "hbase-client" % versionHbase excludeAll(erSlf4j, erServlet, erJsp, erJetty, erJerseyServer)
     val hbaseCommon = "org.apache.hbase" % "hbase-common" % versionHbase excludeAll(erSlf4j, erServlet, erJsp, erJetty, erJerseyServer)
     val hbaseServer = "org.apache.hbase" % "hbase-server" % versionHbase excludeAll(erSlf4j, erServlet, erJsp, erJetty, erJerseyServer)
-    val shcCore = "com.hortonworks" % "shc-core" % "1.1.1-2.1-s_2.11"
+//    val shcCore = "com.hortonworks" % "shc-core" % "1.1.1-2.1-s_2.11"
     val sparklintSpark220 = "com.groupon.sparklint" %% "sparklint-spark220" % "1.0.12"
 
     val depsAkka = Seq (
@@ -64,7 +66,6 @@ object Dep {
         log4jCore,
         log4jScala
     )
-    
     val depsSpark = Seq(
         sparkCore,
         sparkSql,
@@ -72,14 +73,29 @@ object Dep {
         sparkMllib,
         sparkStreaming,
         sparkHive,
-        sparkStreamingKafka08,
+        sparkStreamingKafka08
+    )
+
+    val depsSparkProvided = Seq(
+        sparkCore % Provided,
+        sparkSql % Provided,
+        sparkSqlKafka010 % Provided,
+        sparkMllib % Provided,
+        sparkStreaming % Provided,
+        sparkHive % Provided,
+        sparkStreamingKafka08 % Provided
+    )
+
+
+    val depBigData = Seq(
         scopt,
         kafka,
         kafkaClient,
         hbaseClient,
         hbaseCommon,
         hbaseServer,
-        shcCore
+        logback
+//        shcCore
     )
 
     val depsOverrideSpark = Seq(

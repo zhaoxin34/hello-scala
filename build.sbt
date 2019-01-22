@@ -8,7 +8,8 @@ lazy val root = project
     .aggregate(
         core,
         producer,
-        consumer
+        consumer,
+        assemblyConsumerDepdencyJar
     )
     .settings(
         update / aggregate := false
@@ -18,6 +19,9 @@ lazy val commonSettings = Seq(
     organization := "joky",
     version := "0.1.0-SNAPSHOT",
     scalaVersion := "2.11.12",
+    artifactName := { (sv: ScalaVersion, module: ModuleID, artifact: Artifact) =>
+        artifact.name + "-" + module.revision + "." + artifact.extension
+    },
     scalacOptions ++= Seq(
         "-unchecked",
         "-feature",
@@ -30,7 +34,6 @@ lazy val commonSettings = Seq(
         "utf8"
     ),
     resolvers ++= Seq(
-        //        "Local Maven Repository" at "file://" + Path.userHome.absolutePath + "/.m2/repository",
         "central" at "http://repo1.maven.org/maven2/",
         "mvnrepository" at "https://mvnrepository.com/artifact"
     ),
@@ -38,7 +41,8 @@ lazy val commonSettings = Seq(
     libraryDependencies ++= (
         Dep.depsScalatest :+ Dep.nscalaTime :+ Dep.scopt),
     crossPaths := false,
-    testOptions in Test := Seq(Tests.Argument(TestFrameworks.JUnit, "-a"))
+    testOptions in Test := Seq(Tests.Argument(TestFrameworks.JUnit, "-a")),
+    updateOptions := updateOptions.value.withCachedResolution(true)
     // mainClass in (Compile, packageBin) := Some("myproject.MyMain"),
     // publishTo := Some("name" at "url"),
     // fork a new JVM for 'run' and 'test:run'
@@ -60,7 +64,7 @@ lazy val producer = project
     .settings(
         commonSettings,
         name := "producer",
-        libraryDependencies ++= (Dep.depsLog4j ++ Dep.depsAkka :+ kafkaClient )
+        libraryDependencies ++= (Dep.depsLog4j ++ Dep.depsAkka :+ kafkaClient)
     )
     .dependsOn(core)
 
@@ -71,9 +75,52 @@ lazy val consumer = project
         resolvers ++= Seq(
             "hortonworks" at "http://repo.hortonworks.com/content/groups/public/"
         ),
-        libraryDependencies ++= Dep.depsSpark,
+        libraryDependencies ++= Dep.depsSparkProvided ++ Dep.depBigData,
         dependencyOverrides ++= depsOverrideSpark,
-        excludeDependencies ++= Seq(Dep.erSlf4j, Dep.erServlet)
+        excludeDependencies ++= Seq(Dep.erServlet, Dep.erJsp, Dep.erJetty, Dep.erJerseyServer)
     )
     .dependsOn(core)
+
+lazy val sparkUdf = project
+    .settings(
+        commonSettings,
+        name := "sparkUdf",
+        resolvers ++= Seq(
+            "hortonworks" at "http://repo.hortonworks.com/content/groups/public/"
+        ),
+        libraryDependencies ++= Dep.depsSparkProvided,
+        dependencyOverrides ++= depsOverrideSpark,
+        excludeDependencies ++= Seq(Dep.erServlet, Dep.erJsp, Dep.erJetty, Dep.erJerseyServer)
+    )
+
+lazy val assemblyConsumerDepdencyJar = (project in file("assembly/assembly-consumer-depdency-jar"))
+    .dependsOn(consumer)
+    .settings(
+        name := "assemblyConsumerDepdencyJar",
+        assemblyMergeStrategy in assembly := {
+            case PathList("joky", xs@_*) => MergeStrategy.discard
+            case PathList("org", "aopalliance", xs@_*) => MergeStrategy.last
+            case PathList("javax", "inject", xs@_*) => MergeStrategy.last
+            case PathList("javax", "servlet", xs@_*) => MergeStrategy.last
+            case PathList("javax", "activation", xs@_*) => MergeStrategy.last
+            case PathList("org", "apache", xs@_*) => MergeStrategy.last
+            case PathList("org", "w3c", "dom", xs@_*) => MergeStrategy.last
+            case PathList("com", "google", xs@_*) => MergeStrategy.last
+            case PathList("com", "esotericsoftware", xs@_*) => MergeStrategy.last
+            case PathList("com", "codahale", xs@_*) => MergeStrategy.last
+            case PathList("com", "yammer", xs@_*) => MergeStrategy.last
+            case "about.html" => MergeStrategy.rename
+            case "META-INF/ECLIPSEF.RSA" => MergeStrategy.last
+            case "META-INF/mailcap" => MergeStrategy.last
+            case "META-INF/mimetypes.default" => MergeStrategy.last
+            case "plugin.properties" => MergeStrategy.last
+            case "log4j.properties" => MergeStrategy.last
+            case "overview.html" => MergeStrategy.last // Added this for 2.1.0 I think
+            case x =>
+                val oldStrategy = (assemblyMergeStrategy in assembly).value
+                oldStrategy(x)
+        },
+        assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = false),
+        assemblyJarName in assembly := "assembly-producer-depdency-jar.jar"
+    )
 
