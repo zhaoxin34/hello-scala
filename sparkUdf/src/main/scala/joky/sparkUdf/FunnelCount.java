@@ -147,57 +147,7 @@ public class FunnelCount extends AbstractGenericUDAFResolver {
         public Object terminate(AggregationBuffer agg) throws HiveException {
             long convertTime = 1000 * 60 * 10;
             FunnelAggBuffer fb = (FunnelAggBuffer) agg;
-            LinkedList<Long>[] stepGrade = new LinkedList[STEP_MAX + 1];
-
-            for (int i = STEP_MIN; i <= STEP_MAX; i++) {
-                stepGrade[i] = new LinkedList<>();
-            }
-
-            for (ArrayList<Object> stepInfo : fb.funnelList) {
-                int step = (int) stepInfo.get(0);
-                long time = (long) stepInfo.get(1);
-                if (step > STEP_MAX || step < STEP_MIN || time < 0)
-                    continue;
-                stepGrade[step].add(time);
-                LOG.warn(step + ":" + time);
-            }
-            fb.funnelList.clear();
-
-            if (stepGrade[0].size() == 0)
-                return 0;
-
-            LinkedList<LinkedList<Long>> successPath = new LinkedList<>();
-
-            int maxStep = STEP_MIN;
-
-            for (int i = STEP_MIN; i <= STEP_MAX; i++) {
-                if (i == STEP_MIN) {
-                    for (long time : stepGrade[i]) {
-                        LinkedList<Long> path = new LinkedList<>();
-                        path.add(time);
-                        successPath.add(path);
-                    }
-                } else {
-                    if (successPath.isEmpty())
-                        break;
-                    LOG.warn(successPath);
-                    LinkedList<LinkedList<Long>> successPathNew = new LinkedList<>();
-                    do {
-                        LinkedList<Long> onePath = successPath.remove();
-                        for (long time : stepGrade[i]) {
-                            if ((time - onePath.getLast()) >= 0 && (time - onePath.getFirst()) <= convertTime) {
-                                LinkedList<Long> newPath = new LinkedList<>(onePath);
-                                newPath.add(time);
-                                successPathNew.add(newPath);
-                                maxStep = i;
-                            }
-                        }
-                    } while (!successPath.isEmpty());
-                    successPath = successPathNew;
-                }
-            }
-
-            return maxStep;
+            return FunnelAlg.countFunnel(fb.funnelList, STEP_MAX, convertTime, true);
         }
 
     }
