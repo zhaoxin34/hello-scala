@@ -27,7 +27,11 @@ class TestFunnelALg  extends FlatSpec {
         val convertTime = 100
 
         // side test
-        var funnelObjSide = Seq(
+        var funnelObjSide: Seq[(Int, Long)] = Seq(
+        )
+        assert(FunnelAlg.countFunnel(funnelObjSide, stepMax, convertTime, cleanFunnelData) == 0)
+
+        funnelObjSide = Seq(
             (0, 100L)
         )
         assert(FunnelAlg.countFunnel(funnelObjSide, stepMax, convertTime, cleanFunnelData) == 0)
@@ -149,8 +153,8 @@ class TestFunnelALg  extends FlatSpec {
     }
 
     it should "has good performnence" in {
-        (10 to 200 by 10).foreach(
-            i => assert(performTest(i) < 60000)
+        (10000 to 100000 by 10000).foreach(
+            i => assert(performTest(i) < 1000)
         )
     }
 }
