@@ -1,0 +1,21 @@
+[0m[[0m[0minfo[0m] [0m[0mLoading settings for project global-plugins from idea.sbt,plugins.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mLoading global plugins from /Users/zhaoxin/.sbt/1.0/plugins[0m
+[0m[[0m[0minfo[0m] [0m[0mUpdating ProjectRef(uri("file:/Users/zhaoxin/.sbt/1.0/plugins/"), "global-plugins")...[0m
+[0m[[0m[0minfo[0m] [0m[0mDone updating.[0m
+[0m[[0m[0minfo[0m] [0m[0mLoading settings for project hello-scala-build from plugins.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mLoading project definition from /Users/zhaoxin/working/life/scala/hello-scala/project[0m
+[0m[[0m[0minfo[0m] [0m[0mUpdating ProjectRef(uri("file:/Users/zhaoxin/working/life/scala/hello-scala/project/"), "hello-scala-build")...[0m
+[0m[[0m[0minfo[0m] [0m[0mDone updating.[0m
+[0m[[0m[33mwarn[0m] [0m[0mThere may be incompatibilities among your library dependencies.[0m
+[0m[[0m[33mwarn[0m] [0m[0mRun 'evicted' to see detailed eviction warnings[0m
+[0m[[0m[0minfo[0m] [0m[0mLoading settings for project root from build.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mSet current project to HelloScala (in build file:/Users/zhaoxin/working/life/scala/hello-scala/)[0m
+[0m[[0m[0minfo[0m] [0m[0mCompiling 9 Scala sources to /Users/zhaoxin/working/life/scala/hello-scala/producer/target/classes ...[0m
+[0m[[0m[0minfo[0m] [0m[0mUpdating assemblyConsumerDepdencyJar...[0m
+[0m[[0m[0minfo[0m] [0m[0mDone compiling.[0m
+[0m[[0m[0minfo[0m] [0m[0mDone updating.[0m
+[0m[[0m[33mwarn[0m] [0m[0mThere may be incompatibilities among your library dependencies.[0m
+[0m[[0m[33mwarn[0m] [0m[0mRun 'evicted' to see detailed eviction warnings[0m
+[0m[[0m[32msuccess[0m] [0m[0mTotal time: 137 s, completed Jan 15, 2019 2:13:28 PM[0m
+[0m[[0m[0minfo[0m] [0m[0mSet current project to assemblyConsumerDepdencyJar (in build file:/Users/zhaoxin/working/life/scala/hello-scala/)[0m
+[0m[[0m[0minfo[0m] [0m[0mUpdating ProjectRef(uri("file:/Users/zhaoxin/working/life/scala/hello-scala/"), "assemblyConsumerDepdencyJar")...[0m
