@@ -12,7 +12,7 @@ class TestFunnelALg  extends FlatSpec {
     val stepMax = 9
     val cleanFunnelData = true
 
-    implicit def convertFunnelObject(scalaFunnelObj: Seq[(Int, Long)]): util.ArrayList[util.ArrayList[Object]] = {
+    implicit def convertFunnelObject(scalaFunnelObj: Seq[(Int, Int)]): util.ArrayList[util.ArrayList[Object]] = {
         val ret = new util.ArrayList[util.ArrayList[Object]]()
         scalaFunnelObj.foreach(funnel => {
             val row = new util.ArrayList[Object]()
@@ -27,123 +27,128 @@ class TestFunnelALg  extends FlatSpec {
         val convertTime = 100
 
         // side test
-        var funnelObjSide: Seq[(Int, Long)] = Seq(
+        var funnelObjSide: Seq[(Int, Int)] = Seq(
+        )
+        assert(FunnelAlg.countFunnel(funnelObjSide, stepMax, convertTime, cleanFunnelData) == -1)
+
+        funnelObjSide = Seq(
+            (0, 100)
         )
         assert(FunnelAlg.countFunnel(funnelObjSide, stepMax, convertTime, cleanFunnelData) == 0)
 
         funnelObjSide = Seq(
-            (0, 100L)
+            (1, 100)
         )
-        assert(FunnelAlg.countFunnel(funnelObjSide, stepMax, convertTime, cleanFunnelData) == 0)
+        assert(FunnelAlg.countFunnel(funnelObjSide, stepMax, convertTime, cleanFunnelData) == -1)
 
         // side test, 1,2两步同时发生，不记成功
         funnelObjSide = Seq(
-            (0, 100L),
-            (1, 100L)
+            (0, 100),
+            (1, 100)
         )
         assert(FunnelAlg.countFunnel(funnelObjSide, stepMax, convertTime, cleanFunnelData) == 0)
 
         funnelObjSide = Seq(
-            (0, 100L),
-            (1, 101L),
-            (2, 102L),
-            (3, 103L),
-            (4, 104L),
-            (5, 105L),
-            (6, 106L),
-            (7, 107L),
-            (8, 108L),
-            (9, 109L)
+            (0, 100),
+            (1, 101),
+            (2, 102),
+            (3, 103),
+            (4, 104),
+            (5, 105),
+            (6, 106),
+            (7, 107),
+            (8, 108),
+            (9, 109)
         )
         assert(FunnelAlg.countFunnel(funnelObjSide, stepMax, convertTime, cleanFunnelData) == 9)
 
         funnelObjSide = Seq(
-            (2, 102L),
-            (0, 100L),
-            (1, 101L),
-            (3, 103L),
-            (7, 107L),
-            (9, 109L),
-            (5, 105L),
-            (6, 106L),
-            (4, 104L),
-            (8, 108L)
+            (2, 102),
+            (0, 100),
+            (1, 101),
+            (3, 103),
+            (7, 107),
+            (9, 109),
+            (5, 105),
+            (6, 106),
+            (4, 104),
+            (8, 108)
         )
         assert(FunnelAlg.countFunnel(funnelObjSide, stepMax, convertTime, cleanFunnelData) == 9)
 
         funnelObjSide = Seq(
-            (0, 100L),
-            (1, 101L),
-            (2, 102L),
-            (3, 103L),
-            (4, 104L),
-            (5, 105L),
-            (6, 106L),
-            (7, 107L),
-            (8, 108L),
-            (9, 109L),
-            (10, 110L),
-            (11, 111L)
+            (0, 100),
+            (1, 101),
+            (2, 102),
+            (3, 103),
+            (4, 104),
+            (5, 105),
+            (6, 106),
+            (7, 107),
+            (8, 108),
+            (9, 109),
+            (10, 110),
+            (11, 111)
         )
         assert(FunnelAlg.countFunnel(funnelObjSide, stepMax, convertTime, cleanFunnelData) == 9)
 
         // 中间断掉的情况
         funnelObjSide = Seq(
-            (0, 100L),
-            (1, 101L),
-            (2, 102L),
-            (3, 103L),
-            (6, 106L),
-            (7, 107L),
-            (8, 108L),
-            (9, 109L)
+            (0, 100),
+            (1, 101),
+            (2, 102),
+            (3, 103),
+            (6, 106),
+            (7, 107),
+            (8, 108),
+            (9, 109)
         )
         assert(FunnelAlg.countFunnel(funnelObjSide, stepMax, convertTime, cleanFunnelData) == 3)
 
         funnelObjSide = Seq(
-            (0, 100L),
-            (1, 101L),
-            (2, 102L),
-            (3, 103L),
+            (0, 100),
+            (1, 101),
+            (2, 102),
+            (3, 103),
 
-            (0, 200L),
-            (1, 201L),
-            (2, 202L),
-            (3, 203L),
-            (4, 204L)
+            (0, 200),
+            (1, 201),
+            (2, 202),
+            (3, 203),
+            (4, 204)
         )
         assert(FunnelAlg.countFunnel(funnelObjSide, stepMax, convertTime, cleanFunnelData) == 4)
 
         funnelObjSide = Seq(
-            (0, 100L),
-            (1, 101L),
-            (2, 102L),
-            (3, 103L),
+            (0, 100),
+            (1, 101),
+            (2, 102),
+            (3, 103),
 
-            (0, 200L),
-            (1, 201L),
-            (3, 203L),
-            (4, 204L)
+            (0, 200),
+            (1, 201),
+            (3, 203),
+            (4, 204)
         )
         assert(FunnelAlg.countFunnel(funnelObjSide, stepMax, convertTime, cleanFunnelData) == 3)
 
         funnelObjSide = Seq(
-            (0, 100L),
-            (1, 101L),
-            (2, 102L),
-            (3, 103L),
+            (0, 100),
+            (1, 101),
+            (2, 102),
+            (3, 103),
 
-            (0, 200L),
-            (1, 201L),
-            (3, 203L),
-            (4, 204L)
+            (0, 200),
+            (1, 201),
+            (3, 203),
+            (4, 204)
         )
         assert(FunnelAlg.countFunnel(funnelObjSide, stepMax, 200, cleanFunnelData) == 4)
     }
 
     def performTest(stepCount: Int): Long = {
-        val convertTime = 100000L
-        val funnelObj = (0 until stepCount).map(i => (Random.nextInt(stepMax + 1), (Random.nextDouble() * convertTime).asInstanceOf[Long])).toSeq
+        val convertTime = 100000
+        val funnelObj = (0 until stepCount).map(i => (Random.nextInt(stepMax + 1), (Random.nextDouble() * convertTime).asInstanceOf[Int])).toSeq
         val begin = System.currentTimeMillis()
         val funnelRet = FunnelAlg.countFunnel(funnelObj, stepMax, convertTime, true)
         println("funnelRet = " + funnelRet)
