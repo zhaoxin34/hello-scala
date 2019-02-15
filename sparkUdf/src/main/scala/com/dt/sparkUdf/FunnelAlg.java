@@ -1,4 +1,4 @@
-package joky.sparkUdf;
+package com.dt.sparkUdf;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -25,14 +25,14 @@ public class FunnelAlg {
      * @param cleanFunnelObject 是否清除传入的漏斗对象
      * @return 最大完成步数
      */
-    public static int countFunnel2(ArrayList<ArrayList<Object>> funnelObject,  final int maxStep, final int convertTime, boolean cleanFunnelObject) {
+    public static int countFunnel2(ArrayList<ArrayList<Object>> funnelObject,  final int maxStep, final long convertTime, boolean cleanFunnelObject) {
 
         if (funnelObject == null || funnelObject.isEmpty())
             return STEP_MIN;
 
         int maxStepCount = STEP_MIN;
 
-        LinkedList<Integer>[] stepGrade = new LinkedList[maxStep + 1];
+        LinkedList<Long>[] stepGrade = new LinkedList[maxStep + 1];
 
         for (int i = STEP_MIN; i <= maxStep; i++) {
             stepGrade[i] = new LinkedList<>();
@@ -40,7 +40,7 @@ public class FunnelAlg {
 
         for (List<Object> stepInfo : funnelObject) {
             Integer step = (Integer) stepInfo.get(0);
-            Integer time = (Integer) stepInfo.get(1);
+            Long time = (Long) stepInfo.get(1);
             if (step > maxStep || step < STEP_MIN || time < 0)
                 continue;
             stepGrade[step].add(time);
@@ -102,7 +102,7 @@ public class FunnelAlg {
      * @param cleanFunnelObject 是否清除传入的漏斗对象
      * @return 最大完成步数
      */
-    public static int countFunnel(ArrayList<ArrayList<Object>> funnelObject,  final int maxStep, final int convertTime, boolean cleanFunnelObject) {
+    public static int countFunnel(ArrayList<ArrayList<Object>> funnelObject,  final int maxStep, final long convertTime, boolean cleanFunnelObject) {
 
 
         if (funnelObject == null || funnelObject.isEmpty())
@@ -111,11 +111,11 @@ public class FunnelAlg {
         int maxStepCount = STEP_MIN;
 
         // 把漏斗按照每一步排序
-        Map<Integer, LinkedList<Integer>> stepGrade = funnelObject.stream()
+        Map<Integer, LinkedList<Long>> stepGrade = funnelObject.stream()
                 .filter(f -> (Integer)f.get(0) >= STEP_MIN && (Integer)f.get(0) <= maxStep)
                 .collect(Collectors.groupingBy(
                         f -> (Integer) f.get(0),
-                        Collectors.mapping(f -> (Integer) f.get(1), Collectors.toCollection(LinkedList::new))));
+                        Collectors.mapping(f -> (Long) f.get(1), Collectors.toCollection(LinkedList::new))));
 //                                Collectors.collectingAndThen(Collectors.toList(), l -> l.stream().sorted().collect(Collectors.toCollection(LinkedList::new))))
 //                ));
 
@@ -129,8 +129,8 @@ public class FunnelAlg {
         stepGrade.put(0, stepGrade.get(0).stream().sorted().collect(Collectors.toCollection(LinkedList::new)));
         // 剪枝
         for (int i = STEP_MIN + 1; i <= maxStep; i++) {
-            Integer prevMinTime = stepGrade.get(i-1).get(0);
-            LinkedList<Integer> currentStep = stepGrade.get(i);
+            Long prevMinTime = stepGrade.get(i-1).get(0);
+            LinkedList<Long> currentStep = stepGrade.get(i);
 
             //
             if (currentStep == null || currentStep.isEmpty()) {
@@ -158,7 +158,7 @@ public class FunnelAlg {
                 else
                     lastTime = stepGrade.get(i - 1).getFirst();
 
-                LinkedList<Integer> currentStep = stepGrade.get(i);
+                LinkedList<Long> currentStep = stepGrade.get(i);
                 if (currentStep == null || currentStep.isEmpty())
                     break outer;
 

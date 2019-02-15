@@ -1,4 +1,4 @@
-package joky.sparkUdf;
+package com.dt.sparkUdf;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -105,7 +105,7 @@ public class FunnelCount extends AbstractGenericUDAFResolver {
 
 //            System.out.println(" CollectMaxUDAF.init() - Mode= " + mode.name());
 //            for (int i = 0; i < parameters.length; ++i) {
-//                System.out.println(" ObjectInspector[ " + i + " ] = " + parameters[0]);
+//                System.out.println(" ObjectInspector[ " + i + " ] = " + parameters[i]);
 //            }
 
 //            if (parameters.length > 2) {
@@ -138,7 +138,7 @@ public class FunnelCount extends AbstractGenericUDAFResolver {
             if (mode == Mode.PARTIAL1 || mode == Mode.PARTIAL2) {
                 ArrayList<ObjectInspector> foi = new ArrayList<ObjectInspector>(2);
                 foi.add(PrimitiveObjectInspectorFactory.javaIntObjectInspector);
-                foi.add(PrimitiveObjectInspectorFactory.javaIntObjectInspector);
+                foi.add(PrimitiveObjectInspectorFactory.javaLongObjectInspector);
 
                 ArrayList<String> fname = new ArrayList<String>(2);
                 fname.add("step");
@@ -162,18 +162,19 @@ public class FunnelCount extends AbstractGenericUDAFResolver {
 
         @Override
         public void iterate(AggregationBuffer agg, Object[] input) throws HiveException {
+//            System.out.println("===========iterate============");
             assert (input.length == PARAMETER_COUNT);
             FunnelAggBuffer fb = (FunnelAggBuffer) agg;
             // add convert time first
             if (fb.funnelList.isEmpty() && (input[2] instanceof IntWritable || input[2] instanceof LongWritable)) {
                 ArrayList<Object> stepConvertTime = new ArrayList<>(2);
                 stepConvertTime.add(PARAM_STEP_NO);
-                stepConvertTime.add(PrimitiveObjectInspectorUtils.getInt(input[2], convertTimeOi));
+                stepConvertTime.add(PrimitiveObjectInspectorUtils.getLong(input[2], convertTimeOi));
                 fb.funnelList.add(stepConvertTime);
 
                 ArrayList<Object> isHasInitStep = new ArrayList<>(2);
                 isHasInitStep.add(PARAM_STEP_NO);
-                isHasInitStep.add(PrimitiveObjectInspectorUtils.getInt(input[3], hasInitStep));
+                isHasInitStep.add(PrimitiveObjectInspectorUtils.getLong(input[3], hasInitStep));
                 fb.funnelList.add(isHasInitStep);
             }
 
@@ -184,7 +185,7 @@ public class FunnelCount extends AbstractGenericUDAFResolver {
             }
             ArrayList<Object> step = new ArrayList<>(2);
             step.add(PrimitiveObjectInspectorUtils.getInt(input[0], stepOi));
-            step.add(PrimitiveObjectInspectorUtils.getInt(input[1], stepTimeOi));
+            step.add(PrimitiveObjectInspectorUtils.getLong(input[1], stepTimeOi));
             fb.funnelList.add(step);
         }
 
@@ -244,11 +245,11 @@ public class FunnelCount extends AbstractGenericUDAFResolver {
 
             if (fb.funnelList.size() >= 2) {
                 ArrayList<Object> convertTimeStep = fb.funnelList.get(0);
-                int convertTime = (int) convertTimeStep.get(1);
+                long convertTime = (long) convertTimeStep.get(1);
 
                 ArrayList<Object> hasInitStep = fb.funnelList.get(1);
 
-                int hasInit = (int) hasInitStep.get(1);
+                int hasInit = (int)((long) hasInitStep.get(1));
 
                 boolean hasInitData = fb.funnelList.stream().map(step -> (int)step.get(0)).anyMatch(s -> s == INIT_STEP_NO);
                 if (hasInit == HAS_INIT_STEP) {

@@ -1,4 +1,4 @@
-package joky.sparkUdf
+package com.dt.sparkUdf
 
 import org.apache.hadoop.hive.ql.exec.UDF
 import org.apache.hadoop.io.LongWritable

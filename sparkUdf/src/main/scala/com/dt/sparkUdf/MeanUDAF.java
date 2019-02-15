@@ -1,4 +1,4 @@
-package joky.sparkUdf;
+package com.dt.sparkUdf;
 
 import org.apache.hadoop.hive.common.type.HiveDecimal;
 import org.apache.hadoop.hive.ql.metadata.HiveException;

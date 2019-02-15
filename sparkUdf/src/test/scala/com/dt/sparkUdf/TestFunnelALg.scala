@@ -1,7 +1,8 @@
-package joky.sparkUdf
+package com.dt.sparkUdf
 
 import java.util
 
+import FunnelCount.FunnelEvaluator
 import org.scalatest.FlatSpec
 
 import scala.collection.JavaConversions._
@@ -12,7 +13,7 @@ class TestFunnelALg  extends FlatSpec {
     val stepMax = 9
     val cleanFunnelData = true
 
-    implicit def convertFunnelObject(scalaFunnelObj: Seq[(Int, Int)]): util.ArrayList[util.ArrayList[Object]] = {
+    implicit def convertFunnelObject(scalaFunnelObj: Seq[(Int, Long)]): util.ArrayList[util.ArrayList[Object]] = {
         val ret = new util.ArrayList[util.ArrayList[Object]]()
         scalaFunnelObj.foreach(funnel => {
             val row = new util.ArrayList[Object]()
@@ -27,9 +28,9 @@ class TestFunnelALg  extends FlatSpec {
         val convertTime = 100
 
         // side test
-        var funnelObjSide: Seq[(Int, Int)] = Seq(
+        var funnelObjSide: Seq[(Int, Long)] = Seq(
         )
-        assert(FunnelAlg.countFunnel(funnelObjSide, stepMax, convertTime, cleanFunnelData) == -1)
+        assert(FunnelAlg.countFunnel(funnelObjSide, stepMax, convertTime, cleanFunnelData) == FunnelEvaluator.STEP_FAILED)
 
         funnelObjSide = Seq(
             (0, 100)
@@ -39,7 +40,7 @@ class TestFunnelALg  extends FlatSpec {
         funnelObjSide = Seq(
             (1, 100)
         )
-        assert(FunnelAlg.countFunnel(funnelObjSide, stepMax, convertTime, cleanFunnelData) == -1)
+        assert(FunnelAlg.countFunnel(funnelObjSide, stepMax, convertTime, cleanFunnelData) == FunnelEvaluator.STEP_FAILED)
 
         // side test, 1,2两步同时发生，不记成功
         funnelObjSide = Seq(
@@ -148,7 +149,7 @@ class TestFunnelALg  extends FlatSpec {
 
     def performTest(stepCount: Int): Long = {
         val convertTime = 100000
-        val funnelObj = (0 until stepCount).map(i => (Random.nextInt(stepMax + 1), (Random.nextDouble() * convertTime).asInstanceOf[Int])).toSeq
+        val funnelObj = (0 until stepCount).map(i => (Random.nextInt(stepMax + 1), (Random.nextDouble() * convertTime).asInstanceOf[Long])).toSeq
         val begin = System.currentTimeMillis()
         val funnelRet = FunnelAlg.countFunnel(funnelObj, stepMax, convertTime, true)
         println("funnelRet = " + funnelRet)
