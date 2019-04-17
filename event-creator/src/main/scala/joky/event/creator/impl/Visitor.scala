@@ -1,93 +1,14 @@
-package joky.producer
+package joky.event.creator.impl
 
-import java.sql.Timestamp
-
-import joky.core.bean.{Event, EventAction, Session}
+import joky.core.bean.{Event, EventAction}
 import joky.core.util.SomeUtil
-import joky.producer.site._
 import org.apache.logging.log4j.scala.Logging
 
 import scala.util.Random
 
-
-class Device(
-                val deviceId: String,
-                val ip: String,
-                val uaName: String,
-                val uaMajor: String,
-                val resolution: String) {
-
-    private var title: String = _
-    private var url: String = _
-    private var siteId: String = _
-    private var referrer: String = _
-    private var session: Session = newSession
-    var deviceTime: Long = 0
-
-    val SESSION_EXPIRE_TIME: Int = 30 * 60 * 1000
-
-    def isSessionExpire: Boolean = {
-        System.currentTimeMillis() - session.lastTime.getTime > SESSION_EXPIRE_TIME
-    }
-
-    def getSession: Session = {
-        if (isSessionExpire)
-            return newSession
-        session
-    }
-
-    def newSession: Session = {
-        val sessionId = SomeUtil.shortMd5(s"${ip}_${uaName}_${uaMajor}_${resolution}_$deviceTime")
-        new Session(sessionId, new Timestamp(deviceTime), null, new Timestamp(deviceTime))
-    }
-
-    def pageview(siteId: String, title: String, url: String): Option[Event] = {
-        this.referrer = this.url
-        this.title = title
-        this.url = url
-        this.siteId = siteId
-        action(EventAction.pageview)
-    }
-
-    def login(userId: String): Option[Event] = {
-        action(EventAction.login, userId)
-    }
-
-    def order: Option[Event] = {
-        action(EventAction.order)
-    }
-
-    def pay: Option[Event] = {
-        action(EventAction.pay)
-    }
-
-    def logout: Option[Event] = {
-        action(EventAction.logout)
-    }
-
-    def click: Option[Event] = {
-        action(EventAction.click)
-    }
-
-    private def action(eventAction: EventAction.Value, userId: String = null): Option[Event] = {
-        if (url == null || title == null || siteId == null)
-            None
-
-        session = getSession
-        if (userId != null) {
-            session.userId = userId
-        }
-        val eventTime = new Timestamp(deviceTime)
-        val event = Event(eventTime.getTime, eventAction.toString, siteId, session.sessionId, session.seStartTime, deviceId, session.userId, url, title, referrer)
-        // 登出
-        if (eventAction.equals(EventAction.logout))
-            session = newSession
-        Some(event)
-    }
-}
-
 /**
   * 访客类
+  *
   * @param device   设备
   * @param visitSite    他可以访问的网站
   * @param userIds  访客持有的用户id列表
@@ -182,7 +103,7 @@ class Visitor(val device: Device, val visitSite: Site, val userIds: Seq[String],
       * @param seconds 动作的时间，分钟
       * @return
       */
-    def action(timing: Long = System.currentTimeMillis(), seconds: Int, eventConsumer: Event => Unit): Unit= {
+    def action(timing: Long = System.currentTimeMillis(), seconds: Long, eventConsumer: Event => Unit): Unit= {
         // 如果当前没有页面，先移动一下
         if (currentPageTree.isEmpty)
             move()
@@ -191,7 +112,7 @@ class Visitor(val device: Device, val visitSite: Site, val userIds: Seq[String],
         if (currentPageTree.isEmpty)
             return
 
-        val eventCount = seconds * eventCreateCountPerSecond
+        val eventCount = seconds.toInt * eventCreateCountPerSecond
 
         logger.info(s"Visitor[${device.deviceId}] Create $seconds seconds Events, EventCounts maybe $eventCount")
 
@@ -204,4 +125,3 @@ class Visitor(val device: Device, val visitSite: Site, val userIds: Seq[String],
             .foreach(eventConsumer(_))
     }
 }
-

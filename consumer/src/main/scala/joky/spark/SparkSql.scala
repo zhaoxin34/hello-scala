@@ -2,6 +2,7 @@ package joky.spark
 
 import java.sql.Timestamp
 
+import joky.core.bean.Event
 import joky.core.util.SomeUtil
 import org.apache.spark.sql.{SaveMode, SparkSession}
 
@@ -18,9 +19,9 @@ object SparkSql extends App {
     val spark = SparkSession.builder().master("local[1]").config("spark.sql.shuffle.partitions", "2")
         .appName("sql test").getOrCreate()
 
-    import spark.implicits._
+//    import spark.implicits._
 //
-//    val eventList = Range(0, 100).map(i => new Event(new Timestamp(new java.util.Date().getTime),
+//    val eventList = Range(0, 100).map(i => new Event(new java.util.Date().getTime,
 //        SomeUtil.randomPick(Event.eventNames).get,
 //        SomeUtil.randomPick(Event.sessionIds).get,
 //        SomeUtil.randomPick(Event.userIds).get))

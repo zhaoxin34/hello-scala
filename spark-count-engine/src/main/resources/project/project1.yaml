@@ -1,0 +1,217 @@
+id: project1
+name: 项目1
+tables:
+  -
+    id: event
+    name: 事件表
+    db: default
+    timestampColumn: eventTime
+    dateColumn: date
+    columns:
+      -
+        id: siteId
+        name: 网站id
+        columnType: STRING
+      -
+        id: eventTime
+        name: 事件时间
+        columnType: LONG
+      -
+        id: deviceId
+        name: deviceId
+      -
+        id: sessionId
+        name: sessionId
+      -
+        id: userId
+        name: userId
+      -
+        id: seStartTime
+        name: seStartTime
+        columnType: long
+      -
+        id: channelId
+        name: channelId
+        columnType: INTEGER
+      -
+        id: userAgent
+        name: userAgent
+      -
+        id: uaName
+        name: uaName
+      -
+        id: uaMajor
+        name: uaMajor
+      -
+        id: uaMinor
+        name: uaMinor
+      -
+        id: uaOs
+        name: uaOs
+      -
+        id: uaOsMajor
+        name: uaOsMajor
+      -
+        id: uaOsMinor
+        name: uaOsMinor
+      -
+        id: uaDevice
+        name: uaDevice
+      -
+        id: resolution
+        name: resolution
+      -
+        id: language
+        name: language
+      -
+        id: netType
+        name: netType
+      -
+        id: plugin
+        name: plugin
+      -
+        id: ip
+        name: ip
+      -
+        id: continentCode
+        name: continentCode
+      -
+        id: country
+        name: country
+      -
+        id: region
+        name: region
+      -
+        id: city
+        name: city
+      -
+        id: lat
+        name: lat
+        columnType: DOUBLE
+      -
+        id: lgt
+        name: lgt
+        columnType: DOUBLE
+      -
+        id: url
+        name: url
+      -
+        id: title
+        name: title
+      -
+        id: referer
+        name: referer
+      -
+        id: eventName
+        name: eventName
+      -
+        id: eventBody
+        name: eventBody
+        columnType: STRUCT
+
+events:
+    -
+      id: pageview
+      name: 页面浏览
+      filter: eventName = 'pageview'
+    -
+      id: login
+      name: 登录
+      filter: eventName = 'login'
+    -
+      id: logout
+      name: 登出
+      filter: eventName = 'logout'
+    -
+      id: order
+      name: 订单
+      filter: eventName = 'order'
+    -
+      id: order
+      name: 订单
+      filter: eventName = 'order'
+    -
+      id: andriod_home_page
+      name: 安卓首页
+      filter: eventName = 'pageview' and url = 'http://com.umaman.laiyifen/com.ody.p2p.main.MainActivity'
+    -
+      id: andriod_order_confirm
+      name: 安卓订单确认页
+      filter: eventName = 'pageview' and url = 'http://com.umaman.laiyifen/com.ody.p2p.main.order.LYFConfirmOrderActivity'
+
+segments:
+  -
+    id: beijing_login
+    name: 北京登录用户
+    filters:
+      - eventName = 'order' and city = '北京'
+  -
+    id: country_china
+    name: 中国国家
+    filters:
+      - country = '中国'
+
+metrics:
+  -
+    id: pv_count
+    name: 页面浏览次数
+    agg:
+      column: '*'
+      function: COUNT
+    filters:
+      - eventName = 'pageview'
+  -
+    id: uv_count
+    name: 访客数
+    agg:
+      column: '*'
+      function: UNIQUE_COUNT
+  -
+    id: beijing_order_uv_count
+    name: 北京登录事件的访客数
+    agg:
+      column: '*'
+      function: UNIQUE_COUNT
+    segments:
+      -
+        beijing_login
+
+dimensions:
+  -
+    id: cityDimension
+    name: 城市
+    dimensionType: COLUMN
+    columns:
+      - city
+  -
+    id: segmentDimension
+    name: segment维度样例
+    dimensionType: SEGMENT
+    filters:
+      - eventName = 'order' and city = '北京'
+      - eventName = 'order'
+      - eventName = 'pageview' and url = 'http://com.umaman.laiyifen/com.ody.p2p.main.order.LYFConfirmOrderActivity'
+
+#aggSegment:
+#  -
+#    id: xxx
+#    name: xxx
+#    filters:
+#      - xxxx
+#    columns:
+#      - xxxxx
+#    then:
+#      - $done(#event, 3 times, in 3 minutes)
+#      - $done(*, 2 times)
+#      - $done(#event, 1 times) $goby(event0, in 5 minutes)
+
+charts:
+  -
+    id: 7_days_pv_chart
+    name: 7天pv图表分析
+    plan: multiMetricsChart
+    from: event
+    period: [20190411, 20190412, 20190413, 20190414, 20190415, 20190416]
+    metrics: [pv_count, uv_count]
+    filters:
+        - country = '中国'

@@ -1,11 +1,11 @@
-package joky.producer.site
+package joky.event.creator.impl
 
-import joky.producer.PageConfig
+import joky.event.creator.EventCreatorConfig.PageConfig
 
 import scala.annotation.tailrec
 import scala.collection.mutable.ArrayBuffer
 
-case class PageTree[T <: PageConfig] private (father: Option[PageTree[T]], value: String, subTree: ArrayBuffer[PageTree[T]], pageList: ArrayBuffer[T]) {
+case class PageTree[T <: PageConfig] private(father: Option[PageTree[T]], value: String, subTree: ArrayBuffer[PageTree[T]], pageList: ArrayBuffer[T]) {
 
     /**
       * 获得根节点
@@ -78,18 +78,18 @@ object PageTree {
         val tree = PageTree[T](None, ROOT_VALUE, ArrayBuffer[PageTree[T]](), ArrayBuffer[T]())
 
         pageList.foreach(page => {
-                val pattern = "(http[s]?://.*?)(/.*)".r
-                page.url match {
-                    case pattern(host: String, uri: String) => {
-                        val path = if (uri.endsWith("/")) uri else uri.substring(0, uri.lastIndexOf("/"))
-                        val fullPath = Seq("ROOT", host)  ++  path.split("/").filter(_.nonEmpty)
-//                        val page = uri.substring(uri.lastIndexOf("/"), uri.length)
-//                        println(fullPath)
-                        tree.addValue(fullPath, page)
-                    }
-                    case _ =>
+            val pattern = "(http[s]?://.*?)(/.*)".r
+            page.url match {
+                case pattern(host: String, uri: String) => {
+                    val path = if (uri.endsWith("/")) uri else uri.substring(0, uri.lastIndexOf("/"))
+                    val fullPath = Seq("ROOT", host)  ++  path.split("/").filter(_.nonEmpty)
+                    //                        val page = uri.substring(uri.lastIndexOf("/"), uri.length)
+                    //                        println(fullPath)
+                    tree.addValue(fullPath, page)
                 }
-            })
+                case _ =>
+            }
+        })
 
         tree
     }

@@ -23,7 +23,7 @@ case class Event(eventTime: Long,
                  eventName: String,
                  siteId: String,
                  sessionId: String,
-                 seStartTime: Timestamp,
+                 seStartTime: Long,
                  deviceId: String,
                  userId: String,
                  url: String,
@@ -33,9 +33,9 @@ case class Event(eventTime: Long,
                 )
 
 class Session(val sessionId: String,
-              val seStartTime: Timestamp,
+              val seStartTime: Long,
               var userId: String = null,
-              var lastTime: Timestamp)
+              var lastTime: Long)
 
 
 

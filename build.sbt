@@ -60,6 +60,24 @@ lazy val core = project
         libraryDependencies ++= Dep.depsJackson
     )
 
+lazy val eventCreator = (project in file("event-creator"))
+    .settings(
+        commonSettings,
+        name := "event-creator",
+        libraryDependencies ++= Dep.depsLog4j
+    )
+    .dependsOn(core)
+
+lazy val sparkCountEngine = (project in file("spark-count-engine"))
+    .settings(
+        commonSettings,
+        name := "spark-count-engine",
+        libraryDependencies ++= Dep.depsSpark,
+        dependencyOverrides ++= depsOverrideSpark,
+        excludeDependencies ++= Seq(Dep.erServlet, Dep.erJsp, Dep.erJetty, Dep.erJerseyServer)
+    )
+    .dependsOn(eventCreator)
+
 lazy val producer = project
     .settings(
         commonSettings,

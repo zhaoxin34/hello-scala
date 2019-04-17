@@ -1,0 +1,42 @@
+
+#name: root
+#fromUnionedTask:
+#  - task1
+#  - task2
+#---
+#name: task1
+#fromTask: aOrderTable
+#---
+#name: task2
+#fromJoinedTask:
+#  left: taskLeft
+#  right: taskRight
+#---
+
+name: aOrderTable
+from: global_temp.event
+#fromSql:
+#fromTask:
+#fromJoinedTask
+#fromUnionedTask
+filter:
+  connector: AND
+  conditions:
+    - sessionId like '%a'
+    - eventName = 'order'
+group:
+  columns: [sessionId]
+  aggs:
+    -
+      column: '*'
+      function: COUNT
+      as: a_count
+    -
+      column: eventTime
+      function: MAX
+      as: max_event_time
+  sorts:
+    -
+      column: a_count
+      order: DESC
+limit: 10

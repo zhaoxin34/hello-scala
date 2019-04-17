@@ -1,12 +1,14 @@
-package joky.producer
+package joky.event.creator.impl
 
 import com.fasterxml.jackson.core.`type`.TypeReference
 import joky.core.bean.EventAction
 import joky.core.util.{ConfigUtil, SomeUtil}
+import joky.event.creator.EventConsumer
+import joky.event.creator.EventCreatorConfig.{DeviceConfig, PageConfig, SiteConfig}
 import org.apache.logging.log4j.scala.Logging
 
 import scala.collection.mutable.ArrayBuffer
-import joky.producer.site._
+import scala.concurrent.duration.Duration
 
 /**
   * 创建事件生成器
@@ -63,11 +65,12 @@ case class EventProducer private (visitorPoolSize: Int, userIdPerVisitor: Int, e
 
     /**
       * 创建事件
-      * @param seconds 创建多长时间的事件
+      * @param timing 从哪个时间点开始创建
+      * @param duration 创建多长时间的事件
       * @param visitorCount 使用多少个访客创建事件
       * @return
       */
-    def consumeEvent(timing: Long, seconds: Int, visitorCount: Int, eventConsumer: EventConsumer): Unit= {
+    def consumeEvent(timing: Long, duration: Duration, visitorCount: Int, eventConsumer: EventConsumer): Unit= {
         val _visitorCount = Math.min(visitorCount, visitorPoolSize)
         if (_visitorCount < visitorCount)
             logger.warn(s"not enough visitor, visitorCount=$visitorCount, visitorPoolSize=$visitorPoolSize")
@@ -75,8 +78,8 @@ case class EventProducer private (visitorPoolSize: Int, userIdPerVisitor: Int, e
         for (i <- 0 until _visitorCount) {
             val visitor = SomeUtil.randomPick(visitorPool)
             if (visitor.nonEmpty) {
-                logger.info(s"user deviceId[${visitor.get.device.deviceId}] create ${visitor.get.eventCreateCountPerSecond * seconds} events")
-                visitorPool(i).action(timing, seconds, eventConsumer.consume)
+                logger.info(s"user deviceId[${visitor.get.device.deviceId}] create ${visitor.get.eventCreateCountPerSecond * duration.toSeconds} events")
+                visitorPool(i).action(timing, duration.toSeconds, eventConsumer.consume)
             }
         }
 
@@ -86,11 +89,11 @@ case class EventProducer private (visitorPoolSize: Int, userIdPerVisitor: Int, e
 
 object EventProducer extends Logging {
 
-    val DEVICE_FILE = "producer/src/main/resources/data/device.data"
-    val IP_FILE = "producer/src/main/resources/data/ip.data"
-    val SITE_FILE = "producer/src/main/resources/data/site.yaml"
-    val VISITOR_FILE = "producer/src/main/resources/data/visitor.yaml"
-    val SITE_FILE_DIR = "producer/src/main/resources/data/site/"
+    val DEVICE_FILE = "event-creator/src/main/resources/data/device.data"
+    val IP_FILE = "event-creator/src/main/resources/data/ip.data"
+    val SITE_FILE = "event-creator/src/main/resources/data/site.yaml"
+    val VISITOR_FILE = "event-creator/src/main/resources/data/visitor.yaml"
+    val SITE_FILE_DIR = "event-creator/src/main/resources/data/site/"
 
     def createEventProducer(visitorPoolSize: Int = 10, userIdPerVisitor: Int = 3, eventCreateCountPerSecond: Int = 10): Option[EventProducer] = {
         logger.info(s"EventProducer Will Produce: visitorPoolSize=$visitorPoolSize, userIdPerVisitor=$userIdPerVisitor, eventCreateCountPerSecond=$eventCreateCountPerSecond")
