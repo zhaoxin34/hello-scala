@@ -159,7 +159,7 @@ metrics:
     column: '*'
     function: COUNT
   filters:
-  - $event(pageview)
+    - $event(pageview)
 -
   id: uv_count
   name: 访客数

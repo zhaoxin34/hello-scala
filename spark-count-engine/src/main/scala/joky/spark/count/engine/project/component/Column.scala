@@ -1,7 +1,9 @@
 package joky.spark.count.engine.project.component
 
-class Column(id: String,
+import joky.spark.count.engine.project.component.helper.{ColumnType, ComponetType}
+
+case class Column(id: String,
              name: String,
-             columnType: ColumnType) {
+             columnType: ColumnType) extends Component (id, name, ComponetType.COLUMN) {
 
 }

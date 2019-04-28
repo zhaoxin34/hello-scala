@@ -17,6 +17,7 @@ object Starter2 extends App {
 //    df.createGlobalTempView("event")
 //    spark.sql("select * from global_temp.event where eventName= 'pageview' limit 10").show(false)
 
+
     val projectConfig = ProjectConfig.buildConfig("spark-count-engine/src/main/resources/project/project1.yaml")
     println(projectConfig)
 }

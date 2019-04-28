@@ -1,5 +1,9 @@
 package joky.spark.count.engine.project.component
 
-case class Filter(value: String){
+import joky.spark.count.engine.project.component.helper.ComponetType
+
+case class Filter(id: String,
+                  name: String,
+                  value: String) extends Component (id, name, ComponetType.FILTER) {
 
 }

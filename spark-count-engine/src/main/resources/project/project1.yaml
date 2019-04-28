@@ -113,68 +113,71 @@ events:
     -
       id: pageview
       name: 页面浏览
-      filter: eventName = 'pageview'
+      filters:
+        - eventName = 'pageview'
     -
       id: login
       name: 登录
-      filter: eventName = 'login'
+      filters:
+        - eventName = 'login'
     -
       id: logout
       name: 登出
-      filter: eventName = 'logout'
+      filters:
+        - eventName = 'logout'
     -
       id: order
       name: 订单
-      filter: eventName = 'order'
+      filters:
+        - eventName = 'order'
     -
       id: order
       name: 订单
-      filter: eventName = 'order'
+      filters:
+        - eventName = 'order'
     -
       id: andriod_home_page
       name: 安卓首页
-      filter: eventName = 'pageview' and url = 'http://com.umaman.laiyifen/com.ody.p2p.main.MainActivity'
+      filters:
+        - eventName = 'pageview' and url = 'http://com.umaman.laiyifen/com.ody.p2p.main.MainActivity'
     -
       id: andriod_order_confirm
       name: 安卓订单确认页
-      filter: eventName = 'pageview' and url = 'http://com.umaman.laiyifen/com.ody.p2p.main.order.LYFConfirmOrderActivity'
+      filters:
+        - eventName = 'pageview' and url = 'http://com.umaman.laiyifen/com.ody.p2p.main.order.LYFConfirmOrderActivity'
 
-segments:
+filters:
   -
     id: beijing_login
     name: 北京登录用户
-    filters:
-      - eventName = 'order' and city = '北京'
+    values:
+      - eventName = 'login' and city = '北京'
   -
     id: country_china
     name: 中国国家
-    filters:
+    values:
       - country = '中国'
 
 metrics:
   -
     id: pv_count
     name: 页面浏览次数
-    agg:
-      column: '*'
-      function: COUNT
+    column: '*'
+    function: COUNT
     filters:
       - eventName = 'pageview'
   -
     id: uv_count
     name: 访客数
-    agg:
-      column: '*'
-      function: UNIQUE_COUNT
+    column: '*'
+    function: UNIQUE_COUNT
   -
     id: beijing_order_uv_count
     name: 北京登录事件的访客数
-    agg:
-      column: '*'
-      function: UNIQUE_COUNT
-    segments:
-      -
-        beijing_login
+    column: '*'
+    function: UNIQUE_COUNT
+    filters:
+      - eventName = 'login' and city = '北京'
 
 dimensions:
   -
@@ -186,7 +189,7 @@ dimensions:
   -
     id: segmentDimension
     name: segment维度样例
-    dimensionType: SEGMENT
+    dimensionType: filter
     filters:
       - eventName = 'order' and city = '北京'
       - eventName = 'order'
@@ -211,7 +214,9 @@ charts:
     name: 7天pv图表分析
     plan: multiMetricsChart
     from: event
-    period: [20190411, 20190412, 20190413, 20190414, 20190415, 20190416]
+    startDate: 2019-04-11
+    endDate: 2019-04-16
+    timeUnit: DAY
     metrics: [pv_count, uv_count]
     filters:
-        - country = '中国'
+      - country = '中国'
