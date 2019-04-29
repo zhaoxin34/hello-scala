@@ -6,5 +6,6 @@ package joky.spark.de.entity
   * @Description:
   */
 case class Table(db:String, name: String, label: String) {
-    def asteriskColumn: Column = Column(this, "*", "*")
+    def asteriskColumn: Column = TableColumn(this, "*", "*")
+    def column(name: String, label: String): TableColumn = TableColumn(this, name, label)
 }

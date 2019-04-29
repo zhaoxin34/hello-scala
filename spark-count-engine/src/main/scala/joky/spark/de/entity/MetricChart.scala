@@ -4,6 +4,6 @@ import java.util.Date
 
 import joky.spark.de.entity.helper.TimeUnit
 
-case class MetricChart(name: String, tableMetrics: TableMetrics, startTime: Date, endTime: Date, timeUnit: TimeUnit = TimeUnit.DAY) {
+case class MetricChart(name: String, tableMetrics: TableMetrics, startTime: Date, endTime: Date, timeUnit: TimeUnit = TimeUnit.DAY, dimensionColumns: Seq[Column] = Seq(), dimensionLimit: Int = 0) {
 
 }
