@@ -79,7 +79,7 @@ case class EventProducer private (visitorPoolSize: Int, userIdPerVisitor: Int, e
             val visitor = SomeUtil.randomPick(visitorPool)
             if (visitor.nonEmpty) {
                 logger.info(s"user deviceId[${visitor.get.device.deviceId}] create ${visitor.get.eventCreateCountPerSecond * duration.toSeconds} events")
-                visitorPool(i).action(timing, duration.toSeconds, eventConsumer.consume)
+                visitor.get.action(timing, duration.toSeconds, eventConsumer.consume)
             }
         }
 
