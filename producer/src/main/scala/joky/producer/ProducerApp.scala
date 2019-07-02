@@ -11,7 +11,7 @@ import scala.concurrent.duration._
 /**
   * 启动代码示例
   * sbt ";compile;project producer;runMain joky.producer.ProducerApp --outputToKafka=true --kafkaTopicId=test-producer-20190111"
-  * sbt ";compile;project producer;runMain joky.producer.ProducerApp --outputToKafka=false --kafkaTopicId=test-producer-20190111 --outputToConsole=true --visitorPoolSize=100 --userIdPerVisitor=3 --eventCreateCountPerSecond=10 --visitorUsedPerBatch=5"
+  * sbt ";compile;project producer;runMain joky.producer.ProducerApp --outputToKafka=true --outputToConsole=true --visitorPoolSize=100000 --userIdPerVisitor=3 --eventCreateCountPerSecond=10 --visitorUsedPerBatch=30 --kafkaBootstrapServers=datatist-centos00:9092,datatist-centos01:9092,datatist-centos02:9092 --kafkaTopicId=test-message"
   */
 
 /**
@@ -105,6 +105,7 @@ object ProducerApp extends App with Logging {
     }
 
     def execute(producerConfig: ProducerConfig): Unit = {
+        logger.info(producerConfig)
         // 创建事件发生器
         val eventProducer = EventProducer.createEventProducer(producerConfig.visitorPoolSize, producerConfig.userIdPerVisitor, producerConfig.eventCreateCountPerSecond)
         ProducerScheduler.startSchedule(producerConfig.scheduleDelay, producerConfig.scheduleInterval, () => createEventCallback(eventProducer, producerConfig))
