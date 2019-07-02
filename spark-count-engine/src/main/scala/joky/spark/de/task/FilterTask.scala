@@ -15,11 +15,8 @@ case class FilterTask(filters: Filter*) extends Task {
         s"Filter[${filters.map(_.toCondition).mkString(",")}]"
     }
 
-    override def execute(father: Try[DataFrame], spark: SparkSession): Try[DataFrame] = {
-        father match {
-            case Success(df) => Success(filters.map(_.toCondition).foldLeft(df)((a, b) => a.filter(b)))
-            case f => f
-        }
+    override def execute(father: DataFrame, spark: SparkSession): DataFrame = {
+        filters.map(_.toCondition).foldLeft(father)((a, b) => a.filter(b))
     }
 }
 

@@ -11,26 +11,48 @@ import scala.util.{Failure, Success, Try}
 trait Task {
     def valid:ValidResult = ValidResult()
 
-    def showError(dataFrame: Try[DataFrame]): Unit = {
-        dataFrame match {
-            case Failure(exception) =>
-                print(s"$this exception[$exception]")
-            case _ =>
-        }
-    }
-
-    def run(father: Try[DataFrame] = Success(null), spark: SparkSession): Try[DataFrame] = {
+    /**
+      * 外部调用的运行接口
+      *
+      * @param father
+      * @param spark
+      * @return
+      */
+    final def run(father: Try[DataFrame] = Success(null), spark: SparkSession): Try[DataFrame] = {
         valid match {
             case ValidResult(true, _) =>
-                val result = execute(father, spark)
-                showError(result)
-                result
+                father match {
+                    case Success(df) =>
+                        try {
+                            Success(execute(df, spark))
+                        } catch {
+                            case e: Throwable =>
+                                e.printStackTrace()
+                                Failure(e)
+                        }
+                    case Failure(e) => Failure(e)
+                }
 
             case ValidResult(false, message) => Failure(new RuntimeException(message))
         }
     }
 
-    protected def execute(father: Try[DataFrame] = Success(null), spark: SparkSession): Try[DataFrame]
+    /**
+      * 内部运行函数
+      * @param father
+      * @param spark
+      * @return
+      */
+    @throws(classOf[Exception])
+    protected def execute(father: DataFrame, spark: SparkSession): DataFrame
+
+    def +(task: Task): Task = {
+        SeqTask(this, task)
+    }
+
+    def ++(tasks: Seq[Task]): Task = {
+        SeqTask(Seq(this) ++ tasks: _*)
+    }
 }
 
 object Task {

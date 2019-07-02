@@ -19,10 +19,7 @@ case class AddValuedColumnTask(valueColumns: ValueColumn*) extends Task {
         s"AddValuedColumn[${valueColumns.map(_.toString).mkString(",")}]"
     }
 
-    override def execute(father: Try[DataFrame], spark: SparkSession): Try[DataFrame] = {
-        father match {
-            case Success(df) => Success(valueColumns.foldLeft(df)((a, b) => a.withColumn(b.name, typedLit(b.value))))
-            case f => f
-        }
+    override def execute(father: DataFrame, spark: SparkSession): DataFrame = {
+        valueColumns.foldLeft(father)((a, b) => a.withColumn(b.name, typedLit(b.value)))
     }
 }

@@ -15,16 +15,12 @@ case class DimensionAggsTask(dimensionColumns: Seq[String], aggs: Seq[Agg], limi
         s"DimensionAggs[columns(${dimensionColumns.mkString(",")}), aggs(${aggs.map(_.toString).mkString(",")}), limit $limit]"
     }
 
-    override def execute(father: Try[DataFrame], spark: SparkSession): Try[DataFrame] = {
-        father match {
-            case Success(df) =>
-                val rltFrame = df.groupBy(dimensionColumns.map(df.col): _*)
-                val aggColumns = aggs.map(Task.aggToColumn)
-                var rtDf = rltFrame.agg(aggColumns.head, aggColumns.slice(1, aggColumns.size): _*)
-                if (limit > 0 )
-                    rtDf = rtDf.limit(limit)
-                Success(rtDf)
-            case f => f
-        }
+    override def execute(father: DataFrame, spark: SparkSession): DataFrame = {
+        val rltFrame = father.groupBy(dimensionColumns.map(father.col): _*)
+        val aggColumns = aggs.map(Task.aggToColumn)
+        var rtDf = rltFrame.agg(aggColumns.head, aggColumns.slice(1, aggColumns.size): _*)
+        if (limit > 0)
+            rtDf = rtDf.limit(limit)
+        rtDf
     }
 }

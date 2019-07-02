@@ -15,18 +15,21 @@ case class UmbrellaUnionTask(task: Task, umbrellaTasks: Seq[Task]) extends Task 
         s"Umbrella[$task -> union(\n ${umbrellaTasks.map("\t" + _.toString).mkString("\n")}\n)]"
     }
 
-    override def execute(father: Try[DataFrame], spark: SparkSession): Try[DataFrame] = {
-        val cur = task.run(father, spark)
+    override def execute(father: DataFrame, spark: SparkSession): DataFrame = {
+        val cur = task.run(Success(father), spark)
         val results = umbrellaTasks
             .map(_.run(cur, spark))
 
         val fails = results.filter(_.isFailure)
 
         if (fails.nonEmpty) {
-            Failure(Task.exeception(fails.mkString(",")))
+            throw Task.exeception(fails.mkString(","))
         }
         else {
-            results.map(_.get).reduceOption((a, b) => a.union(b)).map(Success(_)).getOrElse(Failure(Task.exeception("succes umbrellaTasks empty")))
+            results.map(_.get).reduceOption((a, b) => a.union(b)) match {
+                case Some(df: DataFrame) => df
+                case _ => throw Task.exeception("success umbrellaTasks empty")
+            }
         }
     }
 }

@@ -1,13 +1,17 @@
 package joky.producer
 
-import com.github.nscala_time.time.Imports._
+import java.util.concurrent.TimeUnit
+
 import joky.core.util.ConfigUtil
+import joky.event.creator.impl.EventProducer
 import org.apache.logging.log4j.scala.Logging
-import org.joda.time.DateTime
+
+import scala.concurrent.duration._
 
 /**
   * 启动代码示例
   * sbt ";compile;project producer;runMain joky.producer.ProducerApp --outputToKafka=true --kafkaTopicId=test-producer-20190111"
+  * sbt ";compile;project producer;runMain joky.producer.ProducerApp --outputToKafka=false --kafkaTopicId=test-producer-20190111 --outputToConsole=true --visitorPoolSize=100 --userIdPerVisitor=3 --eventCreateCountPerSecond=10 --visitorUsedPerBatch=5"
   */
 
 /**
@@ -16,10 +20,10 @@ import org.joda.time.DateTime
   * @param scheduleDelay    启动后延时多少
   * @param scheduleInterval 调度间隔
   *
-  * @param visitorPoolSize               每个事件生成器，访客池的大小，建议值10-1000000
+  * @param visitorPoolSize               每个事件生成器，访客池的大小，建议值10 -- 1000000
   * @param userIdPerVisitor              每个事件生成器，每个访客可以拥有的用户id数，建议1-10
-  * @param eventCreateCountPerSecond     每个事件生成器，每秒产生的event数量1 - visitorPoolSize * 1000
-  * @param visitorUsedPerBatch           每个事件生成器，每一批次使用的访客数量，1 - visitorPoolSize
+  * @param eventCreateCountPerSecond     每个事件生成器，每秒产生的event数量1 -- visitorPoolSize * 1000
+  * @param visitorUsedPerBatch           每个事件生成器，每一批次使用的访客数量，1 -- visitorPoolSize
   * @param consumeDurationSecondPerBatch 每个事件生成器，每一批次持续的时间（秒）
   * @param outputToConsole               是否向屏幕输出，打开用于debug
   * @param outputToKafka                 是否向kafka输出
@@ -102,31 +106,31 @@ object ProducerApp extends App with Logging {
 
     def execute(producerConfig: ProducerConfig): Unit = {
         // 创建事件发生器
-//        val eventProducer = EventProducer.createEventProducer(producerConfig.visitorPoolSize, producerConfig.userIdPerVisitor, producerConfig.eventCreateCountPerSecond)
-//        ProducerScheduler.startSchedule(producerConfig.scheduleDelay, producerConfig.scheduleInterval, () => createEventCallback(eventProducer, producerConfig))
+        val eventProducer = EventProducer.createEventProducer(producerConfig.visitorPoolSize, producerConfig.userIdPerVisitor, producerConfig.eventCreateCountPerSecond)
+        ProducerScheduler.startSchedule(producerConfig.scheduleDelay, producerConfig.scheduleInterval, () => createEventCallback(eventProducer, producerConfig))
     }
 
-//    private def createEventCallback(eventProducer: Option[EventProducer], producerConfig: ProducerConfig): Unit = {
-//
-//        if (eventProducer.nonEmpty) {
-//            // 向屏幕输出
-//            if (producerConfig.outputToConsole)
-//                eventProducer.get.consumeEvent(DateTime.now().second(0).millis(0).getMillis, producerConfig.consumeDurationSecondPerBatch, producerConfig.visitorUsedPerBatch, new PrintEventConsumer())
-//
-//            // 向kafka输出
-//            if (producerConfig.outputToKafka) {
-//
-//                val kafkaConfig = ConfigUtil.readPorpertiesFile("producer/src/main/resources/kafka-producer.properties")
-//                if (producerConfig.kafkaBootstrapServers != null)
-//                    kafkaConfig.put("bootstrap.servers", producerConfig.kafkaBootstrapServers)
-//
-//                eventProducer.get.consumeEvent(DateTime.now().second(0).millis(0).getMillis,
-//                    producerConfig.consumeDurationSecondPerBatch,
-//                    producerConfig.visitorUsedPerBatch,
-//                    new KafkaEventConsumer(producerConfig.kafkaTopicId, kafkaConfig))
-//            }
-//        }
-//    }
+    private def createEventCallback(eventProducer: Option[EventProducer], producerConfig: ProducerConfig): Unit = {
+
+        if (eventProducer.nonEmpty) {
+            // 向屏幕输出
+            if (producerConfig.outputToConsole)
+                eventProducer.get.consumeEvent(System.currentTimeMillis(), producerConfig.consumeDurationSecondPerBatch seconds, producerConfig.visitorUsedPerBatch, new PrintEventConsumer())
+
+            // 向kafka输出
+            if (producerConfig.outputToKafka) {
+
+                val kafkaConfig = ConfigUtil.readPorpertiesFile("producer/src/main/resources/kafka-producer.properties")
+                if (producerConfig.kafkaBootstrapServers != null)
+                    kafkaConfig.put("bootstrap.servers", producerConfig.kafkaBootstrapServers)
+
+                    eventProducer.get.consumeEvent(System.currentTimeMillis(),
+                    producerConfig.consumeDurationSecondPerBatch second,
+                    producerConfig.visitorUsedPerBatch,
+                    new KafkaEventConsumer(producerConfig.kafkaTopicId, kafkaConfig))
+            }
+        }
+    }
 
 
 }

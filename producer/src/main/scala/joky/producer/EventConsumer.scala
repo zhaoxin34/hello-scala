@@ -4,13 +4,10 @@ import java.util.Properties
 
 import joky.core.bean.Event
 import joky.core.util.JsonUtil
+import joky.event.creator.EventConsumer
 import org.apache.kafka.clients.producer.{KafkaProducer, ProducerRecord}
 import org.apache.logging.log4j.scala.Logging
 
-trait EventConsumer {
-    def consume(event: Event): Unit
-    def close(): Unit = () => ()
-}
 
 class PrintEventConsumer extends EventConsumer {
     override def consume(event: Event): Unit = println(event)

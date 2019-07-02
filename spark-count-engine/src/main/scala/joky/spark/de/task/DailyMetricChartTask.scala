@@ -8,7 +8,7 @@ import joky.spark.de.entity.helper.ColumnType
 import org.apache.spark.sql.{DataFrame, SparkSession}
 
 import scala.collection.mutable.ListBuffer
-import scala.util.Try
+import scala.util.{Failure, Success}
 
 /**
   * 用于给dataframe增加常量字段
@@ -79,8 +79,11 @@ case class DailyMetricChartTask(table: Table,
 
     private val innerTask = createInnerTask
 
-    override def execute(father: Try[DataFrame], spark: SparkSession): Try[DataFrame] = {
-        innerTask.run(father, spark)
+    override def execute(father: DataFrame, spark: SparkSession): DataFrame = {
+        innerTask.run(Success(father), spark) match {
+            case Success(df) => df
+            case Failure(e) => throw e
+        }
     }
 
     override def toString: String = {

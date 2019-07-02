@@ -21,11 +21,11 @@ case class FromTableTask(table: Table, limit: Int = 0, sorts: Seq[Sort] = Seq())
         s"From[$table limit $limit order by ${sorts.map(_.toString).mkString(",")}]"
     }
 
-    override def execute(father: Try[DataFrame], spark: SparkSession): Try[DataFrame] = {
+    override def execute(father: DataFrame, spark: SparkSession): DataFrame = {
         var df = spark.table(table.toString)
         if (limit > 0)
             df = df.limit(limit)
-        Success(df)
+        df
     }
 }
 

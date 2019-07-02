@@ -84,7 +84,7 @@ lazy val producer = project
         name := "producer",
         libraryDependencies ++= (Dep.depsLog4j ++ Dep.depsAkka :+ kafkaClient)
     )
-    .dependsOn(core)
+    .dependsOn(eventCreator)
 
 lazy val consumer = project
     .settings(

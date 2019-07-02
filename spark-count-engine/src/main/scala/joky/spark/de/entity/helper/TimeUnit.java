@@ -6,5 +6,19 @@ package joky.spark.de.entity.helper;
  * @Description:
  */
 public enum TimeUnit {
-    DAY, HOUR, WEEK, MONTH
+    DAY(24 * 60 * 60),
+    HOUR(60 * 60),
+    WEEK(7 * 24 * 60 * 60),
+    MINUTE(60),
+    SECOND(1);
+
+    int senconds;
+
+    TimeUnit(int senconds) {
+        this.senconds = senconds;
+    }
+
+    public int getSenconds() {
+        return senconds;
+    }
 }

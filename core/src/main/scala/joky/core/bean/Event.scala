@@ -29,7 +29,10 @@ case class Event(eventTime: Long,
                  url: String,
                  title: String,
                  referrer: String,
-                 eventBody: String = null
+                 eventBody: String =
+                     """
+
+                     """.stripMargin
                 )
 
 class Session(val sessionId: String,
