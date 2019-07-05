@@ -1,7 +1,10 @@
 package joky.spark.count.engine
 
+import java.util.Date
+
 import joky.core.util.ConfigUtil
 import joky.event.creator.EventCreator
+import joky.event.creator.consumer.ToEventSeqConsumer
 import org.apache.spark.sql.{Column, DataFrame, SparkSession}
 
 import scala.concurrent.duration._
@@ -17,7 +20,9 @@ object Starter extends App {
     import spark.implicits._
     import org.apache.spark.sql.functions._
 
-    val eventList = EventCreator.createEventList(duration = 100 seconds)
+    val toEventSeqConsumer: ToEventSeqConsumer = new ToEventSeqConsumer()
+    EventCreator(1000, 100000).consumeEvent(new Date(), 5* 60, toEventSeqConsumer)
+    val eventList = toEventSeqConsumer.eventSeq
 
     val eventDs = eventList.toDS()
     eventDs.printSchema()

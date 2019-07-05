@@ -1,10 +1,9 @@
 scheduleDelay: 0
-scheduleInterval: 5
+scheduleInterval: 60
 visitorPoolSize: 100
-userIdPerVisitor: 3
-eventCreateCountPerSecond: 1
-visitorUsedPerBatch: 4
-consumeDurationSecondPerBatch: 10
+
+eventCreateCountPerDay: 10000
+
 outputToConsole: true
 outputToKafka: false
 kafkaTopicId: test-producer-20190103

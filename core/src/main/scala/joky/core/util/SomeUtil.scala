@@ -3,6 +3,7 @@ package joky.core.util
 import java.io.PrintWriter
 import java.net.ServerSocket
 
+import scala.collection.mutable
 import scala.util.Random
 ;
 
@@ -24,13 +25,28 @@ object SomeUtil extends App {
     def randomPick[T](list: Seq[T]): Option[T] = {
         list match {
             case Nil => None
-            case l : Seq[_] => Some(l.toVector(new Random().nextInt(l.size)))
+            case l : Seq[_] => Some(l(new Random().nextInt(l.size)))
             case _ =>  None
         }
     }
 
     def randomPickSome[T](list: Seq[T], count: Int): Seq[T] = {
         (0 to count).flatMap(_ => randomPick[T](list))
+    }
+
+    /**
+      * 随机选出列表中的元素，带有index的返回, 注意，选出总数量未必能达到count，但是至少会有1个，只要list不空
+      * @param list
+      * @param count
+      * @tparam T
+      * @return
+      */
+    def randomPickSomeWithIndex[T](list: Seq[T], count: Int): Map[Int, T] = {
+        val realCount = Math.min(list.size, count)
+        (0 to realCount).map(_ => {
+            val i = new Random().nextInt(list.size)
+            i -> list(i)
+        }).toMap
     }
 
     def md5(s: String): String = {

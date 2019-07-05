@@ -16,6 +16,8 @@ object Dep {
     val logback = "ch.qos.logback" % "logback-classic" % "1.2.3"
 
     val nscalaTime = "com.github.nscala-time" %% "nscala-time" % versionNscalaTime
+
+    val apacheMath = "org.apache.commons" % "commons-math3" % "3.6"
     
     val erSlf4j = ExclusionRule("org.slf4j", "slf4j-log4j12")
     val erSlf4jApi = ExclusionRule("org.slf4j", "slf4j-api")

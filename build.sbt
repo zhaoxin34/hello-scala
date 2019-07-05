@@ -64,7 +64,7 @@ lazy val eventCreator = (project in file("event-creator"))
     .settings(
         commonSettings,
         name := "event-creator",
-        libraryDependencies ++= Dep.depsLog4j
+        libraryDependencies ++= (Dep.depsLog4j :+ Dep.apacheMath)
     )
     .dependsOn(core)
 

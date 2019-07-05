@@ -4,7 +4,7 @@ import java.util.Properties
 
 import joky.core.bean.Event
 import joky.core.util.JsonUtil
-import joky.event.creator.EventConsumer
+import joky.event.creator.consumer.EventConsumer
 import org.apache.kafka.clients.producer.{KafkaProducer, ProducerRecord}
 import org.apache.logging.log4j.scala.Logging
 

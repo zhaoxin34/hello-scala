@@ -1,7 +1,7 @@
 package joky.event.creator.test
 
-import joky.event.creator.EventCreatorConfig.PageConfig
-import joky.event.creator.impl.PageTree
+import joky.event.creator.component.{Page, PageTree}
+import joky.event.creator.creator.SiteCreator
 import org.scalatest.FlatSpec
 
 /**
@@ -9,10 +9,10 @@ import org.scalatest.FlatSpec
   * @Date: 2019/4/10 15:26
   * @Description:
   */
-class TestPageCreate extends FlatSpec {
+class TestPageCreator extends FlatSpec {
 
     "PageTree" should "createPageTree [value,subTree,pagelist,isRoot] right" taggedAs test.eventCreator in {
-        val tree = PageTree.createPageTree(Seq(PageConfig("http://www.aaa.com/a/b.html", "b page")))
+        val tree = PageTree.createPageTree(Seq(Page("http://www.aaa.com/a/b.html", "b page")))
         assert( tree.subTree(0).value == "http://www.aaa.com" )
         assert( tree.subTree(0).subTree(0).value === "a" )
         assert( tree.subTree(0).subTree(0).pageList(0).url === "http://www.aaa.com/a/b.html" )
@@ -49,10 +49,14 @@ class TestPageCreate extends FlatSpec {
               |http://spark.apache.org/docs/latest/monitoring.html, Monitoring and Instrumentation - Spark 2.4.0 Documentation
             """.stripMargin.split("\n")
 
-        val pageList: Seq[PageConfig] = siteStringArr.map(str => str.split(",").map(_.trim)).filter(_.length == 2).map(arr => PageConfig(arr(0), arr(1)))
+        val pageList: Seq[Page] = siteStringArr.map(str => str.split(",").map(_.trim)).filter(_.length == 2).map(arr => Page(arr(0), arr(1)))
 
         val tree = PageTree.createPageTree(pageList)
 //                tree.printTree()
         assert(tree.subTree(0).subTree.nonEmpty)
+    }
+
+    it should "read from file" taggedAs test.eventCreator in {
+        assert(SiteCreator.createSiteList().nonEmpty)
     }
 }

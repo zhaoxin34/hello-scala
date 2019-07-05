@@ -1,11 +1,31 @@
-package joky.event.creator.impl
+package joky.event.creator.component
 
-import joky.event.creator.EventCreatorConfig.PageConfig
+import joky.core.bean.EventAction.EventAction
 
 import scala.annotation.tailrec
 import scala.collection.mutable.ArrayBuffer
 
-case class PageTree[T <: PageConfig] private(father: Option[PageTree[T]], value: String, subTree: ArrayBuffer[PageTree[T]], pageList: ArrayBuffer[T]) {
+case class Page(url: String, title: String, actions: Seq[EventAction] = Seq())
+
+/**
+  * @Auther: zhaoxin
+  * @Date: 2019/4/10 14:49
+  * @Description:
+  */
+case class Site private(name: String, siteId: String, pageList: Seq[Page]) {
+    val pageTree: PageTree[Page] = PageTree.createPageTree(pageList)
+}
+
+/**
+  * 用于将页面创建成树形结构
+  *
+  * @param father
+  * @param value
+  * @param subTree
+  * @param pageList
+  * @tparam T
+  */
+case class PageTree[T <: Page] private(father: Option[PageTree[T]], value: String, subTree: ArrayBuffer[PageTree[T]], pageList: ArrayBuffer[T]) {
 
     /**
       * 获得根节点
@@ -74,19 +94,18 @@ case class PageTree[T <: PageConfig] private(father: Option[PageTree[T]], value:
 object PageTree {
     private val ROOT_VALUE = "ROOT"
 
-    def createPageTree[T <: PageConfig] (pageList: Seq[T]): PageTree[T] = {
+    def createPageTree[T <: Page] (pageList: Seq[T]): PageTree[T] = {
         val tree = PageTree[T](None, ROOT_VALUE, ArrayBuffer[PageTree[T]](), ArrayBuffer[T]())
 
         pageList.foreach(page => {
             val pattern = "(http[s]?://.*?)(/.*)".r
             page.url match {
-                case pattern(host: String, uri: String) => {
+                case pattern(host: String, uri: String) =>
                     val path = if (uri.endsWith("/")) uri else uri.substring(0, uri.lastIndexOf("/"))
                     val fullPath = Seq("ROOT", host)  ++  path.split("/").filter(_.nonEmpty)
                     //                        val page = uri.substring(uri.lastIndexOf("/"), uri.length)
                     //                        println(fullPath)
                     tree.addValue(fullPath, page)
-                }
                 case _ =>
             }
         })

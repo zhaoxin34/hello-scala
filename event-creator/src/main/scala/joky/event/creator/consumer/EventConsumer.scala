@@ -1,4 +1,4 @@
-package joky.event.creator
+package joky.event.creator.consumer
 
 import joky.core.bean.Event
 
@@ -22,7 +22,9 @@ class ToEventSeqConsumer() extends EventConsumer {
     private val buffer: ArrayBuffer[Event] = new ArrayBuffer[Event]()
 
     override def consume(event: Event): Unit = {
-        buffer += event
+        buffer.synchronized {
+            buffer += event
+        }
     }
 
     def eventSeq: Seq[Event] = {
