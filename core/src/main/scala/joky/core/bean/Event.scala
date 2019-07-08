@@ -44,7 +44,7 @@ case class Event(
                     lgt: Double,
                     url: String,
                     title: String,
-                    referrer: String,
+                    referer: String,
                     eventBody: String = """ """.stripMargin
                 )
 

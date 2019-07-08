@@ -49,7 +49,7 @@ class BuildProjectContext {
     def getComponent[T <: Component] (id: String, componetType: ComponetType): T = {
         product.get(id) match {
             case Some(x) => x.asInstanceOf
-//            case None => createComponent[T](id, componetType)
+//            case None =>
         }
     }
 

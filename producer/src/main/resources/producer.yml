@@ -1,5 +1,5 @@
 scheduleDelay: 0
-scheduleInterval: 60
+scheduleInterval: 10
 visitorPoolSize: 100
 
 eventCreateCountPerDay: 10000

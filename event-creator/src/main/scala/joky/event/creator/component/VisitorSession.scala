@@ -179,7 +179,7 @@ class VisitorSession(val vistor: Visitor,
             lgt= device.lgt,
             url= url,
             title= title,
-            referrer= referer,
+            referer= referer,
             eventBody="")
 
         Some(event)

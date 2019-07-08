@@ -14,7 +14,7 @@ import org.scalatest.FlatSpec
   */
 class TestVisitorSession extends FlatSpec {
     "VisitorSession" should "create some event" taggedAs test.eventCreator in {
-        val referrer = "http://www.google.com"
+        val referer = "http://www.google.com"
         val session = new VisitorSession(
             Visitor("女", 18),
             device = Device(
@@ -38,12 +38,12 @@ class TestVisitorSession extends FlatSpec {
                 Page("http://baidu.com", "baidu", EventAction.values.toList),
                 Page("http://baidu.com/a", "baidu a", EventAction.values.toList))),
             Seq("100", "101"),
-            referrer,
+            referer,
             new Date()
         )
         val event = session.doSome(new Date())
         println(event)
         assert(event.nonEmpty)
-        assert(event.get.referrer == referrer)
+        assert(event.get.referer == referer)
     }
 }
