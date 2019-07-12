@@ -23,16 +23,23 @@ case class EventCreator private (visitorPoolSize: Int, oneDayEventCount: Long, a
     // 最大session时长
     private val MAX_SESSION_MINUTES = 30
 
-    // 用户id的样本量系数
-    private val userIdSample = 5
+    // 用户id的样本量系数, 每个visitor的userId数量
+    private val userIdSample = 2
 
     private val visitorPool: Seq[Visitor] = VisitorCreator.createVisitorList(visitorPoolSize)
     private val userIdPool: Seq[String] = UserIdCreator.createUserIdList(visitorPoolSize * userIdSample)
     private val devicePool: Seq[Device] = DeviceCreator.createDeviceList()
     private val sitePool: Seq[Site] = SiteCreator.createSiteList()
-    private val sourceUrlPool: Seq[String] = Seq("http://baidu.com", "http://google.com", "http://bing.com", null)
+    private val sourceUrlPool: Seq[String] = Seq("http://baidu.com", "http://google.com", "http://bing.com", "http://soso.com", "http://sogou.com", "http://yahoo.com", "http://taobao.com", "http://qq.com", "http://360.com", "http://facebook.com", "http://twitter.com", null)
 
+    // Int 是visitorPool的index
     private val visitorSessionPool: mutable.Map[Int, VisitorSession] = new mutable.HashMap[Int, VisitorSession]()
+
+    // 从活跃用户池中选出的概率, 也就是上一批用户中，有多大概率某个人还是活跃的，@TODO 这个值最好能变成配置的，目前先写死
+    private val keepActivePercent: Double = 0.8
+
+    // 活跃的session
+    private var activeSessions: Seq[VisitorSession] = Seq()
 
     private def createSession(visitor: Visitor, timing: Date): VisitorSession = {
         new VisitorSession(
@@ -48,9 +55,32 @@ case class EventCreator private (visitorPoolSize: Int, oneDayEventCount: Long, a
     // 首先看池子里有吗，没有或者失效了就创建一个
     private def getOrCreateSession(visitor: Visitor, visitorIndex: Int, timing: Date): VisitorSession = {
         visitorSessionPool.get(visitorIndex) match {
-            case Some(s: VisitorSession) => if (s.deviceTime.getTime - timing.getTime > MAX_SESSION_MINUTES * 60 * 1000) createSession(visitor, timing) else s
+            case Some(s: VisitorSession) => if (timing.getTime - s.deviceTime.getTime > MAX_SESSION_MINUTES * 60 * 1000) createSession(visitor, timing) else s
             case None => createSession(visitor, timing)
         }
+    }
+
+    // 产生活跃session
+    private def produceActiveSession(visitorCount: Int, timing: Date): Unit = {
+
+        activeSessions = SomeUtil.randomPickSome(activeSessions, Math.min((activeSessions.size * keepActivePercent).toInt, visitorCount))
+        logger.info(s"first pick up active session size: ${activeSessions.size}, visitorCount=$visitorCount")
+
+        // 如果够数了
+        if (activeSessions.size > visitorCount)
+            return
+
+        // 如果不够，继续选
+        val restNumber = visitorCount - activeSessions.size
+        logger.info(s"rest active session size: $restNumber")
+
+        // 活跃访客挑选
+        val activeVisitors: Map[Int, Visitor] = SomeUtil.randomPickSomeWithIndex(visitorPool, restNumber)
+        logger.debug(s"consumeEvent activeVisitors=${activeVisitors.size}")
+
+        // 使用活跃访客创建活跃session
+        activeSessions ++= activeVisitors.map(a => getOrCreateSession(a._2, a._1, timing)).toList
+        logger.info(s"active session count=${activeSessions.size}")
     }
 
     /**
@@ -68,14 +98,8 @@ case class EventCreator private (visitorPoolSize: Int, oneDayEventCount: Long, a
         val visitorCount = Math.max((activationCuv.getPosibiltyPropotion(timing, durationSeconds) * visitorPoolSize).toInt, 1)
         logger.debug(s"consumeEvent visitorCount=$visitorCount")
 
-        // 活跃访客挑选
-        val activeVisitors: Map[Int, Visitor] = SomeUtil.randomPickSomeWithIndex(visitorPool, visitorCount)
-        logger.debug(s"consumeEvent activeVisitors=${activeVisitors.size}")
-
-        // 使用活跃访客创建活跃session
-        val activeSessions: Seq[VisitorSession] = activeVisitors.map(a => getOrCreateSession(a._2, a._1, timing)).toList
-        logger.debug(s"active session count=${activeSessions.size}")
-
+        // 产生活跃用户
+        produceActiveSession(visitorCount, timing)
 
         // 创建并消费事件
         0 to eventCount foreach (_ => {

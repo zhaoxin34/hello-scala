@@ -10,7 +10,10 @@ import org.apache.logging.log4j.scala.Logging
 
 
 class PrintEventConsumer extends EventConsumer {
-    override def consume(event: Event): Unit = println(event)
+    override def consume(event: Event): Unit = {
+        println(s"${event.eventName}-d:${event.deviceId}-s:${event.sessionId}-s:${event.userId}")
+    }
+//    override def consume(event: Event): Unit = println(event)
 }
 
 class KafkaEventConsumer(val topicId: String, val kafkaConfig: Properties) extends EventConsumer with Logging {
