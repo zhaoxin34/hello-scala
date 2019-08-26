@@ -180,7 +180,8 @@ class VisitorSession(val vistor: Visitor,
             url= url,
             title= title,
             referer= referer,
-            eventBody="")
+            eventBody="",
+            mobileNo = device.mobileNo)
 
         Some(event)
     }

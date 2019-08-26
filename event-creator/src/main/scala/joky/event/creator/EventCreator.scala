@@ -5,7 +5,7 @@ import java.util.Date
 import joky.core.util.SomeUtil
 import joky.event.creator.component._
 import joky.event.creator.consumer.EventConsumer
-import joky.event.creator.creator.{DeviceCreator, SiteCreator, UserIdCreator, VisitorCreator}
+import joky.event.creator.creator._
 import org.apache.logging.log4j.scala.Logging
 
 import scala.collection.mutable

@@ -45,7 +45,8 @@ case class Event(
                     url: String,
                     title: String,
                     referer: String,
-                    eventBody: String = """ """.stripMargin
+                    eventBody: String = """ """.stripMargin,
+                    mobileNo: String // 手机号
                 )
 
 class Session(val sessionId: String,

@@ -32,7 +32,8 @@ class TestVisitorSession extends FlatSpec {
                 "北京",
                 "中国",
                 12.9,
-                23.4
+                23.4,
+                "13012341234"
             ),
             Site("test", "1234567890123456", Seq(
                 Page("http://baidu.com", "baidu", EventAction.values.toList),

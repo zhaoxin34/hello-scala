@@ -21,7 +21,8 @@ case class Device(deviceId: String,
                   region: String, // 区域或省
                   city: String, // 城市
                   lat: Double, //经度
-                  lgt: Double // 维度)
+                  lgt: Double, // 维度)
+                  mobileNo: String
                  ) {
 
 }
