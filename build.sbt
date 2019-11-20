@@ -74,7 +74,12 @@ lazy val sparkCountEngine = (project in file("spark-count-engine"))
         name := "spark-count-engine",
         libraryDependencies ++= Dep.depsSpark,
         dependencyOverrides ++= depsOverrideSpark,
-        excludeDependencies ++= Seq(Dep.erServlet, Dep.erJsp, Dep.erJetty, Dep.erJerseyServer)
+        excludeDependencies ++= Seq(Dep.erServlet, Dep.erJsp, Dep.erJetty, Dep.erJerseyServer),
+        assemblyMergeStrategy in assembly := {
+            case PathList("joky", xs@_*) => MergeStrategy.last
+            case _ => MergeStrategy.discard
+        },
+        assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = false)
     )
     .dependsOn(eventCreator)
 

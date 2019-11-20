@@ -9,7 +9,11 @@ import org.apache.spark.sql.SparkSession
   * @Description:
   */
 object Starter3 extends App {
-    val spark = SparkSession.builder().master("local[1]").config("spark.sql.shuffle.partitions", "2")
+//    val spark = SparkSession.builder().master("local[1]").config("spark.sql.shuffle.partitions", "2")
+    val spark = SparkSession.builder().master("spark://spark-master-0.spark-master-svc.dev-bigdata.svc.cluster.local:7077")
+        .config("spark.driver.host", "192.168.0.124")
+        .config("spark.driver.bindAddress", "192.168.0.124")
+        .config("spark.sql.shuffle.partitions", "2")
         .appName("event test").getOrCreate()
 
     import spark.implicits._

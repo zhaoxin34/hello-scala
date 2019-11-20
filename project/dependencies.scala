@@ -2,7 +2,7 @@ import sbt.Keys.crossPaths
 import sbt._
 
 object Dep {
-    val versionSpark = "2.2.0"
+    val versionSpark = "2.4.3"
     val versionHbase = "1.2.0"
     val versionLog4jApiScala = "11.0"
     val versionJackson = "2.6.5"
@@ -43,6 +43,7 @@ object Dep {
     val hbaseServer = "org.apache.hbase" % "hbase-server" % versionHbase excludeAll(erSlf4j, erServlet, erJsp, erJetty, erJerseyServer)
 //    val shcCore = "com.hortonworks" % "shc-core" % "1.1.1-2.1-s_2.11"
     val sparklintSpark220 = "com.groupon.sparklint" %% "sparklint-spark220" % "1.0.12"
+    val sparkEs = "org.elasticsearch" %% "elasticsearch-spark-20" % "7.3.0"
 
     val depsAkka = Seq (
         "com.typesafe.akka" %% "akka-actor" % versionAkka,
@@ -75,7 +76,8 @@ object Dep {
         sparkMllib,
         sparkStreaming,
         sparkHive,
-        sparkStreamingKafka08
+        sparkStreamingKafka08,
+        sparkEs
     )
 
     val depsSparkProvided = Seq(

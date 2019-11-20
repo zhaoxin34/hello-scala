@@ -11,7 +11,6 @@ import org.apache.spark.streaming.{Duration, StreamingContext}
   */
 object SparkConfig {
     private val config = Map(
-
         "spark.eventLog.enabled" -> true,
         "spark.eventLog.overwrite" -> true,
         "spark.eventLog.buffer.kb" -> "10",
