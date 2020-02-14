@@ -24,6 +24,7 @@ object Engine extends App {
 
     val df = spark.read.parquet("spark_data/table/zx00_event")
     df.createGlobalTempView("event")
+    df.show()
 
 //    spark.sql("select count(*) from global_temp.event").show(false)
 //    spark.sql("select count(*) from global_temp.event where date = 20190402").show(false)

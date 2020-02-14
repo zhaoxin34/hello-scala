@@ -72,18 +72,13 @@ object Task {
     }
 }
 
+/**
+  * 定义任务的进出形态是几进几出
+  */
+trait TaskIoType
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+trait ZeroInOneOutTaskIoType
+trait OneInOneOutTaskIoType
+trait OneInTwoOutTaskIoType
+trait OneInManyOutTaskIoType
+trait ManyInOneOutTaskIoType
