@@ -24,7 +24,7 @@ abstract class SparkBaseBusi[T >: FlowNodeBusi](flowId: Long,
                 timeWindow: Int,
                 timeWindowUnit: TimeUnit): Task
 
-    def runTask(startTime: Timestamp,
+    final def runTask(startTime: Timestamp,
                 timeWindow: Int,
                 timeWindowUnit: TimeUnit,
                 fatherFlowNodeUserDs: Dataset[FlowNodeUser],
@@ -50,8 +50,17 @@ abstract class SparkBaseBusi[T >: FlowNodeBusi](flowId: Long,
             .withColumn("branch_index", typedLit[Int](0))
             .withColumn("stat_time", typedLit[Timestamp](startTime))
             .withColumn("timeout_minute", typedLit[Int](0))
-            .withColumn("flow_node_name", typedLit[String](this.getClass.getName))
+            .withColumn("flow_node_name", typedLit[String](this.getClass.getCanonicalName))
             .as[FlowNodeUser]
     }
 
 }
+//
+//abstract class FlowNodeUserTask extends Task {
+//    def executeFlowNodeUserTask(father: Dataset[FlowNodeUser], spark: SparkSession): Dataset[FlowNodeUser]
+//
+//    final override protected def execute(father: DataFrame, spark: SparkSession): DataFrame = {
+//        import spark.implicits._
+//        executeFlowNodeUserTask(father.as[FlowNodeUser], spark).toDF()
+//    }
+//}

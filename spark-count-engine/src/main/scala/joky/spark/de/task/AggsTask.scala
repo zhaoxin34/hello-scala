@@ -3,8 +3,6 @@ package joky.spark.de.task
 import joky.spark.de.entity.{Agg, ValidResult}
 import org.apache.spark.sql.{DataFrame, SparkSession}
 
-import scala.util.{Success, Try}
-
 case class AggsTask(aggs: Seq[Agg]) extends Task {
 
     override def valid: ValidResult = {

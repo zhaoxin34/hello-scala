@@ -14,7 +14,8 @@ case class FlowNodeUser(
                            stat_time: Timestamp,
                            device_id: String,
                            user_id: String,
-                           flow_node_name: String
+                           flow_node_name: String,
+                           timeout_minute: Int
                        ) {
 
 }

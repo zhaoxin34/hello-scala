@@ -5,7 +5,7 @@ import java.util.concurrent.TimeUnit
 
 import joky.spark.de.task.Task
 import joky.spark.flow.spark.SparkBaseBusi
-import joky.spark.flow.{FlowNode, UserEntryNode, WaitTimerNode}
+import joky.spark.flow.{FlowNode, WaitTimerNode}
 import org.apache.spark.sql.{DataFrame, SparkSession}
 
 /**
@@ -19,7 +19,9 @@ case class SparkWaitTimerBusi(flowId: Long,
     override def getTask(startTime: Timestamp, timeWindow: Int, timeWindowUnit: TimeUnit): Task = {
         new Task {
             override protected def execute(father: DataFrame, spark: SparkSession): DataFrame = {
-
+                import spark.implicits._
+                setCurrentFlowNodeUser(startTime, father, spark)
+                    .withColumn("timeout_minute", $"timeout_minute" + waitTimerNode.timeUnit.toMinutes(waitTimerNode.time).intValue())
             }
         }
     }

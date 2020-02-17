@@ -5,7 +5,7 @@ import java.util.Date
 
 import joky.spark.flow._
 import joky.spark.flow.exception.FlowNodeRunException
-import joky.spark.flow.spark.busi.{SparkMailFunctionBusi, SparkUserEntryBusi}
+import joky.spark.flow.spark.busi.{SparkMailFunctionBusi, SparkUserEntryBusi, SparkWaitTimerBusi}
 import org.apache.logging.log4j.scala.Logging
 import org.apache.spark.sql.Dataset
 
@@ -46,7 +46,7 @@ case class SparkFlowNode(override val nodeId: Int,
                 this,
                 mailFunctionNode)
 
-            case waitTimerNode: WaitTimerNode => SparkWaitTimerBusi
+            case waitTimerNode: WaitTimerNode => SparkWaitTimerBusi(sparkFlowContext.flowId, this, waitTimerNode)
             case _ =>
                 throw FlowNodeRunException(s"未知节点业务类型, flowNodeBusi=$flowNodeBusiNode", this)
         }

@@ -30,7 +30,8 @@ object FlowStarter extends App with Logging {
         StructField("stat_time", TimestampType, true),
         StructField("device_id", StringType, true),
         StructField("user_id", StringType, true),
-        StructField("flow_node_name", StringType, true)
+        StructField("flow_node_name", StringType, true),
+        StructField("timeout_minute", IntegerType, true)
     ))
 
     spark.read.format("csv").option("header", "true")
