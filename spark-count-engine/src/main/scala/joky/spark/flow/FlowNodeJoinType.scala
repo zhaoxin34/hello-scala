@@ -7,5 +7,5 @@ package joky.spark.flow
   */
 object FlowNodeJoinType extends Enumeration {
     type JoinType = Value
-    val ENTRY, SPLIT, FUNCTION, END, JOIN = Value
+    val ENTRY, SPLIT, FUNCTION, END, JOIN, UNKNOW = Value
 }

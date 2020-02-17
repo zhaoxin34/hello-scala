@@ -1,6 +1,6 @@
 package joky.spark.flow
 
-import java.sql.Date
+import java.sql.{Date, Timestamp}
 
 /**
   * @Auther: zhaoxin
@@ -8,12 +8,13 @@ import java.sql.Date
   * @Description:
   */
 case class FlowNodeUser(
-                           flowId: Long,
-                           flowNodeId: Int,
-                           branchIndex: Int,
-                           statTime: Date,
-                           deviceId: String,
-                           userId: String
+                           flow_id: Long,
+                           flow_node_id: Int,
+                           branch_index: Int,
+                           stat_time: Timestamp,
+                           device_id: String,
+                           user_id: String,
+                           flow_node_name: String
                        ) {
 
 }
