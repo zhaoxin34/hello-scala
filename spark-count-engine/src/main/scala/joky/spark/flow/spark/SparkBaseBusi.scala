@@ -1,13 +1,11 @@
 package joky.spark.flow.spark
 
 import java.sql.Timestamp
-import java.util.Date
 import java.util.concurrent.TimeUnit
 
 import joky.spark.de.task.Task
 import joky.spark.flow.exception.FlowNodeRunException
-import joky.spark.flow.{FlowNode, FlowNodeBusi, FlowNodeUser, UserEntryNode}
-import org.apache.logging.log4j.scala.Logging
+import joky.spark.flow.{FlowNode, FlowNodeBusi, FlowNodeUser}
 import org.apache.spark.sql.functions.typedLit
 import org.apache.spark.sql.{DataFrame, Dataset, SparkSession}
 
@@ -38,11 +36,13 @@ abstract class SparkBaseBusi[T >: FlowNodeBusi](flowId: Long,
         getTask(startTime, timeWindow, timeWindowUnit).run(fatherDsTry, spark) match {
             case Success(x: DataFrame) => Success(x.as[FlowNodeUser])
             case Failure(e) => Failure(e)
-            case _ => Failure(new FlowNodeRunException(s"未知节点返回值错误", flowNode))
+            case _ => Failure(FlowNodeRunException(s"未知节点返回值错误", flowNode))
         }
     }
 
-    protected def setCurrentFlowNodeUser(startTime: Timestamp, dataFrame: DataFrame, spark: SparkSession): Dataset[FlowNodeUser] = {
+    protected def setCurrentFlowNodeUser(startTime: Timestamp,
+                                         dataFrame: DataFrame,
+                                         spark: SparkSession): Dataset[FlowNodeUser] = {
         import spark.implicits._
         dataFrame
             .withColumn("flow_id", typedLit[Long](flowId))

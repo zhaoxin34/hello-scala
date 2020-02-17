@@ -45,6 +45,8 @@ case class SparkFlowNode(override val nodeId: Int,
                 sparkFlowContext.flowId,
                 this,
                 mailFunctionNode)
+
+            case waitTimerNode: WaitTimerNode => SparkWaitTimerBusi
             case _ =>
                 throw FlowNodeRunException(s"未知节点业务类型, flowNodeBusi=$flowNodeBusiNode", this)
         }
