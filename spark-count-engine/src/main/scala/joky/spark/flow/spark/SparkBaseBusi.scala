@@ -22,18 +22,20 @@ abstract class SparkBaseBusi[T >: FlowNodeBusi](flowId: Long,
 
     def getTask(startTime: Timestamp,
                 timeWindow: Int,
-                timeWindowUnit: TimeUnit): Task
+                timeWindowUnit: TimeUnit,
+                sparkBusiConfig: SparkBusiConfig): Task
 
     final def runTask(startTime: Timestamp,
-                timeWindow: Int,
-                timeWindowUnit: TimeUnit,
-                fatherFlowNodeUserDs: Dataset[FlowNodeUser],
-                spark: SparkSession): Try[Dataset[FlowNodeUser]] = {
+                      timeWindow: Int,
+                      timeWindowUnit: TimeUnit,
+                      fatherFlowNodeUserDs: Dataset[FlowNodeUser],
+                      sparkBusiConfig: SparkBusiConfig,
+                      spark: SparkSession): Try[Dataset[FlowNodeUser]] = {
 
         val fatherDsTry = Option(fatherFlowNodeUserDs).map(_.toDF()).map(Success(_)).getOrElse(Success(null))
         import spark.implicits._
 
-        getTask(startTime, timeWindow, timeWindowUnit).run(fatherDsTry, spark) match {
+        getTask(startTime, timeWindow, timeWindowUnit, sparkBusiConfig).run(fatherDsTry, spark) match {
             case Success(x: DataFrame) => Success(x.as[FlowNodeUser])
             case Failure(e) => Failure(e)
             case _ => Failure(FlowNodeRunException(s"未知节点返回值错误", flowNode))
@@ -50,11 +52,12 @@ abstract class SparkBaseBusi[T >: FlowNodeBusi](flowId: Long,
             .withColumn("branch_index", typedLit[Int](0))
             .withColumn("stat_time", typedLit[Timestamp](startTime))
             .withColumn("timeout_minute", typedLit[Int](0))
-            .withColumn("flow_node_name", typedLit[String](this.getClass.getCanonicalName))
+            .withColumn("flow_node_name", typedLit[String](this.getClass.getSimpleName))
             .as[FlowNodeUser]
     }
 
 }
+
 //
 //abstract class FlowNodeUserTask extends Task {
 //    def executeFlowNodeUserTask(father: Dataset[FlowNodeUser], spark: SparkSession): Dataset[FlowNodeUser]

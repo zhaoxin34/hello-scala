@@ -23,7 +23,7 @@ object FlowStarter extends App with Logging {
 
     spark.read.format("csv").option("header", "true").load("spark_data/table/user/usercenter_user.csv").createGlobalTempView("users")
 
-    val customSchema = StructType(Array(
+    val flowNodeUserSchema = StructType(Array(
         StructField("flow_id", LongType, true),
         StructField("flow_node_id", IntegerType, true),
         StructField("branch_index", IntegerType, true),
@@ -37,13 +37,23 @@ object FlowStarter extends App with Logging {
     spark.read.format("csv").option("header", "true")
 //        .option("delimiter", "\t")
 //        .option("timestampFormat", "yyyy/MM/dd HH:mm:ss")
-        .schema(customSchema)
+        .schema(flowNodeUserSchema)
         .load("spark_data/table/flow_node_user/flow_node_user1.csv")
         .createGlobalTempView(sparkBusiConfig.flowNodeUserTable.name)
 
+    val eventSchema = StructType(Array(
+        StructField("event_name", StringType, true),
+        StructField("user_id", StringType, true),
+        StructField("event_time", TimestampType, true)
+    ))
+
+    spark.read.format("csv")
+        .schema(eventSchema)
+        .option("header", "true").load("spark_data/table/event/event.csv").createGlobalTempView("event")
+
     val flow = SparkFlow(1,
         Seq(
-            SparkFlowNode(1, "用户", UserEntryNode(Table("global_temp", "users", "用户表"), SimpleFilter("email like '%datatist%'")), childrenIds = Seq(2)),
+            SparkFlowNode(1, "用户", UserEntryNode(SimpleFilter("email like '%datatist%'")), childrenIds = Seq(2)),
             SparkFlowNode(2, "邮件", MailFunctionNode("周末大促", "肺炎来啦"), fatherIds = Seq(1), childrenIds = Seq(3)),
             SparkFlowNode(3, "10 hour", WaitTimerNode(10, TimeUnit.HOURS), fatherIds = Seq(2), childrenIds = Seq(4)),
             SparkFlowNode(4, "判断加入购物车", EventTriggerSplitNode("加入购物车"), fatherIds = Seq(3), childrenIds = Seq(5, 6)),

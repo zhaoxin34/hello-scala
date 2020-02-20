@@ -1,17 +1,12 @@
 package joky.spark.flow.spark.busi
 
 import java.sql.Timestamp
-import java.util.Date
 import java.util.concurrent.TimeUnit
 
-import joky.spark.FlowTester.{callTime, userDf}
-import joky.spark.de.task.{FilterTask, FromTableTask, SeqTask, Task}
-import joky.spark.flow.spark.{SparkBaseBusi, SparkFlowContext}
+import joky.spark.de.task.{FilterTask, FromTableTask, Task}
+import joky.spark.flow.spark.{SparkBaseBusi, SparkBusiConfig}
 import joky.spark.flow.{FlowNode, FlowNodeUser, UserEntryNode}
-import org.apache.spark.sql.functions.typedLit
 import org.apache.spark.sql.{DataFrame, Dataset, SparkSession}
-
-import scala.util.Try
 
 /**
   * @Auther: zhaoxin
@@ -26,8 +21,10 @@ case class SparkUserEntryBusi(flowId: Long,
 
     override def getTask(startTime: Timestamp,
                          timeWindow: Int,
-                         timeWindowUnit: TimeUnit): Task = {
-        FromTableTask(userEntryNode.table) + FilterTask(userEntryNode.filter) + new Task {
+                         timeWindowUnit: TimeUnit,
+                         sparkBusiConfig: SparkBusiConfig): Task = {
+
+        FromTableTask(sparkBusiConfig.userTable) + FilterTask(userEntryNode.filter) + new Task {
             override protected def execute(father: DataFrame, spark: SparkSession): DataFrame = {
                 val df = father.join(currentFlowNodeUserHisotry,
                     father.col("user_id") === currentFlowNodeUserHisotry.col("user_id"), "left_outer")

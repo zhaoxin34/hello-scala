@@ -5,7 +5,7 @@ import java.util.Date
 
 import joky.spark.flow._
 import joky.spark.flow.exception.FlowNodeRunException
-import joky.spark.flow.spark.busi.{SparkMailFunctionBusi, SparkUserEntryBusi, SparkWaitTimerBusi}
+import joky.spark.flow.spark.busi._
 import org.apache.logging.log4j.scala.Logging
 import org.apache.spark.sql.Dataset
 
@@ -47,6 +47,23 @@ case class SparkFlowNode(override val nodeId: Int,
                 mailFunctionNode)
 
             case waitTimerNode: WaitTimerNode => SparkWaitTimerBusi(sparkFlowContext.flowId, this, waitTimerNode)
+
+            case eventTriggerSplitNode: EventTriggerSplitNode =>
+                SparkEventTriggerSplitBusi(sparkFlowContext.flowId,
+                    this,
+                    eventTriggerSplitNode,
+                    sparkFlowContext.getFlowNodeUserHistoryByNodeId(nodeId),
+                    sparkFlowContext.getFlowNodeUserHistoryByNodeId(fatherIds: _*)
+                )
+
+            case appPushFunctionNode: AppPushFunctionNode => SparkAppPushFunctionBusi(
+                sparkFlowContext.flowId,
+                this,
+                appPushFunctionNode)
+
+            case joinNode: JoinNode => SparkJoinBusi(sparkFlowContext.flowId, this, joinNode)
+
+//            case eventEntryNode: EventEntryNode =>
             case _ =>
                 throw FlowNodeRunException(s"未知节点业务类型, flowNodeBusi=$flowNodeBusiNode", this)
         }
@@ -59,6 +76,7 @@ case class SparkFlowNode(override val nodeId: Int,
             timeWindow,
             timeWindowUnit,
             fatherDataSet,
+            sparkFlowContext.sparkBusiConfig,
             sparkFlowContext.spark)
 
         taskResult match {

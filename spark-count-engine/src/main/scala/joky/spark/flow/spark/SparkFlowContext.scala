@@ -25,8 +25,8 @@ case class SparkFlowContext(flowId: Long, spark: SparkSession, sparkBusiConfig: 
         spark.table(sparkBusiConfig.flowNodeUserTable.toString).as[FlowNodeUser].filter(f => f.flow_id == flowId)
     }
 
-    def getFlowNodeUserHistoryByNodeId(nodeId: Int): Dataset[FlowNodeUser] = {
-        getFlowNodeUserHistory().filter(_.flow_node_id == nodeId)
+    def getFlowNodeUserHistoryByNodeId(nodeId: Int*): Dataset[FlowNodeUser] = {
+        getFlowNodeUserHistory().filter(node => nodeId.contains(node.flow_node_id))
     }
 
     def reserveResult(flowNodeId: Int, value: Dataset[FlowNodeUser]): Unit = {

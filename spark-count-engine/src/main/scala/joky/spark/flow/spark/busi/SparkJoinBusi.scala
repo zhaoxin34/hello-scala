@@ -4,19 +4,19 @@ import java.sql.Timestamp
 import java.util.concurrent.TimeUnit
 
 import joky.spark.de.task.Task
+import joky.spark.flow.{FlowNode, JoinNode, MailFunctionNode}
 import joky.spark.flow.spark.{SparkBaseBusi, SparkBusiConfig}
-import joky.spark.flow.{FlowNode, MailFunctionNode}
 import org.apache.spark.sql.{DataFrame, SparkSession}
 
 /**
   * @Auther: zhaoxin
-  * @Date: 2020/2/16 21:45
+  * @Date: 2020/2/19 14:48
   * @Description:
   */
-case class SparkMailFunctionBusi(flowId: Long,
-                                 flowNode: FlowNode,
-                                 mailFunctionBusi: MailFunctionNode)
-    extends SparkBaseBusi(flowId, flowNode, mailFunctionBusi) {
+case class SparkJoinBusi (flowId: Long,
+                     flowNode: FlowNode,
+                     joinNode: JoinNode)
+    extends SparkBaseBusi(flowId, flowNode, joinNode) {
 
     override def getTask(startTime: Timestamp,
                          timeWindow: Int,
@@ -24,9 +24,7 @@ case class SparkMailFunctionBusi(flowId: Long,
                          sparkBusiConfig: SparkBusiConfig): Task = {
         new Task {
             override protected def execute(father: DataFrame, spark: SparkSession): DataFrame = {
-                val ds = setCurrentFlowNodeUser(startTime, father, spark)
-                ds.foreach(f => println(s"send mail to userId=${f.user_id} deviceId=${f.device_id}"))
-                ds.toDF()
+                setCurrentFlowNodeUser(startTime, father, spark).toDF()
             }
         }
     }

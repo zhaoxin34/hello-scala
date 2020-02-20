@@ -93,7 +93,7 @@ case class UserFilterSplitNode(branchList: Seq[UserFilterSplit]) extends SplitNo
   * @param table
   * @param filter
   */
-case class UserEntryNode(table: Table, filter: Filter) extends EntryNode
+case class UserEntryNode(filter: Filter) extends EntryNode
 
 /**
   * 事件入口节点

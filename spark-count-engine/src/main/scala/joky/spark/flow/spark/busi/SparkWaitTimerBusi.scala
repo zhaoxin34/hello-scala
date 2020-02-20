@@ -4,7 +4,7 @@ import java.sql.Timestamp
 import java.util.concurrent.TimeUnit
 
 import joky.spark.de.task.Task
-import joky.spark.flow.spark.SparkBaseBusi
+import joky.spark.flow.spark.{SparkBaseBusi, SparkBusiConfig}
 import joky.spark.flow.{FlowNode, WaitTimerNode}
 import org.apache.spark.sql.{DataFrame, SparkSession}
 
@@ -16,7 +16,10 @@ import org.apache.spark.sql.{DataFrame, SparkSession}
 case class SparkWaitTimerBusi(flowId: Long,
                               flowNode: FlowNode,
                               waitTimerNode: WaitTimerNode) extends SparkBaseBusi(flowId, flowNode, waitTimerNode) {
-    override def getTask(startTime: Timestamp, timeWindow: Int, timeWindowUnit: TimeUnit): Task = {
+    override def getTask(startTime: Timestamp,
+                         timeWindow: Int,
+                         timeWindowUnit: TimeUnit,
+                         sparkBusiConfig: SparkBusiConfig): Task = {
         new Task {
             override protected def execute(father: DataFrame, spark: SparkSession): DataFrame = {
                 import spark.implicits._
