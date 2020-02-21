@@ -9,7 +9,7 @@ import java.sql.{Date, Timestamp}
   */
 case class FlowNodeUser(
                            flow_id: Long,
-                           flow_node_id: Int,
+                           node_id: Int,
                            branch_index: Int,
                            stat_time: Timestamp,
                            device_id: String,

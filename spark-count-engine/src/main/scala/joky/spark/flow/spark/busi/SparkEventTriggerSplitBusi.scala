@@ -4,7 +4,7 @@ import java.sql.Timestamp
 import java.util.concurrent.TimeUnit
 
 import joky.spark.de.entity.SimpleFilter
-import joky.spark.de.task.{FilterTask, FromTableTask, Task}
+import joky.spark.de.task.{FilterTask, FromTableTask, SelectTask, Task}
 import joky.spark.flow.spark.{SparkBaseBusi, SparkBusiConfig}
 import joky.spark.flow.{EventTriggerSplitNode, FlowNode, FlowNodeUser}
 import org.apache.spark.sql.functions.typedLit
@@ -38,13 +38,13 @@ case class SparkEventTriggerSplitBusi(flowId: Long,
                     FromTableTask(sparkBusiConfig.eventTable) +
                         FilterTask(SimpleFilter(s"event_name='${eventTriggerSplitNode.eventName}'")))
                     .run(Success(null), spark) match {
-                    case Success(value) => value
+                    case Success(value) => value.select($"user_id".as("e_user_id"))
                     case Failure(e) => throw e
                 }
 
                 // 本次已完成事件的用户
-                val eventDoneDf = eventDf.join(father, father.col("user_id") === eventDf.col("user_id"), "inner")
-                    .select(eventDf("user_id"), father("device_id"))
+                val eventDoneDf = eventDf.join(father, father.col("user_id") === eventDf.col("e_user_id"), "inner")
+                    .select("user_id", "device_id")
 
                 // 计算未完成事件的超时用户，为了减少计算量，只计算在两个窗口期内超时的用户，然后再根据当前节点的历史数据排重
                 // 现在时间 > (上一步的时间 + 超时时间)  并且 现在时间  <= (上一步的时间 + 超时时间 + 2*窗口期)

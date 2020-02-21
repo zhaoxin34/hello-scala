@@ -25,7 +25,7 @@ object FlowStarter extends App with Logging {
 
     val flowNodeUserSchema = StructType(Array(
         StructField("flow_id", LongType, true),
-        StructField("flow_node_id", IntegerType, true),
+        StructField("node_id", IntegerType, true),
         StructField("branch_index", IntegerType, true),
         StructField("stat_time", TimestampType, true),
         StructField("device_id", StringType, true),

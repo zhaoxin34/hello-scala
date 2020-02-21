@@ -26,7 +26,7 @@ case class SparkFlowContext(flowId: Long, spark: SparkSession, sparkBusiConfig: 
     }
 
     def getFlowNodeUserHistoryByNodeId(nodeId: Int*): Dataset[FlowNodeUser] = {
-        getFlowNodeUserHistory().filter(node => nodeId.contains(node.flow_node_id))
+        getFlowNodeUserHistory().filter(node => nodeId.contains(node.node_id))
     }
 
     def reserveResult(flowNodeId: Int, value: Dataset[FlowNodeUser]): Unit = {
@@ -40,6 +40,10 @@ case class SparkFlowContext(flowId: Long, spark: SparkSession, sparkBusiConfig: 
             .map(nodeId => flowNodeResultMap(nodeId))
             .map(_.filter(_.branch_index == branchIndex))
             .reduceOption(_.union(_))
+    }
+
+    def getAllFlowNodeUser(): Dataset[FlowNodeUser] = {
+        flowNodeResultMap.values.reduce(_.union(_))
     }
 
     def clear(): Unit = {

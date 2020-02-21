@@ -33,9 +33,9 @@ object FlowTester extends App {
 
     val userEntryNodeDf = userDf.filter("email like '%datatist%'")
         .join(flowNodeUserDf, userDf.col("user_id") === flowNodeUserDf.col("user_id"), "left_outer")
-        .where("flow_node_id is null")
+        .where("node_id is null")
         .select(userDf.col("user_id"), userDf.col("mobile").as("device_id"))
-        .withColumn("flow_node_id", typedLit[Int](1))
+        .withColumn("node_id", typedLit[Int](1))
         .withColumn("branch_index", typedLit[Int](0))
         .withColumn("stat_time", typedLit[Timestamp](callTime))
         .withColumn("timeout_minute", typedLit[Int](0))
@@ -45,15 +45,15 @@ object FlowTester extends App {
 
     userEntryNodeDf.show(10)
 
-    val mailFunctionNodeDf = userEntryNodeDf.where("flow_node_id == 1")
-        .withColumn("flow_node_id", typedLit[Int](2))
+    val mailFunctionNodeDf = userEntryNodeDf.where("node_id == 1")
+        .withColumn("node_id", typedLit[Int](2))
         .withColumn("stat_time", typedLit[Timestamp](callTime))
         .withColumn("flow_node_name", typedLit[String]("mailFunction"))
 
     mailFunctionNodeDf.show(10)
 
-    val waitTimer10HourNode = mailFunctionNodeDf.where("flow_node_id == 2")
-        .withColumn("flow_node_id", typedLit[Int](3))
+    val waitTimer10HourNode = mailFunctionNodeDf.where("node_id == 2")
+        .withColumn("node_id", typedLit[Int](3))
         .withColumn("stat_time", typedLit[Timestamp](callTime))
         .withColumn("timeout_minute", $"timeout_minute" + 10 * 60)
         .withColumn("flow_node_name", typedLit[String]("waitTimer10Hour"))
@@ -68,7 +68,7 @@ object FlowTester extends App {
     val eventTriggerSplitNodeDf1 = waitTimer10HourNode
         .join(eventDf, waitTimer10HourNode.col("user_id") === eventDf.col("user_id"), "left_outer")
         .select(waitTimer10HourNode.col("user_id"), $"device_id", $"timeout_minute")
-        .withColumn("flow_node_id", typedLit[Int](4))
+        .withColumn("node_id", typedLit[Int](4))
         .withColumn("branch_index", typedLit[Int](0))
         .withColumn("stat_time", typedLit[Timestamp](new Timestamp(System.currentTimeMillis())))
         .withColumn("flow_node_name", typedLit[String]("加入购物车eventTrigger"))
@@ -88,7 +88,7 @@ object FlowTester extends App {
     eventTriggerSplitNodeDf1Br1.show(10)
 
     val joinDf = eventTriggerSplitNodeDf1Br0.union(eventTriggerSplitNodeDf1Br1)
-        .withColumn("flow_node_id", typedLit[Int](5))
+        .withColumn("node_id", typedLit[Int](5))
         .withColumn("branch_index", typedLit[Int](0))
 
     joinDf.show(10)
@@ -98,7 +98,7 @@ object FlowTester extends App {
     //        val schema = StructType(
     //            Seq(
     //                StructField("flow_id", IntegerType, false),
-    //                StructField("flow_node_id", IntegerType, false),
+    //                StructField("node_id", IntegerType, false),
     //                StructField("branch_index", IntegerType, false),
     //                StructField("stat_time", TimestampType, false),
     //                StructField("user_id", StringType, false),
@@ -109,7 +109,7 @@ object FlowTester extends App {
 
 
     //    val userFlowNodeDf = userDf.withColumn("flow_id", typedLit[Long](1))
-    //        .withColumn("flow_node_id", typedLit[Seq[Int]](Seq(0)))
+    //        .withColumn("node_id", typedLit[Seq[Int]](Seq(0)))
     //        .withColumn("branch_index", typedLit[Int](0))
     //        .withColumn("stat_time", typedLit[Date](new Date(System.currentTimeMillis())))
     //        .withColumn("device_id", typedLit[String](""))
@@ -120,10 +120,10 @@ object FlowTester extends App {
     //
     //    val finalDf = userFlowNodeDf
     //        .filter("email like '%datatist%'")
-    //        .withColumn("flow_node_id", addFlowNodeId($"flow_node_id", lit(1)))
-    //        .filter($"flow_node_id".as[Seq[Int]])
+    //        .withColumn("node_id", addFlowNodeId($"node_id", lit(1)))
+    //        .filter($"node_id".as[Seq[Int]])
     //            .map(row => {
-    ////                val flowNodeIds = row.getSeq(userFlowNodeDf.schema.fieldIndex("flow_node_id"))
+    ////                val flowNodeIds = row.getSeq(userFlowNodeDf.schema.fieldIndex("node_id"))
     ////                println(flowNodeIds)
     //                row
     //            })

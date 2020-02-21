@@ -28,7 +28,7 @@ case class SparkUserEntryBusi(flowId: Long,
             override protected def execute(father: DataFrame, spark: SparkSession): DataFrame = {
                 val df = father.join(currentFlowNodeUserHisotry,
                     father.col("user_id") === currentFlowNodeUserHisotry.col("user_id"), "left_outer")
-                    .where("flow_node_id is null")
+                    .where("node_id is null")
                     .select(father.col("user_id"), father.col("mobile").as("device_id"))
                 setCurrentFlowNodeUser(startTime, df, spark).toDF()
             }

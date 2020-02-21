@@ -48,7 +48,7 @@ abstract class SparkBaseBusi[T >: FlowNodeBusi](flowId: Long,
         import spark.implicits._
         dataFrame
             .withColumn("flow_id", typedLit[Long](flowId))
-            .withColumn("flow_node_id", typedLit[Int](flowNode.nodeId))
+            .withColumn("node_id", typedLit[Int](flowNode.nodeId))
             .withColumn("branch_index", typedLit[Int](0))
             .withColumn("stat_time", typedLit[Timestamp](startTime))
             .withColumn("timeout_minute", typedLit[Int](0))
