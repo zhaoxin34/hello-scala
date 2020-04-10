@@ -34,8 +34,8 @@ lazy val commonSettings = Seq(
         "utf8"
     ),
     resolvers ++= Seq(
-        "central" at "http://repo1.maven.org/maven2/",
-        "mvnrepository" at "https://mvnrepository.com/artifact"
+//        "central" at "http://repo1.maven.org/maven2/",
+//        "mvnrepository" at "https://mvnrepository.com/artifact"
     ),
     logLevel in compile := Level.Warn,
     libraryDependencies ++= (
